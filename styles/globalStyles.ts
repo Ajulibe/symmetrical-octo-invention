@@ -17,6 +17,29 @@ export const MyGlobalStyle = createGlobalStyle`
     justify-content: center;
     align-items: center;
     background: black;
+    
+
+    .info{
+      /* background: #fff; */
+      margin-top: 25%;
+      color: #fff;
+      text-align: center;
+      .header{
+        font-size: 40px;
+
+        &__details{
+          font-size: 20px;
+        }
+      }
+
+      button {
+        background-color: red;
+        color: white;
+      }
+
+}
+      
+    }
 
   .mouseBg {
     color: #fff;

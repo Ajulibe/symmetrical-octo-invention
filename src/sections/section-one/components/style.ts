@@ -22,11 +22,56 @@ const carousel = keyframes` 0% {
     transform: translateY(-230px)
   }`
 
+const fadeIn = keyframes`
+  0% {
+    opacity: 0
+  }
+
+  100% { 
+    opacity: 1
+  }
+  `
+
+const moveInfadeIn = keyframes`
+0% {
+  opacity: 0;
+    transform: translateY(100px);
+    
+}
+
+100% {
+    opacity: 1;
+    transform: translateY(0);
+
+}
+`
+
+const IncreaseHeight = keyframes`
+  from{
+    height: 0rem;
+  }
+
+ to{ 
+  height: 29.8rem;
+  }
+  `
+
+const zoomOut = keyframes`
+from{
+  transform: scale(1.6);
+}
+
+to{ 
+  transform: scale(1);
+}
+`
+
 export const Greybackgroud = styled.main<Props>`
   background: hsla(0, 0%, 83%, 1);
   height: 69.6rem;
   position: relative;
   margin-top: 24rem;
+  animation: ${moveInfadeIn} 0.9s ease-in;
 
   .carousel {
     width: 61.5rem;
@@ -34,6 +79,9 @@ export const Greybackgroud = styled.main<Props>`
     position: absolute;
     margin-left: 14rem;
     top: -9.8rem;
+    height: 0;
+    overflow: hidden;
+    animation: ${IncreaseHeight} 0.7s ease-in forwards 0.2s;
 
     &__bg-dark {
       background: #1d1d1f;
@@ -41,6 +89,8 @@ export const Greybackgroud = styled.main<Props>`
       height: 25.3rem;
       padding: 3.8rem 8.4rem 2.7rem 5.8rem;
       overflow: hidden;
+      /* border: 1px solid red; */
+      /* animation: ${zoomOut} 0.7s ease-in forwards; */
     }
 
     &__bg-circle,
@@ -132,6 +182,7 @@ export const Greybackgroud = styled.main<Props>`
 
       .icon {
         font-size: 50px;
+        animation: ${fadeIn} 1s ease-in;
       }
     }
 

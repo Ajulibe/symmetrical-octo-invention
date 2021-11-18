@@ -1,9 +1,21 @@
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 import { FONTS } from "@styles/fonts"
 
 interface Props {
   bgColor?: string
 }
+
+const fadeIn = keyframes`
+0% {
+  opacity: 0;
+
+}
+
+100% {
+    opacity: 1;
+
+}
+`
 
 export const Container = styled.nav<Props>`
   display: flex;
@@ -21,6 +33,7 @@ export const Container = styled.nav<Props>`
       font-family: ${FONTS.didactic};
       margin-right: 25.9rem;
       font-weight: 400;
+      animation: ${fadeIn} 0.7s ease-in;
     }
 
     &__links {
@@ -28,6 +41,8 @@ export const Container = styled.nav<Props>`
       line-height: 2.1rem;
       color: #fff;
       font-family: ${FONTS.raleway};
+      opacity: 0;
+      animation: ${fadeIn} 0.7s ease-in 0.3s forwards;
 
       & > :not(:last-child) {
         margin-right: 6.6rem;
@@ -40,6 +55,8 @@ export const Container = styled.nav<Props>`
 
     &__social-icons {
       display: flex;
+      opacity: 0;
+      animation: ${fadeIn} 0.7s ease-in 0.8s forwards;
       img {
         width: 4.2px;
         height: 4.2px;

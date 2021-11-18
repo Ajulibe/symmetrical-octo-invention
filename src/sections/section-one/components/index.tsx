@@ -1,9 +1,12 @@
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import { Greybackgroud } from "./style"
 import { BsPlayFill } from "react-icons/bs"
+import Lottie from "lottie-react"
+import playerGif from "./lottie/rhythm.json"
 
 export const CarouselSection = () => {
   const player = useRef<HTMLAudioElement>(null)
+  const [isPlaying, setIsPlaying] = useState(false)
 
   const songArray = [
     "/audio/Ayra-babby.mp3",
@@ -24,6 +27,7 @@ export const CarouselSection = () => {
       audioTag.src = src
       audioTag.play()
       console.log(audioTag)
+      setIsPlaying(true)
     }
   }
 
@@ -31,7 +35,14 @@ export const CarouselSection = () => {
     if (player.current) {
       player.current.pause()
       player.current.currentTime = 0
+      setIsPlaying(false)
     }
+  }
+
+  const LottieStyle = {
+    height: 50,
+    marginBottom: 5,
+    BackgroundColor: "red",
   }
 
   return (
@@ -68,12 +79,20 @@ export const CarouselSection = () => {
 
           <audio preload="false" ref={player}></audio>
 
-          <div className="carousel__btn">
-            <BsPlayFill
-              className="icon"
-              onMouseOver={startSong}
-              onMouseLeave={stopSong}
-            />
+          <div
+            className="carousel__btn"
+            onMouseOver={startSong}
+            onMouseLeave={stopSong}
+          >
+            {isPlaying ? (
+              <Lottie
+                style={LottieStyle}
+                className="icon"
+                animationData={playerGif}
+              />
+            ) : (
+              <BsPlayFill className="icon" />
+            )}
           </div>
 
           <div className="carousel__bg-circle"></div>

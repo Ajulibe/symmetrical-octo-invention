@@ -9,6 +9,8 @@ import {
   SectionTwo,
   SectionThree,
   SectionFour,
+  // Testheader,
+  // Apiheader,
 } from "@src/sections"
 import { Pads } from "@components/pads"
 
@@ -34,6 +36,13 @@ const Home: NextPage = () => {
       <div ref={hoverBg} className="mouseBg"></div>
 
       <Pads />
+      {/* <Apiheader /> */}
+
+      <div className="info">
+        <p className="header"> Income Protection</p>
+        <p className="header__details">you get Paid if you loose your job</p>
+        <button>Get Started</button>
+      </div>
 
       <Layout>
         <Header />

@@ -14,18 +14,27 @@ export const SectionOne = () => {
           </div>
 
           <div className="main__right-section-bold">
-            <b className="header">A style you feel comfortable in</b>
+            <div className="header">
+              <div className="header-in">
+                <p>A style you feel </p>
+              </div>
+
+              <div className="header-in">
+                <p>comfortable in</p>
+              </div>
+            </div>
+
             <div className="main__right-section-light">
-              <div>
+              <div className="tick">
                 <IoMdCheckmark />
                 &nbsp; Buy one get one
               </div>
 
-              <div>
+              <div className="tick">
                 <IoMdCheckmark /> &nbsp; Free Delivery
               </div>
 
-              <div>
+              <div className="tick">
                 <IoMdCheckmark /> &nbsp; Free Return
               </div>
             </div>
@@ -33,7 +42,7 @@ export const SectionOne = () => {
         </div>
 
         <div className="main__left-section">
-          We are a global brand of premium fashion clothing, accessories,
+          We are a global brand of premium fashion clothing, accessories
           footwear, and accessories products that is dedicated to offering the
           very latest in fashion styles and styles that are carefully selected
           and designed by our exclusive and talented designers.

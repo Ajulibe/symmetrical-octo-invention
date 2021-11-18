@@ -11,13 +11,45 @@ const blink = keyframes`
     100%{transform: scale(100); opacity: 0.03}
 `
 
-const fadeIn = keyframes`
+const BgColorfadeIn = keyframes`
+from {
+  opacity: 0.4;
+}
+to {
+  background: linear-gradient(
+        to right,
+        hsl(98 100% 62%),
+        hsl(204 100% 59%)
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 1;
+}
+`
+
+const moveInfadeIn = keyframes`
 0% {
-    opacity: 0
+  opacity: 0;
+    transform: translateY(100px);
 }
 
 100% {
-    opacity: 1
+    opacity: 1;
+    transform: translateY(0);
+
+}
+`
+
+const fadeIn = keyframes`
+0% {
+  opacity: 0;
+
+}
+
+100% {
+    opacity: 1;
+
 }
 `
 
@@ -60,21 +92,12 @@ export const Container = styled.main<Props>`
       font-family: ${FONTS.didactic};
       width: 54.1rem;
       font-size: 8rem;
-      line-height: 10.5rem;
       color: #fff;
       position: relative;
       left: -113px;
-      background: linear-gradient(
-        to right,
-        hsl(98 100% 62%),
-        hsl(204 100% 59%)
-      );
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: ${fadeIn} 2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+      animation: ${BgColorfadeIn} 1s ease-in 2s forwards;
 
-      & > div {
+      & > div:not(:first-child) {
         font-family: ${FONTS.raleway};
         font-style: normal;
         font-weight: 500;
@@ -86,6 +109,33 @@ export const Container = styled.main<Props>`
 
       .header {
         z-index: 4;
+        overflow: hidden;
+
+        &-in {
+          padding: 0;
+          height: 8rem;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          overflow: hidden;
+
+          &:first-child {
+            p:first-child {
+              animation: ${moveInfadeIn} 0.9s cubic-bezier(0.65, 0, 0.35, 1);
+            }
+          }
+
+          &:last-child {
+            margin-top: 10px;
+            p:last-child {
+              /* opacity: 0;
+              animation: ${moveInfadeIn} 0.9s cubic-bezier(0.65, 0, 0.35, 1)
+                0.3s forwards; */
+
+              animation: ${moveInfadeIn} 0.9s cubic-bezier(0.65, 0, 0.35, 1);
+            }
+          }
+        }
       }
 
       &::before {
@@ -99,7 +149,7 @@ export const Container = styled.main<Props>`
         background: linear-gradient(to right, #ff3dae, hsl(204 100% 59%));
         background-clip: text;
         -webkit-text-fill-color: transparent;
-        /* animation: ${blink} 10s 10s ease-in infinite; */ //removed due to performance
+        animation: ${blink} 10s 10s ease-in infinite; //removed due to performance
         //limitations.
         opacity: 0.04;
       }
@@ -112,6 +162,8 @@ export const Container = styled.main<Props>`
         justify-content: center;
         align-items: center;
         margin-right: 19.23px;
+        color: #fff;
+        animation: ${fadeIn} 1.2s ease-in;
       }
     }
 
@@ -121,6 +173,9 @@ export const Container = styled.main<Props>`
       line-height: 3rem;
       color: #fff;
       font-family: ${FONTS.raleway};
+      padding-top: 20px;
+      animation: ${fadeIn} 0.9s ease-in 0.3s forwards;
+      opacity: 0;
 
       button,
       button:active,
