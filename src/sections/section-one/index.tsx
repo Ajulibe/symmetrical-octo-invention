@@ -14,7 +14,7 @@ export const SectionOne = () => {
           </div>
 
           <div className="main__right-section-bold">
-            <b>A style you feel comfortable in</b>
+            <b className="header">A style you feel comfortable in</b>
             <div className="main__right-section-light">
               <div>
                 <IoMdCheckmark />

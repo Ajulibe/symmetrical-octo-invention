@@ -5,11 +5,12 @@ interface Props {
   bgColor?: string
 }
 
-const glow = keyframes`
-    0%{background-position:10% 0%}
-    50%{background-position:91% 100%}
-    100%{background-position:10% 0%}
+const blink = keyframes`
+    0%{transform: scale(1); opacity: 0.04};
+    50%{transform: scale(50); opacity: 0.01};
+    100%{transform: scale(100); opacity: 0.03}
 `
+
 const fadeIn = keyframes`
 0% {
     opacity: 0
@@ -68,7 +69,6 @@ export const Container = styled.main<Props>`
         hsl(98 100% 62%),
         hsl(204 100% 59%)
       );
-      animation: ${glow} 0.42s ease-in infinite;
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -82,6 +82,26 @@ export const Container = styled.main<Props>`
         line-height: 1.6rem;
         color: rgba(29, 29, 31, 0.6);
         margin-top: 19px;
+      }
+
+      .header {
+        z-index: 4;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        z-index: -1;
+        background: red;
+        border-radius: 50%;
+        background: linear-gradient(to right, #ff3dae, hsl(204 100% 59%));
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        /* animation: ${blink} 10s 10s ease-in infinite; */ //removed due to performance
+        //limitations.
+        opacity: 0.04;
       }
     }
 

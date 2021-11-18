@@ -10,6 +10,7 @@ import {
   SectionThree,
   SectionFour,
 } from "@src/sections"
+import { Pads } from "@components/pads"
 
 const Home: NextPage = () => {
   const hoverBg = useRef<HTMLDivElement>(null)
@@ -32,11 +33,7 @@ const Home: NextPage = () => {
 
       <div ref={hoverBg} className="mouseBg"></div>
 
-      <div className="grid__wrapper">
-        {[...new Array(1120)].map((index) => (
-          <div key={index} className="grid"></div>
-        ))}
-      </div>
+      <Pads />
 
       <Layout>
         <Header />

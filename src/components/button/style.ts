@@ -44,6 +44,7 @@ export const StyledButton = styled.button<Props>`
 
   &:hover {
     color: #fff;
+
     &::after {
       width: 100%;
     }

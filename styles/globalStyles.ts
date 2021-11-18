@@ -1,11 +1,9 @@
-import styled, { createGlobalStyle, css } from "styled-components"
+import styled, { createGlobalStyle } from "styled-components"
 
-// theme is now fully typed
 export const MyComponent = styled.div`
   color: ${(props) => props.theme.colors.main};
 `
 
-// theme is also fully typed
 export const MyGlobalStyle = createGlobalStyle`  
   html, body {
     font-family: 'Didact Gothic',Raleway,Baskervville, serif, Arial, Helvetica, sans-serif;
@@ -20,7 +18,7 @@ export const MyGlobalStyle = createGlobalStyle`
     align-items: center;
     background: black;
 
-  .mouseBg{
+  .mouseBg {
     color: #fff;
     padding: 0;
     margin: 0;
@@ -35,32 +33,6 @@ export const MyGlobalStyle = createGlobalStyle`
     backdrop-filter: blur(15px);
   }
 
-
-   .grid__wrapper{
-    display: grid;
-    grid-template-columns: repeat(20, 5vw);
-    background: rgba(255,255,255,0.1);
-    z-index: 10;
-    
-
-    .grid{
-      border: 0.3px solid hsla(0,0%,10%,.5);
-      border-radius: 10px;
-      width: 5vw;
-      height: 5vw;
-      margin-bottom: 2px;
-      background: black;
-      filter: blur(50%);  
-      -webkit-tap-highlight-color: transparent;
-      transition: all 0.2s ease-in;
-
-      &:hover{
-        transform: perspective(1000px);
-        transform: rotateX(1deg);
-        transform: scale(1.01)
-      }
-    }
-  }
     
   }
 
@@ -82,6 +54,3 @@ export const MyGlobalStyle = createGlobalStyle`
     box-sizing: inherit;
   }
 `
-
-// and this theme is fully typed as well
-export const cssHelper = css``
