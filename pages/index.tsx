@@ -4,6 +4,7 @@ import styles from "../styles/Home.module.css"
 import Layout from "@src/layout"
 import { Header } from "@src/sections/header"
 import { useEffect, useRef } from "react"
+import dynamic from "next/dynamic"
 import {
   SectionOne,
   SectionTwo,
@@ -12,8 +13,7 @@ import {
   // Testheader,
   // Apiheader,
 } from "@src/sections"
-import { Pads } from "@components/pads"
-
+const Pads = dynamic(() => import("@components/pads"))
 const Home: NextPage = () => {
   const hoverBg = useRef<HTMLDivElement>(null)
 
@@ -35,14 +35,17 @@ const Home: NextPage = () => {
 
       <div ref={hoverBg} className="mouseBg"></div>
 
+      <div className="greenBg"></div>
+
       <Pads />
+
       {/* <Apiheader /> */}
 
-      <div className="info">
+      {/* <div className="info">
         <p className="header"> Income Protection</p>
         <p className="header__details">you get Paid if you loose your job</p>
         <button>Get Started</button>
-      </div>
+      </div> */}
 
       <Layout>
         <Header />

@@ -12,7 +12,7 @@ export const Container = styled.main<Props>`
 
   .grid {
     border: 0.3px solid hsla(0, 0%, 10%, 0.5);
-    border-radius: 10px;
+    border-radius: 6px;
     width: 5vw;
     height: 5vw;
     background: black;

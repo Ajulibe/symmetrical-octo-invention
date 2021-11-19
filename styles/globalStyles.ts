@@ -17,30 +17,8 @@ export const MyGlobalStyle = createGlobalStyle`
     justify-content: center;
     align-items: center;
     background: black;
-    
-
-    .info{
-      /* background: #fff; */
-      margin-top: 25%;
-      color: #fff;
-      text-align: center;
-      .header{
-        font-size: 40px;
-
-        &__details{
-          font-size: 20px;
-        }
-      }
-
-      button {
-        background-color: red;
-        color: white;
-      }
-
-}
+    scroll-behavior: smooth;
       
-    }
-
   .mouseBg {
     color: #fff;
     padding: 0;
@@ -52,11 +30,41 @@ export const MyGlobalStyle = createGlobalStyle`
     left:-20vh;
     top: -20vh;
     border-radius: 50%;
-    background: radial-gradient(circle,hsla(0,0%,100%,.5) 0,hsla(0,0%,100%,.1) 25%,hsla(0,0%,100%,0) 70%);
-    backdrop-filter: blur(15px);
+    background: radial-gradient(circle,hsla(0,0%,100%,.9) 0,hsla(0,0%,100%,.1) 25%,hsla(0,0%,100%,0) 70%);
+    /* backdrop-filter: blur(15px); */
+
+   
   }
 
-    
+  .greenBg {
+    box-sizing: border-box;
+    position: fixed;
+    width: 50vh;
+    height: 50vh;
+    right: 200px;
+    margin-top: 22vh;
+    border-radius: 30%;
+    background-color:  hsl(98 100% 62%);
+    animation: fadeIn 2s ease-in forwards 0.2s;
+    opacity: 0;
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0.4;
+        transform: scale(1) translateX(100px)
+      }
+      50% {
+        opacity: 0.1;
+        transform: scale(50)
+      }
+
+      100%{
+        opacity: 0;
+        transform: scale(100) translateX(-100px)
+      }
+    }
+  }
+
   }
 
 
