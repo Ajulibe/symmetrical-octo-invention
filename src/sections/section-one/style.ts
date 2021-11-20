@@ -7,8 +7,8 @@ interface Props {
 
 const blink = keyframes`
     0%{transform: scale(1); opacity: 0.04};
-    50%{transform: scale(50); opacity: 0.01};
-    100%{transform: scale(100); opacity: 0.03}
+    50%{transform: scale(10); opacity: 0.01};
+    100%{transform: scale(20); opacity: 0}
 `
 
 const BgColorfadeIn = keyframes`

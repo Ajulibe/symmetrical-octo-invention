@@ -7,11 +7,6 @@ const PadGroup = dynamic(() => import("./components"))
 const Pads: React.FC = () => {
   return (
     <Container>
-      {/* {[...new Array(1120)].map((index) => (
-        <div key={index} className="grid"></div>
-      ))} */}
-      <PadGroup />
-      <PadGroup />
       <PadGroup />
       <PadGroup />
       <PadGroup />

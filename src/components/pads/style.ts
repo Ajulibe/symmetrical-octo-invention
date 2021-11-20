@@ -9,6 +9,9 @@ export const Container = styled.main<Props>`
   grid-template-columns: repeat(20, 5vw);
   background: rgba(255, 255, 255, 0.1);
   z-index: 10;
+  height: 100vh;
+  overflow: hidden;
+  position: static;
 
   .grid {
     border: 0.3px solid hsla(0, 0%, 10%, 0.5);

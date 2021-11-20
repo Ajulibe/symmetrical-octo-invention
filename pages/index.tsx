@@ -5,6 +5,7 @@ import Layout from "@src/layout"
 import { Header } from "@src/sections/header"
 import { useEffect, useRef } from "react"
 import dynamic from "next/dynamic"
+import _ from "lodash"
 import {
   SectionOne,
   SectionTwo,
@@ -18,12 +19,17 @@ const Home: NextPage = () => {
   const hoverBg = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    cursorBg()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const cursorBg = _.debounce(function () {
     document.addEventListener("mousemove", (event) => {
       if (hoverBg.current) {
         hoverBg.current.style.transform = `translate(${event.clientX}px, ${event.clientY}px)`
       }
     })
-  }, [])
+  }, 500)
 
   return (
     <div className={styles.container}>

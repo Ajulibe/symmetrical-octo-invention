@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@next/eslint-plugin-next": "^12.0.3",
+    "@types/lodash": "^4.14.177",
     "@types/styled-components": "^5.1.15",
     "axios": "^0.24.0",
     "dayjs": "^1.10.7",

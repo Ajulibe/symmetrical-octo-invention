@@ -9,4 +9,12 @@ export const Container = styled.main<Props>`
   max-width: 144rem;
   z-index: 9999;
   position: absolute;
+  height: 100vh;
+  overflow: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `
