@@ -3,14 +3,15 @@ import { Greybackgroud } from "./style"
 import { BsPlayFill } from "react-icons/bs"
 import Lottie from "lottie-react"
 import playerGif from "./lottie/rhythm.json"
+import loaderGif from "./lottie/loader.json"
 import Image from "next/image"
 
 export const CarouselSection = () => {
   const player = useRef<HTMLAudioElement>(null)
   const [isPlaying, setIsPlaying] = useState(false)
-  const [loop, setLoop] = useState<boolean>(false)
-  const [loopWatcher, setLoopWatcher] = useState<boolean>(false)
-  const bgTrigger = useRef<HTMLInputElement>(null)
+  const [imageIndex, setImageIndex] = useState<number>(0)
+  const [startAnim, setStartAnim] = useState(false)
+  const index = useRef(0)
 
   const songArray = [
     "/audio/Ayra-babby.mp3",
@@ -24,11 +25,22 @@ export const CarouselSection = () => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setLoop((prev) => !prev)
+      if (index.current === CarouselContent.length - 1) {
+        index.current = 0
+      } else {
+        index.current = index.current + 1
+      }
+      setImageIndex(index.current)
     }, 7000)
-
     return () => clearInterval(intervalId)
   }, [])
+
+  useEffect(() => {
+    setStartAnim(true)
+    setTimeout(() => {
+      setStartAnim(false)
+    }, 1500)
+  }, [imageIndex])
 
   const startSong = () => {
     const randomIndex = getRandomArbitrary(0, 3)
@@ -38,7 +50,6 @@ export const CarouselSection = () => {
       const src = songArray[randomIndex]
       audioTag.src = src
       audioTag.play()
-      console.log(audioTag)
       setIsPlaying(true)
     }
   }
@@ -57,6 +68,11 @@ export const CarouselSection = () => {
     BackgroundColor: "red",
   }
 
+  const LoaderStyle = {
+    width: 100,
+    flexGrow: 1,
+  }
+
   const CarouselContent = [
     {
       image:
@@ -65,7 +81,7 @@ export const CarouselSection = () => {
     },
     {
       image:
-        "https://res.cloudinary.com/ajulibe/image/upload/v1630596884/ROMI/disruptivo-DokE5D4GbDk-unsplash_pich0l.jpg",
+        "https://res.cloudinary.com/ajulibe/image/upload/v1637483555/fashion-site/ladyred_rr7a0l.webp",
       details: "",
     },
     {
@@ -80,112 +96,92 @@ export const CarouselSection = () => {
     },
   ]
 
+  const previousImage =
+    imageIndex === 0 ? CarouselContent.length - 1 : imageIndex - 1
+
   return (
-    <Greybackgroud loop={loop}>
+    <Greybackgroud startAnim={startAnim}>
+      <div className="bg">
+        <div className="bg__previous">
+          <Image
+            src={CarouselContent[previousImage].image}
+            alt="fullimage"
+            width="1700"
+            height="2000"
+            objectFit="cover"
+          />
+        </div>
+        <div className="bg__next">
+          <Image
+            src={CarouselContent[imageIndex].image}
+            alt="fullimage"
+            width="1700"
+            height="2000"
+            objectFit="cover"
+          />
+        </div>
+      </div>
+
       <div className="carousel">
         <div className="carousel__bg-dark">
-          {/* <div className="carousel__animator">
-            <div>
-              <div className="carousel__bg-message">
-                &#8220;We&#39;re loving it. Clothing did exactly what you said
-                it does. Man, this thing is getting better and better as I learn
-                more about it.&#8221;
-              </div>
-
-              <div className="carousel__bg-message-info">
-                <span className="carousel__bg-name">Jena Redmond</span>
-                <p className="carousel__bg-role">Designer</p>
-              </div>
-            </div>
-
-            <div>
-              <div className="carousel__bg-message">
-                &#8220;We&#39;re loving it. Clothing did exactly what you said
-                it does. Man, this thing is getting better and better as I learn
-                more about it.&#8221;
-              </div>
-
-              <div className="carousel__bg-message-info">
-                <span className="carousel__bg-name">Jena Redmond</span>
-                <p className="carousel__bg-role">Designer</p>
-              </div>
-            </div>
-          </div> */}
-
           <audio preload="false" ref={player}></audio>
 
-          <div
-            className="carousel__btn"
-            // onMouseOver={startSong}
-            // onMouseLeave={stopSong}
-          >
-            {isPlaying ? (
-              <Lottie
-                style={LottieStyle}
-                className="icon"
-                animationData={playerGif}
-              />
-            ) : (
-              <BsPlayFill className="icon" />
-            )}
+          <div className="wrapper">
+            <div
+              className="carousel__btn"
+              onMouseOver={startSong}
+              onMouseLeave={stopSong}
+            >
+              {isPlaying ? (
+                <Lottie
+                  style={LottieStyle}
+                  className="icon"
+                  animationData={playerGif}
+                />
+              ) : (
+                <BsPlayFill className="icon" />
+              )}
+            </div>
+
+            <Lottie
+              style={LoaderStyle}
+              className="loader"
+              animationData={loaderGif}
+            />
           </div>
 
           <div className="carousel__animator">
-            {loop ? (
-              <div className="carousel__bg-padding">
-                <div>
-                  <div className="carousel__bg-message">
-                    &#8220;We&#39;re loving it. Clothing did exactly what you
-                    said it does. Man, this thing is getting better and better
-                    as I learn more about it.&#8221;
-                  </div>
-
-                  <div className="carousel__bg-message-info">
-                    <span className="carousel__bg-name">Jena Redmond</span>
-                    <p className="carousel__bg-role">Designer</p>
-                  </div>
+            <div className="carousel__bg-padding">
+              <div>
+                <div className="carousel__bg-message">
+                  &#8220;We&#39;re loving it. Clothing did exactly what you said
+                  it does. Man, this thing is getting better and better as I
+                  learn more about it.&#8221;
                 </div>
-                <div>
-                  <div className="carousel__bg-message">
-                    &#8220;We&#39;re loving it. Clothing did exactly what you
-                    said it does. Man, this thing is getting better and better
-                    as I learn more about it.&#8221;
-                  </div>
 
-                  <div className="carousel__bg-message-info">
-                    <span className="carousel__bg-name">Jena Redmond</span>
-                    <p className="carousel__bg-role">Designer</p>
-                  </div>
+                <div className="carousel__bg-message-info">
+                  <span className="carousel__bg-name">Jena Redmond</span>
+                  <p className="carousel__bg-role">Designer</p>
                 </div>
               </div>
-            ) : (
-              <div className="carousel__bg-dark__image">
-                <Image
-                  src={CarouselContent[1].image}
-                  alt="fullimage"
-                  width="700"
-                  height="530"
-                  objectFit="cover"
-                />
+              <div>
+                <div className="carousel__bg-message">
+                  &#8220;We&#39;re loving it. Clothing did exactly what you said
+                  it does. Man, this thing is getting better and better as I
+                  learn more about it.&#8221;
+                </div>
+
+                <div className="carousel__bg-message-info">
+                  <span className="carousel__bg-name">Jena Redmond</span>
+                  <p className="carousel__bg-role">Designer</p>
+                </div>
               </div>
-            )}
+            </div>
           </div>
 
           {/* <div className="carousel__bg-circle"></div> */}
 
-          <span className="carousel__div">Aka</span>
-
-          <div className="carousel__bg-second">
-            <div className="carousel__bg-second_in">
-              <Image
-                src={CarouselContent[1].image}
-                alt="fullimage"
-                width="500"
-                height="500"
-                objectFit="cover"
-              />
-            </div>
-          </div>
+          <div className="carousel__bg-second"></div>
         </div>
       </div>
     </Greybackgroud>

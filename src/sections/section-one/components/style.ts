@@ -5,6 +5,7 @@ import styled, { keyframes, css } from "styled-components"
 interface Props {
   bgColor?: string
   loop?: boolean
+  startAnim?: boolean
 }
 
 const pulse = keyframes` 0% {
@@ -34,16 +35,6 @@ const fadeIn = keyframes`
   }
   `
 
-const fadeOut = keyframes`
-0% {
-  opacity: 1
-}
-
-100% { 
-  opacity: 0
-}
-`
-
 const moveInfadeIn = keyframes`
 0% {
   opacity: 0;
@@ -68,46 +59,22 @@ const IncreaseHeight = keyframes`
   }
   `
 
-const zoomOut = keyframes`
-from{
-  transform: scale(1.6);
-}
-
-to{ 
-  transform: scale(1);
-}
-`
-const imageSwipe = keyframes`
-from{
-  transform: scale(1.6);
-}
-
-to{ 
-  transform: scale(1);
-}
-`
-
-const scaleImage = keyframes`
-100%{
-  transform: scale(8) translateX(-30px)
-}
-`
-
-const secondImage = keyframes`
+const clipPath = keyframes`
 0%{
-  opacity: 0;
-  transform: scale(3);
+  clip-path: circle(20% at 100% 100%);
+  transform: scale(1.2);
+  filter: blur(8px)
 }
-
+20%{
+  filter: blur(0)
+}
+50%{
+  clip-path: circle(150% at 100% 100%);
+  
+}
 100% {
-  opacity: 1;
-  transform: scale(1);
+  transform: scale(1)
 }
-`
-
-const secondImageIn = keyframes`
- to{transform: scale(0.8) translateY(10px);
-          width: 100%}
 `
 
 export const Greybackgroud = styled.main<Props>`
@@ -115,7 +82,35 @@ export const Greybackgroud = styled.main<Props>`
   height: 69.6rem;
   position: relative;
   margin-top: 24rem;
-  animation: ${moveInfadeIn} 0.9s ease-in;
+  animation: ${moveInfadeIn} 0.6s ease-in;
+
+  .bg {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+
+    &__previous {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    &__next {
+      img {
+        ${({ startAnim }) =>
+          startAnim &&
+          css`
+            animation: ${clipPath} 1.2s cubic-bezier(0.2, 0.6, 0.35, 1) forwards;
+          `};
+        transition: all 0.2s ease-in;
+      }
+
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+  }
 
   .carousel {
     width: 61.5rem;
@@ -124,36 +119,21 @@ export const Greybackgroud = styled.main<Props>`
     margin-left: 14rem;
     top: -9.8rem;
     height: 0;
-    /* overflow: hidden; */
-    animation: ${IncreaseHeight} 0.7s ease-in forwards 0.2s;
+    overflow: hidden;
+    animation: ${IncreaseHeight} 0.9s cubic-bezier(0.25, 1, 0.5, 1) forwards
+      0.2s;
 
     &__bg-dark {
       background: #1d1d1f;
       width: 57rem;
       height: 25.3rem;
-      /* background: url("https://res.cloudinary.com/ajulibe/image/upload/v1630596866/ROMI/joanna-nix-walkup-GfqwtN5heR8-unsplash_fs3w9w.jpg"); */
       background-size: cover;
       background-repeat: no-repeat;
-      padding: ${({ loop }) => (loop ? "3.8rem 8.4rem 2.7rem 5.8rem" : 0)};
-      /* padding: 3.8rem 8.4rem 2.7rem 5.8rem; */
+      padding: 3.8rem 8.4rem 2.7rem 5.8rem;
       overflow: hidden;
-      /* border: 1px solid red; */
-      /* animation: ${zoomOut} 0.7s ease-in forwards; */
-
-      &__image {
-        /* transform-origin: bottom middle; */
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        /* opacity: 0; */
-        /* transform: scale(2); */
-        /* animation: ${imageSwipe} 0.5s ease-in 0.4s forwards; */
-        /* transition: all 1s linear 0.2s; */
-      }
     }
 
-    &__bg-circle,
-    &__bg-second {
+    &__bg-circle {
       width: 89px;
       height: 89px;
       border-radius: 50%;
@@ -166,44 +146,25 @@ export const Greybackgroud = styled.main<Props>`
       bottom: 300px;
       left: 470px;
       transition: all 0.8s ease-in;
-      opacity: 0;
+      opacity: 1;
       z-index: 2;
     }
 
     &__bg-second {
+      width: 57rem;
+      height: 0;
       left: 480px;
-      overflow: hidden;
-      background-color: transparent;
-      background: unset;
-      transform: scale(0);
-
-      opacity: 1;
-      ${({ loop }) =>
-        loop === false
-          ? css`
-              animation: ${scaleImage} 0.6s cubic-bezier(0.2, 0.6, 0.35, 1)
-                forwards;
-            `
-          : css`
-              animation: ${fadeOut} 0.2s cubic-bezier(0.2, 0.6, 0.35, 1)
-                forwards;
-            `}
-      &_in {
-        transform: scale(7);
-        top: -43.5rem;
-        ${({ loop }) =>
-          loop === false
-            ? css`
-                animation: ${secondImageIn} 0.8s cubic-bezier(0.2, 0.6, 0.35, 1)
-                  0.1s forwards;
-              `
-            : css`
-                animation: ${fadeOut} 0.2s cubic-bezier(0.2, 0.6, 0.35, 1)
-                  forwards;
-              `}
-
-        transition: all 0.8s cubic-bezier(0.2, 0.6, 0.35, 1) 0.1s;
-      }
+      position: absolute;
+      z-index: 2;
+      background: linear-gradient(
+        to right,
+        hsl(98 100% 62%),
+        hsl(204 100% 59%)
+      );
+      transition: all 0.6s cubic-bezier(0, 0.55, 0.45, 1);
+      border-radius: 0;
+      top: 0;
+      left: 0;
     }
 
     &__bg-dark::before,
@@ -267,7 +228,30 @@ export const Greybackgroud = styled.main<Props>`
       border-radius: 50%;
       background: #fff;
       position: absolute;
-      right: 0;
+      top: 50%;
+      right: 50%;
+      transform: translate(50%, -50%);
+      bottom: 5px;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+      outline: none;
+      border: none;
+      z-index: 4;
+
+      .icon {
+        font-size: 50px;
+        animation: ${fadeIn} 1s ease-in;
+      }
+    }
+
+    .wrapper {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: transparent;
+      position: absolute;
+      right: -10px;
       bottom: 5px;
       justify-content: center;
       display: flex;
@@ -275,11 +259,19 @@ export const Greybackgroud = styled.main<Props>`
       outline: none;
       border: none;
       z-index: 3;
+      filter: drop-shadow(0 0 0.45rem rgb(255, 255, 255, 0.2));
 
-      .icon {
-        font-size: 50px;
-        animation: ${fadeIn} 1s ease-in;
+      &:hover {
+        & ~ .carousel__bg-second {
+          height: 25.3rem;
+          opacity: 1;
+        }
       }
+    }
+
+    .loader {
+      position: relative;
+      transition: all 0.8s cubic-bezier(0.2, 0.6, 0.35, 1);
     }
 
     &__btn::after,
@@ -298,21 +290,6 @@ export const Greybackgroud = styled.main<Props>`
       z-index: -1;
     }
 
-    &__div {
-      width: 20rem;
-      height: 100rem;
-      position: absolute;
-      top: 50rem;
-      ${({ loop }) =>
-        loop
-          ? css`
-              background: red;
-            `
-          : css`
-              background: blue;
-            `}
-    }
-
     &__btn::before {
       opacity: 0;
     }
@@ -327,20 +304,10 @@ export const Greybackgroud = styled.main<Props>`
         opacity: 1;
       }
 
-      /* & ~ .carousel__bg-second {
-        animation: ${scaleImage} 0.6s cubic-bezier(0.2, 0.6, 0.35, 1) forwards;
-        .carousel__bg-second_in {
-          animation: ${secondImageIn} 0.8s cubic-bezier(0.2, 0.6, 0.35, 1) 0.1s
-            forwards;
-        }
-      } */
+      & ~ .loader {
+        opacity: 0;
+      }
 
-      /* & ~ .carousel__animator {
-        .carousel__bg-dark__image {
-          animation: ${secondImage} 0.5s cubic-bezier(0.2, 0.6, 0.35, 1)
-            forwards;
-        }
-      } */
       &::before {
         background: yellow;
         animation: ${pulse} 1150ms infinite 150ms;

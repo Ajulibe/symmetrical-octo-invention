@@ -70,7 +70,7 @@ export const Container = styled.main<Props>`
       font-family: ${FONTS.didactic};
       font-size: 2rem;
       line-height: 2.6rem;
-      color: #1d1d1f;
+      color: #fff;
       transform: rotate(90deg);
       transform-origin: left bottom;
       position: relative;
@@ -84,7 +84,7 @@ export const Container = styled.main<Props>`
         content: "";
         width: 9.6rem;
         height: 1px;
-        background: hsla(240, 3%, 12%, 1);
+        background: #fff;
       }
     }
 
@@ -121,17 +121,13 @@ export const Container = styled.main<Props>`
 
           &:first-child {
             p:first-child {
-              animation: ${moveInfadeIn} 0.9s cubic-bezier(0.65, 0, 0.35, 1);
+              animation: ${moveInfadeIn} 0.5s cubic-bezier(0.65, 0, 0.35, 1);
             }
           }
 
           &:last-child {
             margin-top: 10px;
             p:last-child {
-              /* opacity: 0;
-              animation: ${moveInfadeIn} 0.9s cubic-bezier(0.65, 0, 0.35, 1)
-                0.3s forwards; */
-
               animation: ${moveInfadeIn} 0.9s cubic-bezier(0.65, 0, 0.35, 1);
             }
           }
@@ -163,7 +159,7 @@ export const Container = styled.main<Props>`
         align-items: center;
         margin-right: 19.23px;
         color: #fff;
-        animation: ${fadeIn} 1.2s ease-in;
+        animation: ${fadeIn} 1.4s ease-in;
       }
     }
 
