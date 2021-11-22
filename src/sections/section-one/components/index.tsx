@@ -39,7 +39,7 @@ export const CarouselSection = () => {
     setStartAnim(true)
     setTimeout(() => {
       setStartAnim(false)
-    }, 1500)
+    }, 2500)
   }, [imageIndex])
 
   const startSong = () => {
@@ -129,8 +129,8 @@ export const CarouselSection = () => {
           <div className="wrapper">
             <div
               className="carousel__btn"
-              onMouseOver={startSong}
-              onMouseLeave={stopSong}
+              // onMouseOver={startSong}
+              // onMouseLeave={stopSong}
             >
               {isPlaying ? (
                 <Lottie

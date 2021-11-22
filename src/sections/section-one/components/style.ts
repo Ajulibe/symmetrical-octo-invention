@@ -38,14 +38,12 @@ const fadeIn = keyframes`
 const moveInfadeIn = keyframes`
 0% {
   opacity: 0;
-    transform: translateY(100px);
-    
+    transform: translateY(100px);  
 }
 
 100% {
     opacity: 1;
     transform: translateY(0);
-
 }
 `
 
@@ -61,20 +59,42 @@ const IncreaseHeight = keyframes`
 
 const clipPath = keyframes`
 0%{
-  clip-path: circle(20% at 100% 100%);
-  transform: scale(1.2);
-  filter: blur(8px)
+  opacity: 0;
 }
-20%{
-  filter: blur(0)
+40%{
+  opacity: 0;
+  transform: scale(1.4);
 }
-50%{
-  clip-path: circle(150% at 100% 100%);
-  
+70%{
+  opacity: 1;
+  /* transform: scale(1.); */
 }
 100% {
-  transform: scale(1)
+  transform: scale(1);
 }
+`
+
+const clipCirclePath = keyframes`
+0%{
+  clip-path: circle(2% at 85% 32%);
+  opacity: 0.6
+}
+100% {
+  clip-path: circle(130% at 90% 32%);
+  opacity: 1
+}
+`
+
+const animateBg = keyframes`
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 `
 
 export const Greybackgroud = styled.main<Props>`
@@ -97,13 +117,18 @@ export const Greybackgroud = styled.main<Props>`
     }
 
     &__next {
+      ${({ startAnim }) =>
+        startAnim &&
+        css`
+          animation: ${clipCirclePath} 0.9s cubic-bezier(0.65, 0, 0.35, 1) 0.2s;
+        `};
+
       img {
         ${({ startAnim }) =>
           startAnim &&
           css`
-            animation: ${clipPath} 1.2s cubic-bezier(0.2, 0.6, 0.35, 1) forwards;
+            animation: ${clipPath} 1.3s cubic-bezier(0, 0.55, 0.45, 1) forwards;
           `};
-        transition: all 0.2s ease-in;
       }
 
       position: absolute;
@@ -156,11 +181,22 @@ export const Greybackgroud = styled.main<Props>`
       left: 480px;
       position: absolute;
       z-index: 2;
-      background: linear-gradient(
+      /* background: linear-gradient(
         to right,
         hsl(98 100% 62%),
         hsl(204 100% 59%)
+      ); */
+      background-size: 400% 400%;
+      background: linear-gradient(
+        -45deg,
+        #ee7752,
+        #23a6d5,
+        hsl(98 100% 62%),
+        #23d5ab,
+        hsl(204 100% 59%),
+        #e73c7e
       );
+      animation: ${animateBg} 15s ease infinite;
       transition: all 0.6s cubic-bezier(0, 0.55, 0.45, 1);
       border-radius: 0;
       top: 0;
@@ -263,6 +299,7 @@ export const Greybackgroud = styled.main<Props>`
 
       &:hover {
         & ~ .carousel__bg-second {
+          /* animation: ${animateBg} 2s ease-in forwards; */
           height: 25.3rem;
           opacity: 1;
         }
