@@ -50,6 +50,7 @@ const moveInfadeIn = keyframes`
 const IncreaseHeight = keyframes`
   from{
     height: 0rem;
+    opacity: 0
   }
 
  to{ 
@@ -59,6 +60,7 @@ const IncreaseHeight = keyframes`
 
 const clipPath = keyframes`
 0%{
+  opacity: 0;
   opacity: 0;
 }
 40%{
@@ -139,13 +141,12 @@ export const Greybackgroud = styled.main<Props>`
 
   .carousel {
     width: 61.5rem;
-    height: 29.8rem;
     position: absolute;
     margin-left: 14rem;
     top: -9.8rem;
     height: 0;
     overflow: hidden;
-    animation: ${IncreaseHeight} 0.9s cubic-bezier(0.25, 1, 0.5, 1) forwards
+    animation: ${IncreaseHeight} 0.5s cubic-bezier(0, 0.55, 0.45, 1) forwards
       0.2s;
 
     &__bg-dark {
@@ -159,8 +160,8 @@ export const Greybackgroud = styled.main<Props>`
     }
 
     &__bg-circle {
-      width: 89px;
-      height: 89px;
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
       background: linear-gradient(
         to right,
@@ -259,8 +260,8 @@ export const Greybackgroud = styled.main<Props>`
     }
 
     &__btn {
-      width: 89px;
-      height: 89px;
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
       background: #fff;
       position: absolute;
@@ -276,19 +277,19 @@ export const Greybackgroud = styled.main<Props>`
       z-index: 4;
 
       .icon {
-        font-size: 50px;
+        font-size: 40px;
         animation: ${fadeIn} 1s ease-in;
       }
     }
 
     .wrapper {
-      width: 140px;
-      height: 140px;
+      width: 110px;
+      height: 110px;
       border-radius: 50%;
       background: transparent;
       position: absolute;
       right: -10px;
-      bottom: 5px;
+      bottom: -7px;
       justify-content: center;
       display: flex;
       align-items: center;
@@ -299,7 +300,6 @@ export const Greybackgroud = styled.main<Props>`
 
       &:hover {
         & ~ .carousel__bg-second {
-          /* animation: ${animateBg} 2s ease-in forwards; */
           height: 25.3rem;
           opacity: 1;
         }
@@ -313,8 +313,8 @@ export const Greybackgroud = styled.main<Props>`
 
     &__btn::after,
     &__btn::before {
-      width: 89px;
-      height: 89px;
+      width: 70px;
+      height: 70px;
       content: "";
       position: absolute;
       background: red;

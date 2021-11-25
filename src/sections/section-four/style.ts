@@ -5,10 +5,10 @@ interface Props {
   bgColor?: string
 }
 
-export const Container = styled.main<Props>`
+export const Container = styled.div<Props>`
+  padding: 15rem 12rem 15rem 14rem;
+  background: #ffff;
   .main {
-    padding: 15rem 12rem 15rem 14rem;
-    background: #ffff;
     display: flex;
   }
 

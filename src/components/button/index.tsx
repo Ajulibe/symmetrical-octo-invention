@@ -8,11 +8,12 @@ interface Props {
 }
 
 export const Button: React.FC<Props> = ({ title, Icon, ...rest }) => {
-  //   const IconWrapper = () => Icon && <Icon />
+  const IconWrapper = () => (Icon ? Icon : null)
+
   return (
     <StyledButton {...rest}>
       <span>{title}</span>
-      {/* {IconWrapper()} */}
+      <IconWrapper />
     </StyledButton>
   )
 }

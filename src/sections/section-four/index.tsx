@@ -1,6 +1,7 @@
 import { Container } from "./style"
 import React from "react"
 import Image from "next/image"
+import { BetterClothing, CompanyCarousel } from "./components"
 // import { Button } from "@components/button"
 
 export const SectionFour = () => {
@@ -63,6 +64,9 @@ export const SectionFour = () => {
           </div>
         </div>
       </div>
+
+      <BetterClothing />
+      <CompanyCarousel />
     </Container>
   )
 }

@@ -14,6 +14,7 @@ import {
   // Testheader,
   // Apiheader,
 } from "@src/sections"
+import { Footer } from "@src/sections/footer"
 const Pads = dynamic(() => import("@components/pads"))
 const Home: NextPage = () => {
   const hoverBg = useRef<HTMLDivElement>(null)
@@ -59,6 +60,7 @@ const Home: NextPage = () => {
         <SectionTwo />
         <SectionThree />
         <SectionFour />
+        <Footer />
       </Layout>
     </div>
   )

@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/indent */
 import { FONTS } from "@styles/fonts"
-import styled, { keyframes } from "styled-components"
+import styled, { keyframes, css } from "styled-components"
 
 interface Props {
   bgColor?: string
+  inView?: boolean
+  imageInView?: boolean
 }
 
 const fadeIn = keyframes`
@@ -25,6 +28,30 @@ const underline = keyframes`
 
 }
 `
+const moveInfadeIn = keyframes`
+0% {
+  opacity: 0;
+    transform: translateY(100px);
+}
+
+100% {
+    opacity: 1;
+    transform: translateY(0);
+}
+`
+
+const increaseWidth = keyframes`
+0% {
+ width: 0%;
+ opacity: 0;
+
+}
+
+100% {
+width: 100%;
+opacity: 1;
+}
+`
 
 export const Container = styled.main<Props>`
   .main {
@@ -39,16 +66,64 @@ export const Container = styled.main<Props>`
       font-size: 60px;
       line-height: 79px;
       text-align: center;
-      color: #1d1d1f;
+      color: #747e8b;
       margin-bottom: 3.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+
+      //
+      /* background: linear-gradient(
+        to right,
+        hsl(204 100% 59%),
+        RGB(255, 20, 147)
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; */
+
+      //animation timeline
+      .headers {
+        overflow: hidden;
+        /* border: 1px solid red; */
+      }
+
+      .headers:nth-child(1) {
+        ${({ inView }) =>
+          inView &&
+          css`
+            animation: ${moveInfadeIn} 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+          `};
+      }
+      .headers:nth-child(2) {
+        ${({ inView }) =>
+          inView &&
+          css`
+            animation: ${moveInfadeIn} 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+          `};
+      }
+      .headers:nth-child(3) {
+        ${({ inView }) =>
+          inView &&
+          css`
+            animation: ${moveInfadeIn} 0.9s cubic-bezier(0.65, 0, 0.35, 1);
+          `};
+      }
 
       &-link {
         font-family: ${FONTS.raleway};
         font-size: 20px;
         line-height: 23px;
-        color: #1d1d1f;
+        color: #747e8b;
         display: flex;
         flex-direction: column;
+        ${({ inView }) =>
+          inView &&
+          css`
+            animation: ${moveInfadeIn} 1.4s cubic-bezier(0.65, 0, 0.35, 1);
+          `};
 
         a {
           display: flex;
@@ -73,7 +148,7 @@ export const Container = styled.main<Props>`
         height: 4px;
         top: 0;
         left: 0;
-        background-color: #1d1d1f;
+        background-color: #747e8b;
         margin-top: 2rem;
       }
     }
@@ -103,11 +178,19 @@ export const Container = styled.main<Props>`
       }
 
       &-heading {
-        font-family: ${FONTS.didactic};
-        font-size: 60px;
-        line-height: 78px;
-        color: #1d1d1f;
         margin-bottom: 38px;
+        span {
+          font-family: ${FONTS.didactic};
+          font-size: 60px;
+          line-height: 78px;
+          color: #1d1d1f;
+        }
+        /* .alt-text {
+          color: #23d5ab;
+        } */
+        /* span:last-child {
+          color: #23d5ab;
+        } */
       }
 
       &-item {
@@ -117,6 +200,12 @@ export const Container = styled.main<Props>`
         align-items: center;
         position: relative;
         margin-bottom: 2px;
+        overflow: hidden;
+        /* ${({ imageInView }) =>
+          imageInView &&
+          css`
+            animation: ${increaseWidth} 0.6s linear forwards;
+          `}; */
 
         span {
           color: #ffffff;
@@ -136,6 +225,10 @@ export const Container = styled.main<Props>`
           }
         }
       }
+
+      /* &-item:nth-child(3) {
+        animation-delay: 0.2s;
+      } */
 
       &-content {
         background-color: #fff;
@@ -184,12 +277,14 @@ export const Container = styled.main<Props>`
     width: 725px;
     height: 921px;
     position: relative;
+    overflow: hidden;
 
     & > div {
       width: 695px;
       height: 894px;
       background: brown;
       position: relative;
+      overflow: hidden;
       left: -10px;
     }
   }

@@ -17,6 +17,7 @@ export const StyledButton = styled.button<Props>`
   justify-content: center;
   align-items: center;
   border: 1px solid hsla(240, 3%, 12%, 1);
+  position: relative;
 
   span {
     z-index: 3;

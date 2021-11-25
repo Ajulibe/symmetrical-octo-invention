@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/indent */
 import { FONTS } from "@styles/fonts"
-import styled, { keyframes } from "styled-components"
+import styled, { keyframes, css } from "styled-components"
 
 interface Props {
   bgColor?: string
+  inView?: boolean
 }
 
 const blink = keyframes`
@@ -38,6 +40,30 @@ const moveInfadeIn = keyframes`
     opacity: 1;
     transform: translateY(0);
 
+}
+`
+
+const moveInRightfadeIn = keyframes`
+0% {
+  opacity: 0;
+  transform: translateY(100px);
+}
+
+100% {
+    opacity: 1;
+    transform: translateY(0);
+
+}
+`
+const growWidth = keyframes`
+0% {
+  width: 0;
+  opacity: 0;
+}
+
+100% {
+  width: 8rem;
+  opacity: 1;
 }
 `
 
@@ -78,13 +104,28 @@ export const Container = styled.main<Props>`
       height: 26px;
       width: 248.22px;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
+      overflow: hidden;
+
+      div {
+        opacity: 0;
+        ${({ inView }) =>
+          inView &&
+          css`
+            animation: ${moveInRightfadeIn} 1s cubic-bezier(0.65, 0, 0.35, 1)
+              forwards;
+          `};
+      }
 
       &::after {
         content: "";
-        width: 9.6rem;
         height: 1px;
         background: #fff;
+        ${({ inView }) =>
+          inView &&
+          css`
+            animation: ${growWidth} 1.4s ease-in forwards 0.2s;
+          `};
       }
     }
 

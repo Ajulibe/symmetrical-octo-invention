@@ -3,14 +3,20 @@ import { MdOutlineArrowRightAlt } from "react-icons/md"
 import { IoMdCheckmark } from "react-icons/io"
 import { CarouselSection } from "./components/index"
 import { Button } from "@components/button"
+import { useInView } from "react-intersection-observer"
 
 export const SectionOne = () => {
+  const { ref: ref, inView } = useInView({
+    threshold: 0,
+  })
+
   return (
-    <Container>
+    <Container inView={inView}>
       <div className="main">
         <div className="main__right-section">
-          <div className="main__inverted-section">
-            Style Of Culture &nbsp;&nbsp;&nbsp;&nbsp;
+          <div className="main__inverted-section" ref={ref}>
+            <div>Style Of Culture &nbsp;&nbsp;&nbsp;&nbsp;</div>
+            {/* <div>Style Of Culture &nbsp;&nbsp;&nbsp;&nbsp;</div> */}
           </div>
 
           <div className="main__right-section-bold">
