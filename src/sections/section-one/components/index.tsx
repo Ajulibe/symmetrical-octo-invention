@@ -19,6 +19,29 @@ export const CarouselSection = () => {
     return Math.floor(Math.random() * (max - min) + min);
   }
 
+  const CarouselContent = [
+    {
+      image:
+        "https://res.cloudinary.com/ajulibe/image/upload/v1630596893/ROMI/alesia-kazantceva-dhD_FiNkuzw-unsplash_d0gswj.jpg",
+      details: ""
+    },
+    {
+      image:
+        "https://res.cloudinary.com/ajulibe/image/upload/v1637483555/fashion-site/ladyred_rr7a0l.webp",
+      details: ""
+    },
+    {
+      image:
+        "https://res.cloudinary.com/ajulibe/image/upload/v1630596866/ROMI/joanna-nix-walkup-GfqwtN5heR8-unsplash_fs3w9w.jpg",
+      details: ""
+    },
+    {
+      image:
+        "https://res.cloudinary.com/ajulibe/image/upload/v1630648144/ROMI/felicia-buitenwerf-5yn5rGI5IUw-unsplash_b1xrma.jpg",
+      details: ""
+    }
+  ];
+
   useEffect(() => {
     const intervalId = setInterval(() => {
       if (index.current === CarouselContent.length - 1) {
@@ -29,7 +52,7 @@ export const CarouselSection = () => {
       setImageIndex(index.current);
     }, 7000);
     return () => clearInterval(intervalId);
-  }, []);
+  }, [CarouselContent.length]);
 
   useEffect(() => {
     setStartAnim(true);
@@ -69,29 +92,6 @@ export const CarouselSection = () => {
     flexGrow: 1
   };
 
-  const CarouselContent = [
-    {
-      image:
-        "https://res.cloudinary.com/ajulibe/image/upload/v1630596893/ROMI/alesia-kazantceva-dhD_FiNkuzw-unsplash_d0gswj.jpg",
-      details: ""
-    },
-    {
-      image:
-        "https://res.cloudinary.com/ajulibe/image/upload/v1637483555/fashion-site/ladyred_rr7a0l.webp",
-      details: ""
-    },
-    {
-      image:
-        "https://res.cloudinary.com/ajulibe/image/upload/v1630596866/ROMI/joanna-nix-walkup-GfqwtN5heR8-unsplash_fs3w9w.jpg",
-      details: ""
-    },
-    {
-      image:
-        "https://res.cloudinary.com/ajulibe/image/upload/v1630648144/ROMI/felicia-buitenwerf-5yn5rGI5IUw-unsplash_b1xrma.jpg",
-      details: ""
-    }
-  ];
-
   const previousImage = imageIndex === 0 ? CarouselContent.length - 1 : imageIndex - 1;
 
   return (
@@ -122,11 +122,7 @@ export const CarouselSection = () => {
           <audio preload="false" ref={player}></audio>
 
           <div className="wrapper">
-            <div
-              className="carousel__btn"
-              // onMouseOver={startSong}
-              // onMouseLeave={stopSong}
-            >
+            <div className="carousel__btn" onMouseOver={startSong} onMouseLeave={stopSong}>
               {isPlaying ? (
                 <Lottie style={LottieStyle} className="icon" animationData={playerGif} />
               ) : (

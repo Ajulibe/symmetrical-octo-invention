@@ -1,5 +1,5 @@
 import { FONTS } from "@styles/fonts";
-import styled, { keyframes, css } from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 interface Props {
   bgColor?: string;
