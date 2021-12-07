@@ -1,9 +1,28 @@
 import { FONTS } from "@styles/fonts"
-import styled, { css } from "styled-components"
+import styled, { keyframes, css } from "styled-components"
 
 interface Props {
   bgColor?: string
 }
+
+const borderAnim = keyframes`
+0%{
+  border-color:  #ee7752
+}
+25%{
+  border-color:   #23a6d5
+}
+
+50%{
+  border-color:  hsl(98 100% 62%)
+}
+75%{
+  border-color:  #e73c7e
+}
+100% {
+  border-color:    #23d5ab
+}
+`
 
 export const Container = styled.div<Props>`
   width: 100%;
@@ -20,9 +39,10 @@ export const Container = styled.div<Props>`
     line-height: 7.9rem;
     padding: 68px 45px 67px 45px;
     z-index: 2;
-    color: #1d1d1f;
+    color: #fff;
     border: 2px solid #1d1d1f;
-    background-color: hsla(0, 0%, 100%, 1);
+    background-color: transparent;
+    background: #000;
 
     button {
       width: 224px;
@@ -37,7 +57,9 @@ export const Container = styled.div<Props>`
     position: absolute;
     right: -6px;
     bottom: -12px;
-    background-color: #1d1d1f;
+    border: 2px solid #e73c7e;
+    transition: all 0.4s ease-in;
+    animation: ${borderAnim} 1s cubic-bezier(0.65, 0, 0.35, 1) infinite;
   }
 `
 

@@ -1,48 +1,43 @@
-import { Container } from "./style"
-import { MdLocationPin, MdMail } from "react-icons/md"
-import { FaPhone } from "react-icons/fa"
-import { Button } from "@components/button"
-import { useInView } from "react-intersection-observer"
-import Link from "next/link"
-import Image from "next/image"
+import { Container } from "./style";
+import { MdLocationPin, MdMail } from "react-icons/md";
+import { FaPhone } from "react-icons/fa";
+import { Button } from "@components/button";
+import Link from "next/link";
+import Image from "next/image";
 
 export const Footer = () => {
-  const { ref: ref, inView } = useInView({
-    threshold: 0,
-  })
-
   interface ILinks {
-    src: string
-    alt: string
+    src: string;
+    alt: string;
   }
 
   const links: ILinks[] = [
     {
       src: "/facebook.svg",
-      alt: "Facebook Logo",
+      alt: "Facebook Logo"
     },
     {
       src: "/instagram.svg",
-      alt: "Instagram Logo",
+      alt: "Instagram Logo"
     },
     {
       src: "/twitter.svg",
-      alt: "Twitter Logo",
+      alt: "Twitter Logo"
     },
     {
       src: "/linkedin.svg",
-      alt: "Linkedin Logo",
-    },
-  ]
+      alt: "Linkedin Logo"
+    }
+  ];
 
   return (
-    <Container inView={inView}>
+    <Container>
       <div className="main">
         <div className="main__content section__one">
           <div className="section__one-title">Fabble.</div>
           <div className="section__one-message">
-            lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut
+            lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+            invidunt ut
           </div>
           <div className="section__one-footer">Copyright © 2021 Fabble.</div>
         </div>
@@ -70,21 +65,15 @@ export const Footer = () => {
                 <div key={item.alt}>
                   <Link href="/">
                     <a>
-                      <Image
-                        src={item.src}
-                        alt={item.alt}
-                        width={42}
-                        height={42}
-                      />
+                      <Image src={item.src} alt={item.alt} width={42} height={42} />
                     </a>
                   </Link>
                 </div>
-              )
+              );
             })}
           </div>
           <div className="section__three-message">
-            Lorem ipsum dolor sit amet, consec tetur adipiscing elit, sed do
-            eiusmod.
+            Lorem ipsum dolor sit amet, consec tetur adipiscing elit, sed do eiusmod.
           </div>
         </div>
 
@@ -94,11 +83,7 @@ export const Footer = () => {
           <div className="section__four-form">
             <form className="input-wrapper">
               <label htmlFor="email">Your email</label>
-              <input
-                type="text"
-                id="email"
-                placeholder="Enter Your Email . . ."
-              />
+              <input type="text" id="email" placeholder="Enter Your Email . . ." />
 
               <Button title="SUBSCRIBE" />
             </form>
@@ -106,5 +91,5 @@ export const Footer = () => {
         </div>
       </div>
     </Container>
-  )
-}
+  );
+};

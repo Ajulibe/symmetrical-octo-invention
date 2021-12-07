@@ -13,6 +13,7 @@
     "@types/styled-components": "^5.1.15",
     "axios": "^0.24.0",
     "dayjs": "^1.10.7",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "framer-motion": "^5.3.3",
     "lottie-react": "^2.1.0",
     "next": "12.0.3",
@@ -31,9 +32,21 @@
     "eslint": "7",
     "eslint-config-next": "12.0.3",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-config-react": "^1.1.7",
     "husky": "^7.0.4",
     "lint-staged": "^11.2.6",
     "prettier": "^2.4.1",
     "typescript": "^4.4.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }

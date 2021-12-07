@@ -7,7 +7,7 @@ interface Props {
 
 export const Container = styled.div<Props>`
   padding: 15rem 12rem 15rem 14rem;
-  background: #ffff;
+  background: transparent;
   .main {
     display: flex;
   }
@@ -17,6 +17,7 @@ export const Container = styled.div<Props>`
     height: 851px;
     background: #d2d2d2;
     z-index: 3;
+    overflow: hidden;
   }
 
   .canvas__wrapper {
@@ -45,14 +46,14 @@ export const Container = styled.div<Props>`
       font-family: ${FONTS.didactic};
       font-size: 20px;
       line-height: 26px;
-      color: #1d1d1f;
+      color: #fff;
     }
 
     &__heading {
       font-family: ${FONTS.didactic};
       font-size: 60px;
       line-height: 79px;
-      color: #1d1d1f;
+      color: #fff;
       margin-bottom: 77px;
       width: 356px;
     }
@@ -66,6 +67,7 @@ export const Container = styled.div<Props>`
       position: relative;
       left: -136px;
       z-index: 10;
+      background-color: #000;
     }
 
     .grid {
@@ -74,7 +76,8 @@ export const Container = styled.div<Props>`
       padding: 23px 24px 19px 24px;
       border: 2px solid #1d1d1f;
       transition: all 0.3s ease-in;
-      background: #fff;
+      /* background: #fff; */
+      filter: blur(40);
 
       &__image {
         width: 60px;
@@ -99,7 +102,7 @@ export const Container = styled.div<Props>`
         font-family: ${FONTS.raleway};
         font-size: 14px;
         line-height: 25px;
-        color: rgba(29, 29, 31, 0.6);
+        color: #fff;
         transition: all 0.3s ease-in;
       }
 

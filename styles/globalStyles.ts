@@ -25,12 +25,12 @@ export const MyGlobalStyle = createGlobalStyle`
     margin: 0;
     box-sizing: border-box;
     position: fixed;
-    width: 40vh;
-    height: 40vh;
-    left:-20vh;
-    top: -20vh;
+    width: 65vh;
+    height: 65vh;
+    left:-31.5vh;
+    top: -31.5vh;
     border-radius: 50%;
-    background: radial-gradient(circle,hsla(0,0%,100%,.9) 0,hsla(0,0%,100%,.1) 25%,hsla(0,0%,100%,0) 70%);
+    background: radial-gradient(circle,hsla(255,100%,100%) 0,hsla(0,0%,100%,.1) 25%,hsla(0,0%,100%,0) 70%);
     /* backdrop-filter: blur(15px); */
 
    

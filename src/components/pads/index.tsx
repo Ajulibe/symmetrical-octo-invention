@@ -11,6 +11,8 @@ const Pads: React.FC = () => {
       <PadGroup />
       <PadGroup />
       <PadGroup />
+      <PadGroup />
+      <PadGroup />
     </Container>
   )
 }
