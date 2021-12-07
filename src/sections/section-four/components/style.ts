@@ -63,15 +63,11 @@ export const Container = styled.div<Props>`
   }
 `;
 
-const whitegradient = css`
-  background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
-`;
-
 export const ContainerCompanyCarousel = styled.div<Props>`
+  margin-top: 40px;
   overflow: hidden;
   &::before,
   &::after {
-    ${whitegradient};
     content: "";
     height: 100px;
     position: absolute;

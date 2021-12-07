@@ -15,7 +15,7 @@ export const Container = styled.main<Props>`
 
   .grid {
     border: 0.3px solid rgb(0, 0, 0, 0.1);
-    border-radius: 8px;
+    border-radius: 4px;
     width: 5vw;
     height: 5vw;
     background: black;
