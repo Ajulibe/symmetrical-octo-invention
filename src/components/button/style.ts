@@ -1,8 +1,8 @@
-import { FONTS } from "@styles/fonts"
-import styled from "styled-components"
+import { FONTS } from "@styles/fonts";
+import styled from "styled-components";
 
 interface Props {
-  btnType?: string
+  btnType?: string;
 }
 
 export const StyledButton = styled.button<Props>`
@@ -54,4 +54,4 @@ export const StyledButton = styled.button<Props>`
       transform: translateX(10px);
     }
   }
-`
+`;

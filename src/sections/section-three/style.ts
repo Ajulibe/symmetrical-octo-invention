@@ -1,11 +1,12 @@
+/* eslint-disable indent */
 /* eslint-disable @typescript-eslint/indent */
-import { FONTS } from "@styles/fonts"
-import styled, { keyframes, css } from "styled-components"
+import { FONTS } from "@styles/fonts";
+import styled, { keyframes, css } from "styled-components";
 
 interface Props {
-  bgColor?: string
-  inView: boolean
-  productView: boolean
+  bgColor?: string;
+  inView: boolean;
+  productView: boolean;
 }
 
 const moveInfadeIn = keyframes`
@@ -18,7 +19,7 @@ const moveInfadeIn = keyframes`
     opacity: 1;
     transform: translateY(0);
 }
-`
+`;
 
 export const Container = styled.main<Props>`
   .main {
@@ -40,8 +41,7 @@ export const Container = styled.main<Props>`
         ${({ productView }) =>
           productView &&
           css`
-            animation: ${moveInfadeIn} 0.7s cubic-bezier(0.65, 0, 0.35, 1)
-              forwards;
+            animation: ${moveInfadeIn} 0.7s cubic-bezier(0.65, 0, 0.35, 1) forwards;
           `};
       }
 
@@ -58,8 +58,7 @@ export const Container = styled.main<Props>`
           ${({ inView }) =>
             inView &&
             css`
-              animation: ${moveInfadeIn} 0.6s cubic-bezier(0.65, 0, 0.35, 1)
-                forwards;
+              animation: ${moveInfadeIn} 0.6s cubic-bezier(0.65, 0, 0.35, 1) forwards;
             `};
         }
       }
@@ -140,4 +139,4 @@ export const Container = styled.main<Props>`
       }
     }
   }
-`
+`;

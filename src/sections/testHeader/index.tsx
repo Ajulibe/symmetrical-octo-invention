@@ -1,12 +1,12 @@
-import { Container } from "./style"
-import { useState } from "react"
+import { Container } from "./style";
+import { useState } from "react";
 
 export const Testheader = () => {
-  const [isVisible, setIsVisible] = useState("none")
+  const [isVisible, setIsVisible] = useState("none");
 
   const toggleDetails = (value: string) => {
-    setIsVisible(value)
-  }
+    setIsVisible(value);
+  };
 
   return (
     <Container>
@@ -32,5 +32,5 @@ export const Testheader = () => {
         </div>
       </div>
     </Container>
-  )
-}
+  );
+};

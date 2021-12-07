@@ -1,8 +1,8 @@
-import styled, { keyframes } from "styled-components"
-import { FONTS } from "@styles/fonts"
+import styled, { keyframes } from "styled-components";
+import { FONTS } from "@styles/fonts";
 
 interface Props {
-  bgColor?: string
+  bgColor?: string;
 }
 
 const fadeIn = keyframes`
@@ -15,7 +15,7 @@ const fadeIn = keyframes`
     opacity: 1;
 
 }
-`
+`;
 
 export const Container = styled.nav<Props>`
   display: flex;
@@ -67,4 +67,4 @@ export const Container = styled.nav<Props>`
       }
     }
   }
-`
+`;

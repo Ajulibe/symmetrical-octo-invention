@@ -1,7 +1,7 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 interface Props {
-  bgColor?: string
+  bgColor?: string;
 }
 
 export const Container = styled.main<Props>`
@@ -29,4 +29,4 @@ export const Container = styled.main<Props>`
       transform: scale(1.01);
     }
   }
-`
+`;

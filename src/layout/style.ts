@@ -1,7 +1,7 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 interface Props {
-  bgColor?: string
+  bgColor?: string;
 }
 
 export const Container = styled.main<Props>`
@@ -17,4 +17,4 @@ export const Container = styled.main<Props>`
   &::-webkit-scrollbar {
     display: none;
   }
-`
+`;

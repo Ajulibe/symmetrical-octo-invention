@@ -1,8 +1,8 @@
-import { FONTS } from "@styles/fonts"
-import styled from "styled-components"
+import { FONTS } from "@styles/fonts";
+import styled from "styled-components";
 
 interface Props {
-  bgColor?: string
+  bgColor?: string;
 }
 
 export const Container = styled.div<Props>`
@@ -118,4 +118,4 @@ export const Container = styled.div<Props>`
       }
     }
   }
-`
+`;

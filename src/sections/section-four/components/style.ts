@@ -1,8 +1,8 @@
-import { FONTS } from "@styles/fonts"
-import styled, { keyframes, css } from "styled-components"
+import { FONTS } from "@styles/fonts";
+import styled, { keyframes, css } from "styled-components";
 
 interface Props {
-  bgColor?: string
+  bgColor?: string;
 }
 
 const borderAnim = keyframes`
@@ -22,7 +22,7 @@ const borderAnim = keyframes`
 100% {
   border-color:    #23d5ab
 }
-`
+`;
 
 export const Container = styled.div<Props>`
   width: 100%;
@@ -61,15 +61,11 @@ export const Container = styled.div<Props>`
     transition: all 0.4s ease-in;
     animation: ${borderAnim} 1s cubic-bezier(0.65, 0, 0.35, 1) infinite;
   }
-`
+`;
 
 const whitegradient = css`
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
-`
+  background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+`;
 
 export const ContainerCompanyCarousel = styled.div<Props>`
   overflow: hidden;
@@ -91,4 +87,4 @@ export const ContainerCompanyCarousel = styled.div<Props>`
     width: 100%;
     display: flex;
   }
-`
+`;

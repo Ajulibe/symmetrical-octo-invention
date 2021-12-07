@@ -1,7 +1,7 @@
-import styled, { keyframes } from "styled-components"
+import styled, { keyframes } from "styled-components";
 
 interface Props {
-  bgColor?: string
+  bgColor?: string;
 }
 
 const fadeIn = keyframes`
@@ -12,7 +12,7 @@ const fadeIn = keyframes`
 100%{
     opacity: 1
 }
-`
+`;
 
 export const Container = styled.nav<Props>`
   /* margin-top: 10.9rem; */
@@ -65,4 +65,4 @@ export const Container = styled.nav<Props>`
       }
     }
   }
-`
+`;

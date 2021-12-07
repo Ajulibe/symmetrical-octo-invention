@@ -1,29 +1,29 @@
-import Image from "next/image"
-import { Container } from "./style"
-import Link from "next/link"
+import Image from "next/image";
+import { Container } from "./style";
+import Link from "next/link";
 
 const links: ILinks[] = [
   {
     src: "/facebook.svg",
-    alt: "Facebook Logo",
+    alt: "Facebook Logo"
   },
   {
     src: "/instagram.svg",
-    alt: "Instagram Logo",
+    alt: "Instagram Logo"
   },
   {
     src: "/twitter.svg",
-    alt: "Twitter Logo",
+    alt: "Twitter Logo"
   },
   {
     src: "/linkedin.svg",
-    alt: "Linkedin Logo",
-  },
-]
+    alt: "Linkedin Logo"
+  }
+];
 
 interface ILinks {
-  src: string
-  alt: string
+  src: string;
+  alt: string;
 }
 
 export const Header = () => {
@@ -60,9 +60,9 @@ export const Header = () => {
                 </a>
               </Link>
             </div>
-          )
+          );
         })}
       </div>
     </Container>
-  )
-}
+  );
+};

@@ -1,14 +1,14 @@
-import { Container } from "./style"
-import { MdOutlineArrowRightAlt } from "react-icons/md"
-import { IoMdCheckmark } from "react-icons/io"
-import { CarouselSection } from "./components/index"
-import { Button } from "@components/button"
-import { useInView } from "react-intersection-observer"
+import { Container } from "./style";
+import { MdOutlineArrowRightAlt } from "react-icons/md";
+import { IoMdCheckmark } from "react-icons/io";
+import { CarouselSection } from "./components/index";
+import { Button } from "@components/button";
+import { useInView } from "react-intersection-observer";
 
 export const SectionOne = () => {
   const { ref: ref, inView } = useInView({
-    threshold: 0,
-  })
+    threshold: 0
+  });
 
   return (
     <Container inView={inView}>
@@ -48,17 +48,13 @@ export const SectionOne = () => {
         </div>
 
         <div className="main__left-section">
-          We are a global brand of premium fashion clothing, accessories
-          footwear, and accessories products that is dedicated to offering the
-          very latest in fashion styles and styles that are carefully selected
-          and designed by our exclusive and talented designers.
-          <Button
-            title="Get Started"
-            Icon={<MdOutlineArrowRightAlt className="icon" />}
-          />
+          We are a global brand of premium fashion clothing, accessories footwear, and accessories
+          products that is dedicated to offering the very latest in fashion styles and styles that
+          are carefully selected and designed by our exclusive and talented designers.
+          <Button title="Get Started" Icon={<MdOutlineArrowRightAlt className="icon" />} />
         </div>
       </div>
       <CarouselSection />
     </Container>
-  )
-}
+  );
+};

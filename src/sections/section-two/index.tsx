@@ -1,41 +1,41 @@
-import { Container } from "./style"
-import { MdOutlineArrowRightAlt } from "react-icons/md"
-import { BiChevronDown } from "react-icons/bi"
-import Link from "next/link"
-import Image from "next/image"
-import { useRef, useEffect } from "react"
-import { IMAGES } from "@src/components/data/images"
-import { useInView } from "react-intersection-observer"
-import Typed from "typed.js"
+import { Container } from "./style";
+import { MdOutlineArrowRightAlt } from "react-icons/md";
+import { BiChevronDown } from "react-icons/bi";
+import Link from "next/link";
+import Image from "next/image";
+import { useRef, useEffect } from "react";
+import { IMAGES } from "@src/components/data/images";
+import { useInView } from "react-intersection-observer";
+import Typed from "typed.js";
 
 export const SectionTwo = () => {
   const accordionData = [
     {
       header: "We Believe In Fun",
       content:
-        "We strive to create a personal experience for each one of our clients who walks into our door",
+        "We strive to create a personal experience for each one of our clients who walks into our door"
     },
     {
       header: "Far With Clothing​",
       content:
-        "We strive to create a personal experience for each one of our clients who walks into our door",
+        "We strive to create a personal experience for each one of our clients who walks into our door"
     },
     {
       header: "It’s Your Choice​",
       content:
-        "We strive to create a personal experience for each one of our clients who walks into our door",
+        "We strive to create a personal experience for each one of our clients who walks into our door"
     },
     {
       header: "Clothing Inside You​",
       content:
-        "We strive to create a personal experience for each one of our clients who walks into our door",
-    },
-  ]
+        "We strive to create a personal experience for each one of our clients who walks into our door"
+    }
+  ];
 
   const { ref: titleRef, inView } = useInView({
-    threshold: 0,
-  })
-  const el = useRef<HTMLDivElement>(null)
+    threshold: 0
+  });
+  const el = useRef<HTMLDivElement>(null);
 
   // const {
   //   ref: imageRef,
@@ -65,20 +65,20 @@ export const SectionTwo = () => {
           "<span style='color: #23d5ab'>Story</span>",
           "<span style='color: #e73c7e'>Style</span>",
           "<span style='color: #ee7752'>Story</span>",
-          "<span style='color:  hsl(204 100% 59%)'>Style</span>",
+          "<span style='color:  hsl(204 100% 59%)'>Style</span>"
         ],
         typeSpeed: 100,
         smartBackspace: true,
         loop: true,
         backSpeed: 100,
-        backDelay: 2000,
-      })
+        backDelay: 2000
+      });
 
       return () => {
-        typed.destroy()
-      }
+        typed.destroy();
+      };
     }
-  }, [])
+  }, []);
 
   return (
     <Container inView={inView}>
@@ -129,7 +129,7 @@ export const SectionTwo = () => {
                     </div>
                   </div>
                 </div>
-              )
+              );
             })}
           </div>
 
@@ -149,5 +149,5 @@ export const SectionTwo = () => {
         </div>
       </div>
     </Container>
-  )
-}
+  );
+};

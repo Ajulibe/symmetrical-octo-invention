@@ -6,5 +6,5 @@ export const spacings = {
   large: 16,
   xLarge: 22,
   xxLarge: 32,
-  xxxLarge: 44,
-}
+  xxxLarge: 44
+};

@@ -16,5 +16,5 @@ export enum COLORS {
   red = "#EA6748",
   green = "#44B97F",
   orange = "orange",
-  primary = "#ff0",
+  primary = "#ff0"
 }

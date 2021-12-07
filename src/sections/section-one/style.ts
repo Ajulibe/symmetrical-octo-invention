@@ -1,17 +1,17 @@
 /* eslint-disable @typescript-eslint/indent */
-import { FONTS } from "@styles/fonts"
-import styled, { keyframes, css } from "styled-components"
+import { FONTS } from "@styles/fonts";
+import styled, { keyframes, css } from "styled-components";
 
 interface Props {
-  bgColor?: string
-  inView?: boolean
+  bgColor?: string;
+  inView?: boolean;
 }
 
 const blink = keyframes`
     0%{transform: scale(1); opacity: 0.04};
     50%{transform: scale(10); opacity: 0.01};
     100%{transform: scale(20); opacity: 0}
-`
+`;
 
 const BgColorfadeIn = keyframes`
 from {
@@ -28,7 +28,7 @@ to {
       -webkit-text-fill-color: transparent;
       opacity: 1;
 }
-`
+`;
 
 const moveInfadeIn = keyframes`
 0% {
@@ -41,7 +41,7 @@ const moveInfadeIn = keyframes`
     transform: translateY(0);
 
 }
-`
+`;
 
 const moveInRightfadeIn = keyframes`
 0% {
@@ -54,7 +54,7 @@ const moveInRightfadeIn = keyframes`
     transform: translateY(0);
 
 }
-`
+`;
 const growWidth = keyframes`
 0% {
   width: 0;
@@ -65,7 +65,7 @@ const growWidth = keyframes`
   width: 8rem;
   opacity: 1;
 }
-`
+`;
 
 const fadeIn = keyframes`
 0% {
@@ -77,7 +77,7 @@ const fadeIn = keyframes`
     opacity: 1;
 
 }
-`
+`;
 
 export const Container = styled.main<Props>`
   margin-top: 10.9rem;
@@ -112,8 +112,7 @@ export const Container = styled.main<Props>`
         ${({ inView }) =>
           inView &&
           css`
-            animation: ${moveInRightfadeIn} 1s cubic-bezier(0.65, 0, 0.35, 1)
-              forwards;
+            animation: ${moveInRightfadeIn} 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
           `};
       }
 
@@ -270,4 +269,4 @@ export const Container = styled.main<Props>`
       }
     }
   }
-`
+`;

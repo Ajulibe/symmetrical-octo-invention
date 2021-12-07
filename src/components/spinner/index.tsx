@@ -1,8 +1,8 @@
-import React from "react"
-import { LoadingSpinner } from "./styles"
+import React from "react";
+import { LoadingSpinner } from "./styles";
 
 interface IProps {
-  name?: string
+  name?: string;
 }
 
 export const Spinner: React.FC<IProps> = () => {
@@ -15,5 +15,5 @@ export const Spinner: React.FC<IProps> = () => {
         <div></div>
       </div>
     </LoadingSpinner>
-  )
-}
+  );
+};

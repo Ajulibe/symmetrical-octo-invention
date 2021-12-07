@@ -1,11 +1,12 @@
+/* eslint-disable indent */
 /* eslint-disable @typescript-eslint/indent */
-import { FONTS } from "@styles/fonts"
-import styled, { keyframes, css } from "styled-components"
+import { FONTS } from "@styles/fonts";
+import styled, { keyframes, css } from "styled-components";
 
 interface Props {
-  bgColor?: string
-  loop?: boolean
-  startAnim?: boolean
+  bgColor?: string;
+  loop?: boolean;
+  startAnim?: boolean;
 }
 
 const pulse = keyframes` 0% {
@@ -15,7 +16,7 @@ const pulse = keyframes` 0% {
   100% {
     transform: scale(1.35);
     opacity: 0;
-  }`
+  }`;
 
 const carousel = keyframes` 0% {
     transform: translateY(0)
@@ -23,7 +24,7 @@ const carousel = keyframes` 0% {
   
   100% { 
     transform: translateY(-230px)
-  }`
+  }`;
 
 const fadeIn = keyframes`
   0% {
@@ -33,7 +34,7 @@ const fadeIn = keyframes`
   100% { 
     opacity: 1
   }
-  `
+  `;
 
 const moveInfadeIn = keyframes`
 0% {
@@ -45,7 +46,7 @@ const moveInfadeIn = keyframes`
     opacity: 1;
     transform: translateY(0);
 }
-`
+`;
 
 const IncreaseHeight = keyframes`
   from{
@@ -56,7 +57,7 @@ const IncreaseHeight = keyframes`
  to{ 
   height: 29.8rem;
   }
-  `
+  `;
 
 const clipPath = keyframes`
 0%{
@@ -74,7 +75,7 @@ const clipPath = keyframes`
 100% {
   transform: scale(1);
 }
-`
+`;
 
 const clipCirclePath = keyframes`
 0%{
@@ -85,7 +86,7 @@ const clipCirclePath = keyframes`
   clip-path: circle(130% at 90% 32%);
   opacity: 1
 }
-`
+`;
 
 const animateBg = keyframes`
 	0% {
@@ -97,7 +98,7 @@ const animateBg = keyframes`
 	100% {
 		background-position: 0% 50%;
 	}
-`
+`;
 
 export const Greybackgroud = styled.main<Props>`
   background: hsla(0, 0%, 83%, 1);
@@ -146,8 +147,7 @@ export const Greybackgroud = styled.main<Props>`
     top: -9.8rem;
     height: 0;
     overflow: hidden;
-    animation: ${IncreaseHeight} 0.5s cubic-bezier(0, 0.55, 0.45, 1) forwards
-      0.2s;
+    animation: ${IncreaseHeight} 0.5s cubic-bezier(0, 0.55, 0.45, 1) forwards 0.2s;
 
     &__bg-dark {
       background: #1d1d1f;
@@ -163,11 +163,7 @@ export const Greybackgroud = styled.main<Props>`
       width: 70px;
       height: 70px;
       border-radius: 50%;
-      background: linear-gradient(
-        to right,
-        hsl(98 100% 62%),
-        hsl(204 100% 59%)
-      );
+      background: linear-gradient(to right, hsl(98 100% 62%), hsl(204 100% 59%));
       position: relative;
       bottom: 300px;
       left: 470px;
@@ -356,4 +352,4 @@ export const Greybackgroud = styled.main<Props>`
       animation: ${carousel} 4s 0s linear infinite;
     }
   }
-`
+`;

@@ -1,7 +1,7 @@
-import React from "react"
-import dynamic from "next/dynamic"
+import React from "react";
+import dynamic from "next/dynamic";
 
-const TenGroup = dynamic(() => import("./group-in-tens"))
+const TenGroup = dynamic(() => import("./group-in-tens"));
 
 const PadGroup = () => {
   return (
@@ -17,7 +17,7 @@ const PadGroup = () => {
       <TenGroup />
       <TenGroup />
     </>
-  )
-}
+  );
+};
 
-export default PadGroup
+export default PadGroup;

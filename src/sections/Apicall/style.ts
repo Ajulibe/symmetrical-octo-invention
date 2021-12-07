@@ -1,7 +1,7 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 interface Props {
-  bgColor?: string
+  bgColor?: string;
 }
 
 export const Container = styled.div<Props>`
@@ -27,4 +27,4 @@ export const Container = styled.div<Props>`
   tr {
     text-align: left;
   }
-`
+`;

@@ -1,8 +1,8 @@
-import styled, { createGlobalStyle } from "styled-components"
+import styled, { createGlobalStyle } from "styled-components";
 
 export const MyComponent = styled.div`
   color: ${(props) => props.theme.colors.main};
-`
+`;
 
 export const MyGlobalStyle = createGlobalStyle`  
   html, body {
@@ -84,4 +84,4 @@ export const MyGlobalStyle = createGlobalStyle`
   * , *:before, *:after {
     box-sizing: inherit;
   }
-`
+`;

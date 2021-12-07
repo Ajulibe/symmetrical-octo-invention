@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { COLORS } from "@styles/colors"
+import styled from "styled-components";
+import { COLORS } from "@styles/colors";
 
 export const LoadingSpinner = styled.div`
   position: absolute;
@@ -44,4 +44,4 @@ export const LoadingSpinner = styled.div`
       transform: rotate(360deg);
     }
   }
-`
+`;

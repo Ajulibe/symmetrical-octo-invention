@@ -2,7 +2,6 @@ import { Container } from "./style";
 import { Button } from "@components/button";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
-import { useEffect } from "react";
 
 export const SectionThree = () => {
   const products = [

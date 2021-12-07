@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 const TenGroup = () => {
   return (
@@ -14,7 +14,7 @@ const TenGroup = () => {
       <div className="grid"></div>
       <div className="grid"></div>
     </>
-  )
-}
+  );
+};
 
-export default TenGroup
+export default TenGroup;

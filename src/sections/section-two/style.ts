@@ -1,11 +1,12 @@
+/* eslint-disable indent */
 /* eslint-disable @typescript-eslint/indent */
-import { FONTS } from "@styles/fonts"
-import styled, { keyframes, css } from "styled-components"
+import { FONTS } from "@styles/fonts";
+import styled, { keyframes, css } from "styled-components";
 
 interface Props {
-  bgColor?: string
-  inView?: boolean
-  imageInView?: boolean
+  bgColor?: string;
+  inView?: boolean;
+  imageInView?: boolean;
 }
 
 const fadeIn = keyframes`
@@ -17,7 +18,7 @@ const fadeIn = keyframes`
     transform: translateY(0)
 
 }
-`
+`;
 const underline = keyframes`
 0% {
     width: 0%
@@ -27,7 +28,7 @@ const underline = keyframes`
     width: 100%
 
 }
-`
+`;
 const moveInfadeIn = keyframes`
 0% {
   opacity: 0;
@@ -38,7 +39,7 @@ const moveInfadeIn = keyframes`
     opacity: 1;
     transform: translateY(0);
 }
-`
+`;
 
 const increaseWidth = keyframes`
 0% {
@@ -51,7 +52,7 @@ const increaseWidth = keyframes`
 width: 100%;
 opacity: 1;
 }
-`
+`;
 
 export const Container = styled.main<Props>`
   .main {
@@ -136,8 +137,7 @@ export const Container = styled.main<Props>`
 
         &:hover {
           &::after {
-            animation: ${underline} 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955)
-              forwards;
+            animation: ${underline} 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
           }
         }
       }
@@ -299,4 +299,4 @@ export const Container = styled.main<Props>`
     right: 1px;
     z-index: -1;
   }
-`
+`;
