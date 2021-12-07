@@ -59,7 +59,7 @@ const Home: NextPage = () => {
         <SectionOne />
         <SectionTwo />
         <SectionThree />
-        {/* <SectionFour /> */}
+        <SectionFour />
         <Footer />
       </Layout>
     </div>
