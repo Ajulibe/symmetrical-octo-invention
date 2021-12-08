@@ -22,7 +22,8 @@ const myTheme: DefaultTheme = {
     grey100: COLORS.grey100,
     blue100: COLORS.blue100,
     grey600: COLORS.grey600,
-    black: COLORS.black
+    black: COLORS.black,
+    blueDark: COLORS.blueDark
   }
 };
 

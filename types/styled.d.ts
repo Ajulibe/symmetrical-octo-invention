@@ -25,6 +25,7 @@ declare module "styled-components" {
       grey100: string;
       blue100: string;
       grey600: string;
+      blueDark: string;
     };
   }
 }

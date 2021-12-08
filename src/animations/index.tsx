@@ -86,3 +86,17 @@ export const underline = keyframes`
 
 }
 `;
+
+//SECTiON 4
+export const Expand = keyframes`
+0% {
+    transform: scale(0.2);
+    opacity: 0;
+}
+
+
+100% {
+    transform: scaleX(1);
+    opacity: 1
+}
+`;

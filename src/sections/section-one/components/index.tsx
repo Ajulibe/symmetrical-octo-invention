@@ -21,23 +21,27 @@ export const CarouselSection = () => {
 
   const CarouselContent = [
     {
-      image:
-        "https://res.cloudinary.com/ajulibe/image/upload/v1630596893/ROMI/alesia-kazantceva-dhD_FiNkuzw-unsplash_d0gswj.jpg",
+      image: "/section-one/1.webp",
       details: ""
     },
     {
-      image:
-        "https://res.cloudinary.com/ajulibe/image/upload/v1637483555/fashion-site/ladyred_rr7a0l.webp",
+      image: "/section-one/2.jpg",
       details: ""
     },
     {
-      image:
-        "https://res.cloudinary.com/ajulibe/image/upload/v1630596866/ROMI/joanna-nix-walkup-GfqwtN5heR8-unsplash_fs3w9w.jpg",
+      image: "/section-one/3.jpg",
       details: ""
     },
     {
-      image:
-        "https://res.cloudinary.com/ajulibe/image/upload/v1630648144/ROMI/felicia-buitenwerf-5yn5rGI5IUw-unsplash_b1xrma.jpg",
+      image: "/section-one/4.jpg",
+      details: ""
+    },
+    {
+      image: "/section-one/5.jpg",
+      details: ""
+    },
+    {
+      image: "/section-one/6.jpg",
       details: ""
     }
   ];

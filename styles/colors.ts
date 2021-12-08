@@ -15,5 +15,6 @@ export enum COLORS {
   green700 = "hsl(98, 100%, 62%, 0.7)",
   blue100 = "hsl(204 100% 59%)",
   grey600 = "hsla(0, 0%, 83%, 1)",
-  grey100 = "#747e8b"
+  grey100 = "#747e8b",
+  blueDark = "#2064f6"
 }

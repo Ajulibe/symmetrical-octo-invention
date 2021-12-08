@@ -37,27 +37,6 @@ export const SectionTwo = () => {
   });
   const el = useRef<HTMLDivElement>(null);
 
-  // const {
-  //   ref: imageRef,
-  //   inView: imageInView,
-  //   entry,
-  // } = useInView({
-  //   threshold: 0.2,
-  //   // rootMargin: "10px 20px 30px 40px",
-  // })
-  // const { scrollY } = useViewportScroll()
-  // // const y1 = useTransform(scrollY, [0, 300], [0, 200])
-  // const y2 = useTransform(scrollY, [0, 300], [0, -100])
-
-  // const variants = {
-  //   visible: { opacity: 1, scale: 1, y: 0 },
-  //   hidden: {
-  //     opacity: 0,
-  //     scale: 0.65,
-  //     y: 50,
-  //   },
-  // }
-
   useEffect(() => {
     if (el.current) {
       const typed = new Typed(el.current, {

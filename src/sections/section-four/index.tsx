@@ -2,8 +2,7 @@ import { Container } from "./style";
 import React from "react";
 import Image from "next/image";
 import { BetterClothing, CompanyCarousel } from "./components";
-import { IMAGES } from "@src/components/data/images";
-// import { Button } from "@components/button"
+import { useInView } from "react-intersection-observer";
 
 export const SectionFour = () => {
   const products = [
@@ -36,13 +35,21 @@ export const SectionFour = () => {
       content: "The versatile space makes it easy to keep a fresh supply of ingredients"
     }
   ];
+
+  const { ref: titleRef, inView } = useInView({
+    threshold: 0
+  });
+  const { ref: gridRef, inView: gridInView } = useInView({
+    threshold: 0
+  });
+
   return (
-    <Container>
+    <Container inView={inView} gridInView={gridInView}>
       <div className="main">
         <div className="canvas__wrapper">
           <div className="black__canvas">
             <Image
-              src={IMAGES["section-two"]}
+              src="/section-four/1.jpg"
               alt="fullimage"
               width="1700"
               height="2500"
@@ -51,19 +58,33 @@ export const SectionFour = () => {
           </div>
         </div>
         <div className="section">
-          <span className="section__name">FEATURES</span>
-          <span className="section__heading">Our vision lives on there</span>
+          <div className="wrapper" ref={titleRef}>
+            <div className="section__name">
+              <div>FEATURES</div>
+            </div>
+
+            <div className="section__heading first">
+              <div>Our vision </div>
+            </div>
+
+            <div className="section__heading">
+              <div>lives on there</div>
+            </div>
+          </div>
+
           <div className="section__grid">
             {products.map((item, index) => {
               return (
-                <div className="grid" key={`${item.alt}${index}`}>
+                <div className="grid" key={`${item.alt}${index}`} ref={gridRef}>
                   <div className="grid__image">
                     <Image src={item.image} height={55} width={55} alt={item.alt} />
                   </div>
-                  <span className="grid__title" style={{ color: item.color }}>
-                    {item.title}
-                  </span>
-                  <span className="grid__content">{item.content}</span>
+                  <div className="grid__title" style={{ color: item.color }}>
+                    <div className="anim">{item.title}</div>
+                  </div>
+                  <div className="grid__content">
+                    <div>{item.content}</div>
+                  </div>
                 </div>
               );
             })}

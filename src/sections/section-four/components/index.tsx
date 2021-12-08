@@ -3,12 +3,39 @@ import React from "react";
 import { MdOutlineArrowRightAlt } from "react-icons/md";
 import { Button } from "@components/button";
 import Image from "next/image";
+import { useRef, useEffect } from "react";
+import Typed from "typed.js";
 
 export const BetterClothing = () => {
+  useEffect(() => {
+    if (el.current) {
+      const typed = new Typed(el.current, {
+        strings: [
+          "<span>go better with</span><span style='color: #23d5ab'> Clothing</span>",
+          "<span>look nicer</span><span style='color: #e73c7e'> with a Style</span>",
+          "<span>sound sweeter in</span><span style='color: #ee7752'> a Story</span>",
+          "<span>get easier</span><span style='color:hsl(204 100% 59%)'> in Life!</span>"
+        ],
+        typeSpeed: 50,
+        smartBackspace: true,
+        loop: true,
+        backSpeed: 50,
+        backDelay: 1000
+      });
+
+      return () => {
+        typed.destroy();
+      };
+    }
+  }, []);
+
+  const el = useRef<HTMLDivElement>(null);
   return (
     <Container>
       <div className="main">
-        <div className="main__heading">Things go better with clothing!</div>
+        <div className="main__heading">
+          Things <span ref={el} className="alt-text"></span>
+        </div>
         <Button title="Get Started" Icon={<MdOutlineArrowRightAlt className="icon" />} />
       </div>
 

@@ -16,7 +16,6 @@ export const SectionOne = () => {
         <div className="main__right-section">
           <div className="main__inverted-section" ref={ref}>
             <div>Style Of Culture &nbsp;&nbsp;&nbsp;&nbsp;</div>
-            {/* <div>Style Of Culture &nbsp;&nbsp;&nbsp;&nbsp;</div> */}
           </div>
 
           <div className="main__right-section-bold">
