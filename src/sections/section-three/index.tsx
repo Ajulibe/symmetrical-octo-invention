@@ -29,8 +29,12 @@ export const SectionThree = () => {
     threshold: 0.5
   });
 
+  const { ref: cardRef, inView: cardView } = useInView({
+    threshold: 0
+  });
+
   return (
-    <Container inView={inView} productView={productView}>
+    <Container inView={inView} productView={productView} cardView={cardView}>
       <div className="main">
         <div className="section" ref={productRef}>
           <div>PRODUCT</div>
@@ -39,7 +43,7 @@ export const SectionThree = () => {
         <div className="section__name" ref={titleRef}>
           <div>Most popular product</div>
         </div>
-        <div className="cards__wrapper">
+        <div className="cards__wrapper" ref={cardRef}>
           {products.map((item, index) => {
             return (
               <div className="card" key={`${item}${index}`}>

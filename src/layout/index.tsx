@@ -1,12 +1,16 @@
 import React from "react";
-import { Container } from "./style";
+import { Container, LargeWrapper } from "./style";
 
 interface Props {
   children: React.ReactNode;
 }
 
 const Layout: React.FC<Props> = ({ children }) => {
-  return <Container>{children}</Container>;
+  return (
+    <LargeWrapper>
+      <Container>{children}</Container>
+    </LargeWrapper>
+  );
 };
 
 export default Layout;

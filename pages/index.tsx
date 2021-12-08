@@ -21,7 +21,7 @@ const Home: NextPage = () => {
   const hoverBg = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // cursorBg();
+    cursorBg();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -41,11 +41,11 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <div ref={hoverBg} className="mouseBg"></div> */}
+      <div ref={hoverBg} className="mouseBg"></div>
 
       {/* <div className="greenBg"></div> */}
 
-      {/* <Pads /> */}
+      <Pads />
 
       {/* <Apiheader /> */}
 

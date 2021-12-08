@@ -1,28 +1,10 @@
 import { FONTS } from "@styles/fonts";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
+import { borderAnim } from "@src/animations";
 
 interface Props {
   bgColor?: string;
 }
-
-const borderAnim = keyframes`
-0%{
-  border-color:  #ee7752
-}
-25%{
-  border-color:   #23a6d5
-}
-
-50%{
-  border-color:  hsl(98 100% 62%)
-}
-75%{
-  border-color:  #e73c7e
-}
-100% {
-  border-color:    #23d5ab
-}
-`;
 
 export const Container = styled.div<Props>`
   width: 100%;
@@ -39,10 +21,10 @@ export const Container = styled.div<Props>`
     line-height: 7.9rem;
     padding: 68px 45px 67px 45px;
     z-index: 2;
-    color: #fff;
-    border: 2px solid #1d1d1f;
+    color: ${({ theme }) => theme.colors.white};
+    border: 2px solid ${({ theme }) => theme.colors.darkGrey};
     background-color: transparent;
-    background: #000;
+    background: ${({ theme }) => theme.colors.black};
 
     button {
       width: 224px;
@@ -57,7 +39,7 @@ export const Container = styled.div<Props>`
     position: absolute;
     right: -6px;
     bottom: -12px;
-    border: 2px solid #e73c7e;
+    border: 2px solid ${({ theme }) => theme.colors.pink};
     transition: all 0.4s ease-in;
     animation: ${borderAnim} 1s cubic-bezier(0.65, 0, 0.35, 1) infinite;
   }

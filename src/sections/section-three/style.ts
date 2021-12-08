@@ -2,12 +2,13 @@
 /* eslint-disable @typescript-eslint/indent */
 import { FONTS } from "@styles/fonts";
 import styled, { css } from "styled-components";
-import { moveInfadeIn } from "@src/animations";
+import { moveInfadeIn, animationUtils } from "@src/animations";
 
 interface Props {
   bgColor?: string;
   inView: boolean;
   productView: boolean;
+  cardView: boolean;
 }
 
 export const Container = styled.main<Props>`
@@ -42,7 +43,6 @@ export const Container = styled.main<Props>`
         overflow: hidden;
 
         div {
-          opacity: 0;
           ${({ inView }) =>
             inView &&
             css`
@@ -71,10 +71,40 @@ export const Container = styled.main<Props>`
       transition: all 0.6s ease-in;
       background: ${({ theme }) => theme.colors.black};
 
+      &:nth-child(1) {
+        transform: translateX(-70px);
+        ${({ cardView }) =>
+          cardView &&
+          css`
+            animation: ${animationUtils.translateElement("X", "-70px", 0)} 0.6s
+              cubic-bezier(0.33, 1, 0.68, 1) forwards;
+          `};
+
+        button {
+          transition: all 1s ease-in-out;
+          ${({ cardView }) =>
+            cardView &&
+            css`
+              animation: ${animationUtils.translateElement("Y", "-25px", 0)} 0.6s
+                cubic-bezier(0.33, 1, 0.68, 1) forwards;
+            `};
+        }
+      }
+
+      &:nth-child(3) {
+        transform: translateX(70px);
+        ${({ cardView }) =>
+          cardView &&
+          css`
+            animation: ${animationUtils.translateElement("X", "70px", 0)} 0.6s
+              cubic-bezier(0.33, 1, 0.68, 1) forwards;
+          `};
+      }
+
       &__image {
         width: 100%;
         height: 26.6rem;
-        background-color: #d2d2d2;
+        background-color: ${({ theme }) => theme.colors.darkWhite};
         overflow: hidden;
       }
 

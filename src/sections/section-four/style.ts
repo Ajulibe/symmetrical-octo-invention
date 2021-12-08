@@ -2,35 +2,13 @@
 /* eslint-disable @typescript-eslint/indent */
 import { FONTS } from "@styles/fonts";
 import styled, { css } from "styled-components";
-import { moveInfadeIn, fadeIn, Expand } from "@src/animations";
+import { moveInfadeIn, fadeIn, Expand, moveInRightfadeIn } from "@src/animations";
 
 interface Props {
   bgColor?: string;
   inView?: boolean;
   gridInView?: boolean;
 }
-
-const targetChildren = css`
-  &:first-child {
-    animation-delay: 0.3s;
-    opacity: 0;
-    border: 1px solid red;
-  }
-
-  &:nth-child(2) {
-    animation-delay: 0.6s;
-    opacity: 0;
-  }
-  &:nth-child(3) {
-    animation-delay: 0.7s;
-    opacity: 0;
-  }
-
-  &:nth-child(4) {
-    animation-delay: 0.9s;
-    opacity: 0;
-  }
-`;
 
 export const Container = styled.div<Props>`
   padding: 15rem 12rem 15rem 14rem;
@@ -40,11 +18,34 @@ export const Container = styled.div<Props>`
   }
 
   .black__canvas {
+    position: relative;
     width: 689px;
     height: 851px;
-    background: #d2d2d2;
+    background: ${({ theme }) => theme.colors.darkGrey};
     z-index: 3;
     overflow: hidden;
+    img {
+      opacity: 0;
+      z-index: 5 !important;
+      ${({ gridInView }) =>
+        gridInView &&
+        css`
+          animation: ${moveInRightfadeIn} 0.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+        `};
+    }
+
+    &::before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-image: url("section-one/6.jpg");
+      background-size: cover;
+      background-position: 50% 50%;
+      z-index: 4;
+    }
   }
 
   .canvas__wrapper {
@@ -56,7 +57,7 @@ export const Container = styled.div<Props>`
   }
 
   .canvas__wrapper::before {
-    content: "reger";
+    content: "";
     width: 689px;
     height: 851px;
     background: ${({ theme }) => theme.colors.darkGrey};

@@ -21,16 +21,16 @@ export const Container = styled.main<Props>`
       font-family: ${FONTS.raleway};
       font-size: 1.6rem;
       line-height: 2.6rem;
-      color: rgba(0, 0, 0, 0.6);
+      color: ${({ theme }) => theme.colors.black600};
     }
 
     .section__one {
-      color: rgba(255, 255, 255, 0.5);
+      color: ${({ theme }) => theme.colors.white500};
       &-title {
         font-family: ${FONTS.didactic};
         font-size: 2.8rem;
         line-height: 3.7rem;
-        color: rgba(255, 255, 255, 0.8);
+        color: ${({ theme }) => theme.colors.white800};
       }
 
       &-message {
@@ -42,20 +42,20 @@ export const Container = styled.main<Props>`
         font-family: ${FONTS.raleway};
         font-size: 1.4rem;
         line-height: 1.6rem;
-        color: rgba(255, 255, 255, 0.5);
+        color: ${({ theme }) => theme.colors.white500};
         margin-top: 41.96px;
       }
     }
 
     .section__two {
       width: 20.4rem;
-      color: rgba(255, 255, 255, 0.5);
+      color: ${({ theme }) => theme.colors.white500};
 
       &-title {
         font-family: ${FONTS.didactic};
         font-size: 2.2rem;
         line-height: 2.9rem;
-        color: rgba(255, 255, 255, 0.8);
+        color: ${({ theme }) => theme.colors.white800};
       }
 
       &-message {
@@ -73,7 +73,7 @@ export const Container = styled.main<Props>`
 
     .section__three {
       width: 20.4rem;
-      color: rgba(255, 255, 255, 0.5);
+      color: ${({ theme }) => theme.colors.white500};
       &-icons {
         display: flex;
         justify-content: space-between;
@@ -101,12 +101,12 @@ export const Container = styled.main<Props>`
     }
 
     .section__four {
-      color: rgba(255, 255, 255, 0.5);
+      color: ${({ theme }) => theme.colors.white500};
       &-title {
         font-family: ${FONTS.didactic};
         font-size: 2.2rem;
         line-height: 2.9rem;
-        color: rgba(255, 255, 255, 0.8);
+        color: ${({ theme }) => theme.colors.white800};
       }
 
       &-form {
@@ -122,18 +122,18 @@ export const Container = styled.main<Props>`
 
           label {
             margin-bottom: 40px;
-            color: rgba(255, 255, 255, 0.6);
+            color: ${({ theme }) => theme.colors.white600};
           }
 
           input {
             background: transparent;
             border: none;
             padding-bottom: 16px;
-            border-bottom: 1px solid hsla(0, 0%, 77%, 1);
-            color: rgba(255, 255, 255, 0.6);
+            border-bottom: 1px solid ${({ theme }) => theme.colors.grey600};
+            color: ${({ theme }) => theme.colors.white600};
 
             &::-webkit-input-placeholder {
-              color: rgba(255, 255, 255, 0.6);
+              color: ${({ theme }) => theme.colors.white600};
               font-weight: 300;
             }
 
@@ -149,9 +149,9 @@ export const Container = styled.main<Props>`
 
           button {
             background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border: 1px solid ${({ theme }) => theme.colors.white500};
             height: 55px;
-            color: rgba(255, 255, 255, 0.6);
+            color: ${({ theme }) => theme.colors.white600};
           }
         }
       }

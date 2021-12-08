@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/indent */
 import { FONTS } from "@styles/fonts";
 import styled, { keyframes, css } from "styled-components";
-import { moveInRightfadeIn, fadeIn, moveInfadeIn, BgColorfadeIn, growWidth } from "@src/animations";
+import { moveInfadeIn, fadeIn, BgColorfadeIn, growWidth } from "@src/animations";
 
 interface Props {
   bgColor?: string;
@@ -48,7 +48,7 @@ export const Container = styled.main<Props>`
         ${({ inView }) =>
           inView &&
           css`
-            animation: ${moveInRightfadeIn} 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+            animation: ${moveInfadeIn} 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
           `};
       }
 

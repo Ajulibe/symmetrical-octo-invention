@@ -11,11 +11,14 @@ declare module "styled-components" {
       white: string;
       black: string;
       white200: string;
+      white600: string;
+      white500: string;
+      white800: string;
+      black600: string;
       transparent: string;
       pink: string;
       darkGrey: string;
       lightBlack: string;
-      white600: string;
       orange: string;
       lightBlue: string;
       lightGreen: string;
@@ -26,6 +29,7 @@ declare module "styled-components" {
       blue100: string;
       grey600: string;
       blueDark: string;
+      darkWhite: string;
     };
   }
 }

@@ -49,7 +49,7 @@ export const SectionFour = () => {
         <div className="canvas__wrapper">
           <div className="black__canvas">
             <Image
-              src="/section-four/1.jpg"
+              src="/section-one/2.jpg"
               alt="fullimage"
               width="1700"
               height="2500"

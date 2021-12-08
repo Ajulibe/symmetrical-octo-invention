@@ -11,8 +11,11 @@ const myTheme: DefaultTheme = {
     darkGrey: COLORS.darkGrey,
     transparent: COLORS.transparent,
     lightBlack: COLORS.lightBlack,
+    black600: COLORS.black600,
     white200: COLORS.white200,
+    white500: COLORS.white500,
     white600: COLORS.white600,
+    white800: COLORS.white800,
     orange: COLORS.orange,
     yellow: COLORS.yellow,
     lightGreen: COLORS.lightGreen,
@@ -23,7 +26,8 @@ const myTheme: DefaultTheme = {
     blue100: COLORS.blue100,
     grey600: COLORS.grey600,
     black: COLORS.black,
-    blueDark: COLORS.blueDark
+    blueDark: COLORS.blueDark,
+    darkWhite: COLORS.darkWhite
   }
 };
 
