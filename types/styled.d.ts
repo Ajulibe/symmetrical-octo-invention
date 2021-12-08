@@ -8,6 +8,23 @@ declare module "styled-components" {
     colors: {
       main: string;
       secondary: string;
+      white: string;
+      black: string;
+      white200: string;
+      transparent: string;
+      pink: string;
+      darkGrey: string;
+      lightBlack: string;
+      white600: string;
+      orange: string;
+      lightBlue: string;
+      lightGreen: string;
+      yellow: string;
+      green100: string;
+      green700: string;
+      grey100: string;
+      blue100: string;
+      grey600: string;
     };
   }
 }

@@ -139,8 +139,8 @@ export const SectionTwo = () => {
               <Image
                 src={IMAGES["section-two"]}
                 alt="fullimage"
-                width="1700"
-                height="2500"
+                width="700"
+                height="900"
                 objectFit="cover"
               />
               {/* </ParallaxBox> */}

@@ -1,7 +1,8 @@
 /* eslint-disable indent */
 /* eslint-disable @typescript-eslint/indent */
 import { FONTS } from "@styles/fonts";
-import styled, { keyframes, css } from "styled-components";
+import styled, { css } from "styled-components";
+import { moveInfadeIn } from "@src/animations";
 
 interface Props {
   bgColor?: string;
@@ -9,21 +10,8 @@ interface Props {
   productView: boolean;
 }
 
-const moveInfadeIn = keyframes`
-0% {
-  opacity: 0;
-  transform: translateY(100px);
-}
-
-100% {
-    opacity: 1;
-    transform: translateY(0);
-}
-`;
-
 export const Container = styled.main<Props>`
   .main {
-    /* background: #f6f5f2; */
     background: transparent;
     display: flex;
     flex-direction: column;
@@ -33,7 +21,7 @@ export const Container = styled.main<Props>`
       font-family: ${FONTS.didactic};
       font-size: 20px;
       line-height: 26px;
-      color: #747e8b;
+      color: ${({ theme }) => theme.colors.grey100};
       overflow: hidden;
 
       div {
@@ -49,7 +37,7 @@ export const Container = styled.main<Props>`
         font-family: ${FONTS.didactic};
         font-size: 60px;
         line-height: 79px;
-        color: #747e8b;
+        color: ${({ theme }) => theme.colors.grey100};
         margin-bottom: 77px;
         overflow: hidden;
 
@@ -77,11 +65,11 @@ export const Container = styled.main<Props>`
       padding: 5px 6px 0 6px;
       display: flex;
       flex-direction: column;
-      border: 1px solid #1d1d1f;
+      border: 1px solid ${({ theme }) => theme.colors.darkGrey};
       position: relative;
       align-items: center;
       transition: all 0.6s ease-in;
-      background: #000;
+      background: ${({ theme }) => theme.colors.black};
 
       &__image {
         width: 100%;
@@ -94,7 +82,7 @@ export const Container = styled.main<Props>`
         font-family: ${FONTS.didactic};
         font-size: 24px;
         line-height: 31px;
-        color: #fff;
+        color: ${({ theme }) => theme.colors.white};
         margin-top: 41px;
         margin-bottom: 25px;
       }
@@ -104,7 +92,7 @@ export const Container = styled.main<Props>`
         font-size: 30px;
         line-height: 39px;
         margin-bottom: 58px;
-        color: hsl(98, 100%, 62%, 0.7);
+        color: ${({ theme }) => theme.colors.green700};
         transition: all 0.4s cubic-bezier(0.55, 0.055, 0.675, 0.19);
       }
 
@@ -122,19 +110,19 @@ export const Container = styled.main<Props>`
 
     .card:hover {
       background-color: #1d1d1f;
-      border: 1px solid #e73c7e;
+      border: 1px solid ${({ theme }) => theme.colors.pink};
 
       .card__price {
-        color: #ee7752;
+        color: ${({ theme }) => theme.colors.orange};
       }
 
       .card__item {
-        color: #fff;
+        color: ${({ theme }) => theme.colors.white};
       }
 
       button {
         &:hover {
-          border: 1px solid #23d5ab;
+          border: 1px solid ${({ theme }) => theme.colors.lightGreen};
         }
       }
     }

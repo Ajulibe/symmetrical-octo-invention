@@ -70,7 +70,6 @@ const clipPath = keyframes`
 }
 70%{
   opacity: 1;
-  /* transform: scale(1.); */
 }
 100% {
   transform: scale(1);
@@ -101,7 +100,7 @@ const animateBg = keyframes`
 `;
 
 export const Greybackgroud = styled.main<Props>`
-  background: hsla(0, 0%, 83%, 1);
+  background: ${({ theme }) => theme.colors.grey600};
   height: 69.6rem;
   position: relative;
   margin-top: 24rem;
@@ -150,7 +149,7 @@ export const Greybackgroud = styled.main<Props>`
     animation: ${IncreaseHeight} 0.5s cubic-bezier(0, 0.55, 0.45, 1) forwards 0.2s;
 
     &__bg-dark {
-      background: #1d1d1f;
+      background: ${({ theme }) => theme.colors.darkGrey};
       width: 57rem;
       height: 25.3rem;
       background-size: cover;
@@ -163,7 +162,11 @@ export const Greybackgroud = styled.main<Props>`
       width: 70px;
       height: 70px;
       border-radius: 50%;
-      background: linear-gradient(to right, hsl(98 100% 62%), hsl(204 100% 59%));
+      background: linear-gradient(
+        to right,
+        ${({ theme }) => theme.colors.green100},
+        ${({ theme }) => theme.colors.blue100}
+      );
       position: relative;
       bottom: 300px;
       left: 470px;
@@ -178,20 +181,15 @@ export const Greybackgroud = styled.main<Props>`
       left: 480px;
       position: absolute;
       z-index: 2;
-      /* background: linear-gradient(
-        to right,
-        hsl(98 100% 62%),
-        hsl(204 100% 59%)
-      ); */
       background-size: 400% 400%;
       background: linear-gradient(
         -45deg,
-        #ee7752,
-        #23a6d5,
-        hsl(98 100% 62%),
-        #23d5ab,
-        hsl(204 100% 59%),
-        #e73c7e
+        ${({ theme }) => theme.colors.orange},
+        ${({ theme }) => theme.colors.lightBlue},
+        ${({ theme }) => theme.colors.green100},
+        ${({ theme }) => theme.colors.lightGreen},
+        ${({ theme }) => theme.colors.blue100},
+        ${({ theme }) => theme.colors.pink}
       );
       animation: ${animateBg} 15s ease infinite;
       transition: all 0.6s cubic-bezier(0, 0.55, 0.45, 1);
@@ -212,7 +210,7 @@ export const Greybackgroud = styled.main<Props>`
     &__bg-dark::before {
       top: 0;
       left: 0;
-      background: linear-gradient(#1d1d1f, transparent);
+      background: linear-gradient(${({ theme }) => theme.colors.darkGrey}, transparent);
       z-index: 1;
     }
 
@@ -220,7 +218,7 @@ export const Greybackgroud = styled.main<Props>`
       height: 2rem;
       left: 0;
       bottom: 45px;
-      background: linear-gradient(to top, #1d1d1f, transparent);
+      background: linear-gradient(to top, ${({ theme }) => theme.colors.darkGrey}, transparent);
       z-index: 1;
     }
 
@@ -228,7 +226,7 @@ export const Greybackgroud = styled.main<Props>`
       font-family: ${FONTS.raleway};
       font-size: 22px;
       line-height: 35px;
-      color: rgba(255, 255, 255, 0.6);
+      color: ${({ theme }) => theme.colors.white600};
       margin-bottom: 31px;
 
       &-info {
@@ -246,20 +244,20 @@ export const Greybackgroud = styled.main<Props>`
     &__bg-name {
       font-size: 22px;
       line-height: 26px;
-      color: #ffffff;
+      color: ${({ theme }) => theme.colors.white};
     }
 
     &__bg-role {
       font-size: 14px;
       line-height: 16px;
-      color: #ffffff;
+      color: ${({ theme }) => theme.colors.white};
     }
 
     &__btn {
       width: 70px;
       height: 70px;
       border-radius: 50%;
-      background: #fff;
+      background: ${({ theme }) => theme.colors.white};
       position: absolute;
       top: 50%;
       right: 50%;
@@ -292,7 +290,7 @@ export const Greybackgroud = styled.main<Props>`
       outline: none;
       border: none;
       z-index: 3;
-      filter: drop-shadow(0 0 0.45rem rgb(255, 255, 255, 0.2));
+      filter: drop-shadow(0 0 0.45rem ${({ theme }) => theme.colors.white200});
 
       &:hover {
         & ~ .carousel__bg-second {
@@ -328,7 +326,7 @@ export const Greybackgroud = styled.main<Props>`
     }
 
     &__btn::after {
-      background: #fff;
+      background: ${({ theme }) => theme.colors.white};
     }
 
     &__btn:hover {

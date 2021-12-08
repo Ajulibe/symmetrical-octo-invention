@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/indent */
 import { FONTS } from "@styles/fonts";
 import styled, { keyframes, css } from "styled-components";
+import { moveInRightfadeIn, fadeIn, moveInfadeIn, BgColorfadeIn, growWidth } from "@src/animations";
 
 interface Props {
   bgColor?: string;
@@ -12,72 +13,6 @@ const blink = keyframes`
     0%{transform: scale(1); opacity: 0.04};
     50%{transform: scale(10); opacity: 0.01};
     100%{transform: scale(20); opacity: 0}
-`;
-
-const BgColorfadeIn = keyframes`
-from {
-  opacity: 0.4;
-}
-to {
-  background: linear-gradient(
-        to right,
-        hsl(98 100% 62%),
-        hsl(204 100% 59%)
-      );
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      opacity: 1;
-}
-`;
-
-const moveInfadeIn = keyframes`
-0% {
-  opacity: 0;
-    transform: translateY(100px);
-}
-
-100% {
-    opacity: 1;
-    transform: translateY(0);
-
-}
-`;
-
-const moveInRightfadeIn = keyframes`
-0% {
-  opacity: 0;
-  transform: translateY(100px);
-}
-
-100% {
-    opacity: 1;
-    transform: translateY(0);
-
-}
-`;
-const growWidth = keyframes`
-0% {
-  width: 0;
-  opacity: 0;
-}
-
-100% {
-  width: 8rem;
-  opacity: 1;
-}
-`;
-
-const fadeIn = keyframes`
-0% {
-  opacity: 0;
-
-}
-
-100% {
-    opacity: 1;
-
-}
 `;
 
 export const Container = styled.main<Props>`
@@ -97,7 +32,7 @@ export const Container = styled.main<Props>`
       font-family: ${FONTS.didactic};
       font-size: 2rem;
       line-height: 2.6rem;
-      color: #fff;
+      color: ${({ theme }) => theme.colors.white};
       transform: rotate(90deg);
       transform-origin: left bottom;
       position: relative;
@@ -120,7 +55,7 @@ export const Container = styled.main<Props>`
       &::after {
         content: "";
         height: 1px;
-        background: #fff;
+        background: ${({ theme }) => theme.colors.white};
         ${({ inView }) =>
           inView &&
           css`
@@ -133,7 +68,7 @@ export const Container = styled.main<Props>`
       font-family: ${FONTS.didactic};
       width: 54.1rem;
       font-size: 8rem;
-      color: #fff;
+      color: ${({ theme }) => theme.colors.white};
       position: relative;
       left: -113px;
       animation: ${BgColorfadeIn} 1s ease-in 2s forwards;
@@ -144,7 +79,7 @@ export const Container = styled.main<Props>`
         font-weight: 500;
         font-size: 1.4rem;
         line-height: 1.6rem;
-        color: rgba(29, 29, 31, 0.6);
+        color: ${({ theme }) => theme.colors.lightBlack};
         margin-top: 19px;
       }
 
@@ -186,7 +121,7 @@ export const Container = styled.main<Props>`
         background: linear-gradient(to right, #ff3dae, hsl(204 100% 59%));
         background-clip: text;
         -webkit-text-fill-color: transparent;
-        animation: ${blink} 10s 10s ease-in infinite; //removed due to performance
+        animation: ${blink} 10s 10s ease-in infinite; //removed due to performance */
         //limitations.
         opacity: 0.04;
       }
@@ -199,7 +134,7 @@ export const Container = styled.main<Props>`
         justify-content: center;
         align-items: center;
         margin-right: 19.23px;
-        color: #fff;
+        color: ${({ theme }) => theme.colors.white};
         animation: ${fadeIn} 1.4s ease-in;
       }
     }
@@ -208,7 +143,7 @@ export const Container = styled.main<Props>`
       width: 49rem;
       font-size: 1.6rem;
       line-height: 3rem;
-      color: #fff;
+      color: ${({ theme }) => theme.colors.white};
       font-family: ${FONTS.raleway};
       padding-top: 20px;
       animation: ${fadeIn} 0.9s ease-in 0.3s forwards;
@@ -222,8 +157,8 @@ export const Container = styled.main<Props>`
         font-family: ${FONTS.raleway};
         font-size: 16px;
         line-height: 19px;
-        color: #1d1d1f;
-        background-color: #fff;
+        color: ${({ theme }) => theme.colors.darkGrey};
+        background-color: ${({ theme }) => theme.colors.white};
         position: relative;
         overflow: hidden;
         outline: none;
@@ -232,7 +167,6 @@ export const Container = styled.main<Props>`
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 1px solid hsla(240, 3%, 12%, 1);
 
         span {
           z-index: 3;
@@ -241,7 +175,7 @@ export const Container = styled.main<Props>`
       }
 
       &-btnAnimation {
-        background-color: #1d1d1f;
+        background-color: ${({ theme }) => theme.colors.darkGrey};
         position: absolute;
         height: 100%;
         width: 0%;
@@ -259,12 +193,13 @@ export const Container = styled.main<Props>`
       }
 
       button:hover {
-        color: #fff;
+        color: ${({ theme }) => theme.colors.white};
+        border: 1px solid ${({ theme }) => theme.colors.darkGrey};
         .main__left-section-btnAnimation {
           width: 100%;
         }
         .main__left-section-icon {
-          color: #fff;
+          color: ${({ theme }) => theme.colors.white};
           transform: translateX(10px);
         }
       }
