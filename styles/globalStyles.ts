@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
+import { animationUtils } from "@src/animations";
 
 export const MyComponent = styled.div`
   color: ${(props) => props.theme.colors.main};
@@ -18,6 +19,7 @@ export const MyGlobalStyle = createGlobalStyle`
     align-items: center;
     background: black;
     scroll-behavior: smooth;
+    /* cursor: none; */
       
   .mouseBg {
     color: #fff;
@@ -31,9 +33,6 @@ export const MyGlobalStyle = createGlobalStyle`
     top: -31.5vh;
     border-radius: 50%;
     background: radial-gradient(circle,hsla(255,100%,100%) 0,hsla(0,0%,100%,.1) 25%,hsla(0,0%,100%,0) 70%);
-    /* backdrop-filter: blur(15px); */
-
-   
   }
 
   .greenBg {
@@ -65,7 +64,43 @@ export const MyGlobalStyle = createGlobalStyle`
     }
   }
 
-  }
+  .cursor {
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    position: fixed;
+    width: 5vh;
+    height: 5vh;
+    left:-2.5vh;
+    top: -2.5vh;
+    border-radius: 50%;
+    border: 1px solid white;
+    transition: all 0.09s linear;
+    pointer-events: none;
+    z-index: 1000000;
+
+    &::after {
+    content: "";
+    width: 8vh;
+    height: 8vh;
+    left: -1.6vh;
+    top: -1.6vh;
+    position: absolute;
+    border: 2px solid #ff0;
+    border-radius: 50%;
+    opacity: .5;
+    animation: ${animationUtils.cursorAnimTwo}  0.8s infinite alternate;
+   }
+
+}
+
+.expand {
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    border: 1px solid hsl(98, 100%, 62%, 0.7);
+ } 
+
+}
 
 
   @media only screen and (max-width: 858px) {

@@ -19,9 +19,27 @@ const SectionFour = dynamic(() => import("@src/sections").then((mod) => mod.Sect
 
 const Home: NextPage = () => {
   const hoverBg = useRef<HTMLDivElement>(null);
+  const cursor = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     cursorBg();
+
+    document.addEventListener("mousemove", (e) => {
+      if (cursor.current) {
+        cursor.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+      }
+    });
+
+    document.addEventListener("click", () => {
+      if (cursor.current) {
+        cursor.current.classList.add("expand");
+      }
+      setTimeout(() => {
+        if (cursor.current) {
+          cursor.current.classList.remove("expand");
+        }
+      }, 500);
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -54,6 +72,7 @@ const Home: NextPage = () => {
         <p className="header__details">you get Paid if you loose your job</p>
         <button>Get Started</button>
       </div> */}
+      <div className="cursor" ref={cursor}></div>
 
       <Layout>
         <Header />

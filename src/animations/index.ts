@@ -143,8 +143,48 @@ export const animationUtils = {
     `;
   },
 
-  disabledStyle: (disabled = false) => css`
-    opacity: ${disabled ? 0.6 : ""};
-    cursor: ${disabled && "default"};
-  `
+  disabledStyle: (disabled = false) => {
+    return css`
+      opacity: ${disabled ? 0.6 : ""};
+      cursor: ${disabled && "default"};
+    `;
+  },
+
+  cursorAnim: () => {
+    const animation = keyframes`
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(.7);
+    }
+    `;
+    return animation;
+  },
+  cursorAnimTwo: () => {
+    const animation = keyframes`
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(.8);
+    }
+    `;
+    return animation;
+  },
+  cursorAnimThree: () => {
+    const animation = keyframes`
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(3);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+    `;
+    return animation;
+  }
 };
