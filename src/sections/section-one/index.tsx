@@ -53,7 +53,7 @@ export const SectionOne = () => {
           <Button title="Get Started" Icon={<MdOutlineArrowRightAlt className="icon" />} />
         </div>
       </div>
-      <CarouselSection />
+      {/* <CarouselSection /> */}
     </Container>
   );
 };

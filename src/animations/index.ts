@@ -130,6 +130,7 @@ export const animationUtils = {
      }
     100% {
     transform: translate${direction}(${end});
+    opacity: 1
     }
 `;
     return animation;
@@ -185,6 +186,31 @@ export const animationUtils = {
         opacity: 0;
     }
     `;
+    return animation;
+  },
+
+  switchMode: (mode: boolean) => {
+    let animation;
+    if (mode) {
+      animation = keyframes`
+    0% {
+        transform: translateX(26px) rotate(10deg);
+    }
+     100% {
+        transform: translateX(0px);
+    }
+    `;
+    } else {
+      animation = keyframes`
+    0% {
+        transform: translateX(0px);
+    }
+     100% {
+        transform: translateX(26px) rotate(10deg);
+    }
+    `;
+    }
+
     return animation;
   }
 };

@@ -11,11 +11,6 @@ const PadGroup = () => {
       <TenGroup />
       <TenGroup />
       <TenGroup />
-      <TenGroup />
-      <TenGroup />
-      <TenGroup />
-      <TenGroup />
-      <TenGroup />
     </>
   );
 };

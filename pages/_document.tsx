@@ -6,13 +6,6 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <meta httpEquiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-          <link rel="preload" href="/fonts/DidactGothic-Regular.ttf" as="font" crossOrigin="" />
-          <link
-            rel="preload"
-            href="/fonts/EBGaramond/Raleway-Regular.ttf"
-            as="font"
-            crossOrigin=""
-          />
         </Head>
         <body>
           <Main />

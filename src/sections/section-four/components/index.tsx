@@ -5,6 +5,11 @@ import { Button } from "@components/button";
 import Image from "next/image";
 import { useRef, useEffect } from "react";
 import Typed from "typed.js";
+import { useInView } from "react-intersection-observer";
+
+interface Props {
+  setShowFooter: (state: boolean) => void;
+}
 
 export const BetterClothing = () => {
   useEffect(() => {
@@ -46,9 +51,22 @@ export const BetterClothing = () => {
   );
 };
 
-export const CompanyCarousel = () => {
+export const CompanyCarousel: React.FC<Props> = ({ setShowFooter }) => {
+  const { ref, inView } = useInView({
+    threshold: 0.4
+  });
+
+  useEffect(() => {
+    if (inView) {
+      setShowFooter(true);
+    } else {
+      setShowFooter(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView]);
+
   return (
-    <ContainerCompanyCarousel>
+    <ContainerCompanyCarousel ref={ref} inView={inView}>
       <div className="carousel">
         <Image src="/carousel/firstIpsum.svg" height={36} width={157} alt="firstIpsum" />
         <Image src="/carousel/secondIpsum.svg" height={29.36} width={146.3} alt="firstIpsum" />

@@ -32,7 +32,7 @@
     "import/no-anonymous-default-export": 0,
     "array-callback-return": 0,
     "default-case": 1,
-    "indent": ["warn", 2, { "SwitchCase": 1, "ignoredNodes": ["TemplateLiteral"] }],
+    "indent": "off",
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "double"],
     "semi": ["error", "always"]

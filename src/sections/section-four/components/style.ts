@@ -1,9 +1,10 @@
 import { FONTS } from "@styles/fonts";
-import styled from "styled-components";
-import { borderAnim } from "@src/animations";
+import styled, { css } from "styled-components";
+import { borderAnim, animationUtils } from "@src/animations";
 
 interface Props {
   bgColor?: string;
+  inView?: boolean;
 }
 
 export const Container = styled.div<Props>`
@@ -48,6 +49,7 @@ export const Container = styled.div<Props>`
 export const ContainerCompanyCarousel = styled.div<Props>`
   margin-top: 40px;
   overflow: hidden;
+  opacity: 0;
   &::before,
   &::after {
     content: "";
@@ -56,6 +58,13 @@ export const ContainerCompanyCarousel = styled.div<Props>`
     width: 200px;
     z-index: 2;
   }
+
+  ${({ inView }) =>
+    inView &&
+    css`
+      animation: ${animationUtils.translateElement("Y", "-100px", 0)} 0.6s
+        cubic-bezier(0.33, 1, 0.68, 1) forwards;
+    `};
 
   .carousel {
     margin-top: 4.9rem;

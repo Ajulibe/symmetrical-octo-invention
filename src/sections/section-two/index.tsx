@@ -121,6 +121,7 @@ export const SectionTwo = () => {
                 width="700"
                 height="900"
                 objectFit="cover"
+                priority
               />
               {/* </ParallaxBox> */}
             </div>

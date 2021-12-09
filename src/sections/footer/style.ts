@@ -1,12 +1,23 @@
 /* eslint-disable @typescript-eslint/indent */
 import { FONTS } from "@styles/fonts";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { animationUtils } from "@src/animations";
 
 interface Props {
   bgColor?: string;
+  inView?: boolean;
 }
 
-export const Container = styled.main<Props>`
+export const Container = styled.main<Props>``;
+
+export const Main = styled.div<Props>`
+  opacity: 0;
+  ${({ inView }) =>
+    inView &&
+    css`
+      animation: ${animationUtils.translateElement("Y", "100px", 0)} 0.6s
+        cubic-bezier(0.33, 1, 0.68, 1) forwards;
+    `};
   .main {
     background: transparent;
     padding: 10.1rem 14rem 12.5rem 14.6rem;

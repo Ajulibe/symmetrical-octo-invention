@@ -54,6 +54,7 @@ export const SectionThree = () => {
                     width="466"
                     height="366"
                     objectFit="cover"
+                    priority
                   />
                 </div>
                 <span className="card__item">{item.name}</span>

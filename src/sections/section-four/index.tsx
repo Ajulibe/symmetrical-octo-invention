@@ -4,7 +4,11 @@ import Image from "next/image";
 import { BetterClothing, CompanyCarousel } from "./components";
 import { useInView } from "react-intersection-observer";
 
-export const SectionFour = () => {
+interface Props {
+  setShowFooter: (state: boolean) => void;
+}
+
+export const SectionFour: React.FC<Props> = ({ setShowFooter }) => {
   const products = [
     {
       image: "/softmaterial.svg",
@@ -54,6 +58,7 @@ export const SectionFour = () => {
               width="1700"
               height="2500"
               objectFit="cover"
+              priority
             />
           </div>
         </div>
@@ -77,7 +82,7 @@ export const SectionFour = () => {
               return (
                 <div className="grid" key={`${item.alt}${index}`} ref={gridRef}>
                   <div className="grid__image">
-                    <Image src={item.image} height={55} width={55} alt={item.alt} />
+                    <Image src={item.image} height={55} width={55} alt={item.alt} priority />
                   </div>
                   <div className="grid__title" style={{ color: item.color }}>
                     <div className="anim">{item.title}</div>
@@ -93,7 +98,7 @@ export const SectionFour = () => {
       </div>
 
       <BetterClothing />
-      <CompanyCarousel />
+      <CompanyCarousel setShowFooter={setShowFooter} />
     </Container>
   );
 };

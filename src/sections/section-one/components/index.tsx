@@ -5,6 +5,7 @@ import Lottie from "lottie-react";
 import playerGif from "./lottie/rhythm.json";
 import loaderGif from "./lottie/loader.json";
 import Image from "next/image";
+import useSound from "use-sound";
 
 export const CarouselSection = () => {
   const player = useRef<HTMLAudioElement>(null);
@@ -12,12 +13,19 @@ export const CarouselSection = () => {
   const [imageIndex, setImageIndex] = useState<number>(0);
   const [startAnim, setStartAnim] = useState(false);
   const index = useRef(0);
-
+  const playPromise = useRef<Promise<void>>();
+  // const [audio] = useState(new Audio("/audio/Ayra-babby.mp3"));
   const songArray = ["/audio/Ayra-babby.mp3", "/audio/Peruzzi.mp3", "/audio/Phyno.mp3"];
-
   function getRandomArbitrary(min: number, max: number) {
-    return Math.floor(Math.random() * (max - min) + min);
+    const randomIndex = Math.floor(Math.random() * (max - min) + min);
+    return songArray[randomIndex];
   }
+
+  const [play, { stop }] = useSound(getRandomArbitrary(0, 3), { volume: 1 });
+
+  useEffect(() => {
+    isPlaying ? play() : stop();
+  }, [isPlaying]);
 
   const CarouselContent = [
     {
@@ -66,23 +74,39 @@ export const CarouselSection = () => {
   }, [imageIndex]);
 
   const startSong = () => {
-    const randomIndex = getRandomArbitrary(0, 3);
+    setIsPlaying(true);
 
-    if (player.current) {
-      const audioTag = player.current;
-      const src = songArray[randomIndex];
-      audioTag.src = src;
-      audioTag.play();
-      setIsPlaying(true);
-    }
+    // const randomIndex = getRandomArbitrary(0, 3);
+
+    // console.log(randomIndex, "randomIndex");
+
+    // if (player.current) {
+    //   const audioTag = player.current;
+    //   // const src = songArray[randomIndex];
+    //   audioTag.src = src;
+    //   if (playPromise.current) {
+    //     playPromise.current = audioTag.play();
+    //   }
+    //   // setIsPlaying(true);
+    // }
   };
 
   const stopSong = () => {
-    if (player.current) {
-      player.current.pause();
-      player.current.currentTime = 0;
-      setIsPlaying(false);
-    }
+    setIsPlaying(false);
+
+    // if (playPromise.current !== undefined) {
+    //   playPromise.current
+    //     .then(() => {
+    //       if (player.current) {
+    //         player.current.pause();
+    //         player.current.currentTime = 0;
+    //         // setIsPlaying(false);
+    //       }
+    //     })
+    //     .catch(() => {
+    //       // setIsPlaying(false);
+    //     });
+    // }
   };
 
   const LottieStyle = {
@@ -108,6 +132,7 @@ export const CarouselSection = () => {
             width="1700"
             height="2000"
             objectFit="cover"
+            priority
           />
         </div>
         <div className="bg__next">
@@ -117,6 +142,7 @@ export const CarouselSection = () => {
             width="1700"
             height="2000"
             objectFit="cover"
+            priority
           />
         </div>
       </div>
