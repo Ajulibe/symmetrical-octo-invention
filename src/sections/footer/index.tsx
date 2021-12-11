@@ -1,41 +1,21 @@
 import { Container, Main } from "./style";
 import React from "react";
-import { MdLocationPin, MdMail } from "react-icons/md";
-import { FaPhone } from "react-icons/fa";
 import { Button } from "@components/button";
-import Link from "next/link";
-import Image from "next/image";
+import { FaPhone, MdMail, MdLocationPin } from "./assets/icons";
+import dynamic from "next/dynamic";
 import { useInView } from "react-intersection-observer";
 
-interface Props {
+const FooterLinks = dynamic<Record<string, never>>(
+  () => import("./components").then((mod) => mod.FooterLinks),
+  {
+    ssr: false
+  }
+);
+export interface FooterProps {
   showFooter: boolean;
 }
 
-export const Footer: React.FC<Props> = ({ showFooter }) => {
-  interface ILinks {
-    src: string;
-    alt: string;
-  }
-
-  const links: ILinks[] = [
-    {
-      src: "/facebook.svg",
-      alt: "Facebook Logo"
-    },
-    {
-      src: "/instagram.svg",
-      alt: "Instagram Logo"
-    },
-    {
-      src: "/twitter.svg",
-      alt: "Twitter Logo"
-    },
-    {
-      src: "/linkedin.svg",
-      alt: "Linkedin Logo"
-    }
-  ];
-
+export const Footer: React.FC<FooterProps> = ({ showFooter }) => {
   const { ref, inView } = useInView({
     threshold: 0
   });
@@ -69,24 +49,7 @@ export const Footer: React.FC<Props> = ({ showFooter }) => {
             </div>
           </div>
 
-          <div className="main__content section__three">
-            <div className="section__three-icons">
-              {links.map((item: ILinks) => {
-                return (
-                  <div key={item.alt}>
-                    <Link href="/">
-                      <a>
-                        <Image src={item.src} alt={item.alt} width={42} height={42} priority />
-                      </a>
-                    </Link>
-                  </div>
-                );
-              })}
-            </div>
-            <div className="section__three-message">
-              Lorem ipsum dolor sit amet, consec tetur adipiscing elit, sed do eiusmod.
-            </div>
-          </div>
+          <FooterLinks />
 
           <div className="main__content section__four">
             <div className="section__four-title">Subscribe Newsletter</div>
@@ -95,7 +58,6 @@ export const Footer: React.FC<Props> = ({ showFooter }) => {
               <form className="input-wrapper">
                 <label htmlFor="email">Your email</label>
                 <input type="text" id="email" placeholder="Enter Your Email . . ." />
-
                 <Button title="SUBSCRIBE" />
               </form>
             </div>

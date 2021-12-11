@@ -30,8 +30,7 @@
     "react-icons": "^4.3.1",
     "react-intersection-observer": "^8.32.3",
     "styled-components": "^5.3.3",
-    "typed.js": "^2.0.12",
-    "use-sound": "^4.0.1"
+    "typed.js": "^2.0.12"
   },
   "devDependencies": {
     "@types/node": "16.11.7",

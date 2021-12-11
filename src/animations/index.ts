@@ -162,6 +162,7 @@ export const animationUtils = {
     `;
     return animation;
   },
+
   cursorAnimTwo: () => {
     const animation = keyframes`
     from {
@@ -173,6 +174,7 @@ export const animationUtils = {
     `;
     return animation;
   },
+
   cursorAnimThree: () => {
     const animation = keyframes`
     0% {
@@ -210,6 +212,27 @@ export const animationUtils = {
     }
     `;
     }
+
+    return animation;
+  },
+
+  scale: (start: number, end: number) => {
+    const animation = keyframes`
+    0%{
+      opacity: 0;
+  }
+     40%{
+  opacity: 0;
+  transform: scale(${start});
+}
+/* 70%{
+  opacity: 1;
+} */
+100% {
+  opacity: 1;
+  transform: scale(${end});
+}
+`;
 
     return animation;
   }

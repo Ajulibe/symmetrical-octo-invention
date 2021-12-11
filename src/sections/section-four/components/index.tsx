@@ -7,7 +7,7 @@ import { useRef, useEffect } from "react";
 import Typed from "typed.js";
 import { useInView } from "react-intersection-observer";
 
-interface Props {
+export interface CompanyCarouselProps {
   setShowFooter: (state: boolean) => void;
 }
 
@@ -51,7 +51,7 @@ export const BetterClothing = () => {
   );
 };
 
-export const CompanyCarousel: React.FC<Props> = ({ setShowFooter }) => {
+export const CompanyCarousel: React.FC<CompanyCarouselProps> = ({ setShowFooter }) => {
   const { ref, inView } = useInView({
     threshold: 0.4
   });
@@ -75,5 +75,62 @@ export const CompanyCarousel: React.FC<Props> = ({ setShowFooter }) => {
         <Image src="/carousel/fifthIpsum.svg" height={33.73} width={147.68} alt="firstIpsum" />
       </div>
     </ContainerCompanyCarousel>
+  );
+};
+
+export interface GridProps {
+  gridRef: (node?: Element | null | undefined) => void;
+}
+
+export const Grid: React.FC<GridProps> = ({ gridRef }) => {
+  const products = [
+    {
+      image: "/softmaterial.svg",
+      alt: "softmaterial",
+      title: "Soft Material",
+      color: "#23a6d5",
+      content: "The versatile space makes it easy to keep a fresh supply of ingredients"
+    },
+    {
+      image: "/strongdurable.svg",
+      alt: "strongdurable",
+      title: "Strong Durable",
+      color: "#e73c7e",
+      content: "The versatile space makes it easy to keep a fresh supply of ingredients"
+    },
+    {
+      image: "/beautifulmodel.svg",
+      alt: "beautifulmodel",
+      title: "Beautiful Model",
+      color: "#23d5ab",
+      content: "The versatile space makes it easy to keep a fresh supply of ingredients"
+    },
+    {
+      image: "/superquality.svg",
+      alt: "superquality",
+      title: "Super Quality",
+      color: "#ee7752",
+      content: "The versatile space makes it easy to keep a fresh supply of ingredients"
+    }
+  ];
+
+  return (
+    <div className="section__grid">
+      {products.map((item, index) => {
+        return (
+          <div className="grid" key={`${item.alt}${index}`} ref={gridRef}>
+            <div className="grid__image">
+              <Image src={item.image} height={55} width={55} alt={item.alt} priority />
+            </div>
+            <div className="grid__title" style={{ color: item.color }}>
+              <div className="anim">{item.title}</div>
+            </div>
+            <div className="grid__content">
+              <div>{item.content}</div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
   );
 };

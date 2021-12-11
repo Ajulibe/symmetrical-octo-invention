@@ -12,13 +12,14 @@ export const MyGlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-size: 62.5%;
-    -webkit-font-smoothing: subpixel-antialiased;
+    -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;    
     display: flex;
     justify-content: center;
     align-items: center;
     background: black;
     scroll-behavior: smooth;
+    text-shadow: 0 -1px 1px rgb(255 255 255 / 1%);
     /* cursor: none; */
       
   .mouseBg {

@@ -1,36 +1,53 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-/*eslint-disable @typescript-eslint/no-explicit-any*/
 import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Layout from "@src/layout";
-
 import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
-import _ from "lodash";
+import debounce from "lodash/debounce";
+import { CmpFourProps } from "@src/sections/section-four";
+import { FooterProps } from "@src/sections/footer";
 
 //Dynamic Imports
 const Pads = dynamic(() => import("@components/pads"), {
   ssr: false
 });
-const Header = dynamic(() => import("@src/sections/header").then((mod) => mod.Header) as any, {
-  ssr: false
-});
-const SectionOne = dynamic(() => import("@src/sections").then((mod) => mod.SectionOne) as any, {
-  ssr: false
-});
-const SectionTwo = dynamic(() => import("@src/sections").then((mod) => mod.SectionTwo) as any, {
-  ssr: false
-});
-const SectionThree = dynamic(() => import("@src/sections").then((mod) => mod.SectionThree) as any, {
-  ssr: false
-});
-const SectionFour = dynamic(() => import("@src/sections").then((mod) => mod.SectionFour) as any, {
-  ssr: false
-});
-const Footer = dynamic(() => import("@src/sections/footer").then((mod) => mod.Footer) as any, {
-  ssr: false
-});
+const Header = dynamic<Record<string, never>>(
+  () => import("@src/sections/header").then((mod) => mod.Header),
+  {
+    ssr: false
+  }
+);
+const SectionOne = dynamic<Record<string, never>>(
+  () => import("@src/sections").then((mod) => mod.SectionOne),
+  {
+    ssr: false
+  }
+);
+const SectionTwo = dynamic<Record<string, never>>(
+  () => import("@src/sections").then((mod) => mod.SectionTwo),
+  {
+    ssr: false
+  }
+);
+const SectionThree = dynamic<Record<string, never>>(
+  () => import("@src/sections").then((mod) => mod.SectionThree),
+  {
+    ssr: false
+  }
+);
+const SectionFour = dynamic<CmpFourProps>(
+  () => import("@src/sections").then((mod) => mod.SectionFour),
+  {
+    ssr: false
+  }
+);
+const Footer = dynamic<FooterProps>(
+  () => import("@src/sections/footer").then((mod) => mod.Footer),
+  {
+    ssr: false
+  }
+);
 
 const Home: NextPage = () => {
   const hoverBg = useRef<HTMLDivElement>(null);
@@ -46,10 +63,10 @@ const Home: NextPage = () => {
   useEffect(() => {
     setTimeout(() => {
       setShowElements("block");
-    }, 1500);
+    }, 2700);
   });
 
-  const extraCursor = _.debounce(function () {
+  const extraCursor = debounce(function () {
     document.addEventListener("mousemove", (e) => {
       if (cursor.current) {
         cursor.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
@@ -68,7 +85,7 @@ const Home: NextPage = () => {
     });
   }, 500);
 
-  const cursorBg = _.debounce(function () {
+  const cursorBg = debounce(function () {
     document.addEventListener("mousemove", (event) => {
       if (hoverBg.current) {
         hoverBg.current.style.transform = `translate(${event.clientX}px, ${event.clientY}px)`;
@@ -106,9 +123,7 @@ const Home: NextPage = () => {
         <SectionOne />
         <SectionTwo />
         <SectionThree />
-        {/* @ts-ignore */}
         <SectionFour setShowFooter={setShowFooter} />
-        {/* @ts-ignore */}
         <Footer showFooter={showFooter} />
       </Layout>
     </div>

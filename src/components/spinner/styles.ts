@@ -21,10 +21,10 @@ export const LoadingSpinner = styled.div`
     width: 30px;
     height: 30px;
     margin: 8px;
-    border: 2px solid ${({ theme }) => theme.colors.blueDark};
+    border: 2px solid ${({ theme }) => theme.colors.orange};
     border-radius: 50%;
     animation: spinner 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: ${({ theme }) => theme.colors.yellow}transparent transparent transparent;
+    border-color: ${({ theme }) => theme.colors.orange}transparent transparent transparent;
   }
   .spinner div:nth-child(1) {
     animation-delay: -0.45s;

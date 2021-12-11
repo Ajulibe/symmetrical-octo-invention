@@ -114,7 +114,6 @@ export const SectionTwo = () => {
 
           <div className="image__wrapper">
             <div>
-              {/* <ParallaxBox fadeOut={true} yOffset={-400}> */}
               <Image
                 src={IMAGES["section-two"]}
                 alt="fullimage"
@@ -123,7 +122,6 @@ export const SectionTwo = () => {
                 objectFit="cover"
                 priority
               />
-              {/* </ParallaxBox> */}
             </div>
           </div>
         </div>
