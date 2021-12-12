@@ -6,17 +6,17 @@ import Image from "next/image";
 export const SectionThree = () => {
   const products = [
     {
-      src: "https://res.cloudinary.com/ajulibe/image/upload/v1630596893/ROMI/alesia-kazantceva-dhD_FiNkuzw-unsplash_d0gswj.jpg",
+      src: "https://res.cloudinary.com/ajulibe/image/upload/v1639225066/fashion-site/alesia-kazantceva-dhD_FiNkuzw-unsplash_d0gswj-compressed_orwcbc.jpg",
       name: "Flower Tshirt",
       price: "$40.0"
     },
     {
-      src: "https://res.cloudinary.com/ajulibe/image/upload/v1630596893/ROMI/alesia-kazantceva-dhD_FiNkuzw-unsplash_d0gswj.jpg",
+      src: "https://res.cloudinary.com/ajulibe/image/upload/v1639225066/fashion-site/alesia-kazantceva-dhD_FiNkuzw-unsplash_d0gswj-compressed_orwcbc.jpg",
       name: "Bodysuit Lace",
       price: "$40.0"
     },
     {
-      src: "https://res.cloudinary.com/ajulibe/image/upload/v1630596893/ROMI/alesia-kazantceva-dhD_FiNkuzw-unsplash_d0gswj.jpg",
+      src: "https://res.cloudinary.com/ajulibe/image/upload/v1639225066/fashion-site/alesia-kazantceva-dhD_FiNkuzw-unsplash_d0gswj-compressed_orwcbc.jpg",
       name: "City Baggies",
       price: "$40.0"
     }
@@ -51,10 +51,11 @@ export const SectionThree = () => {
                   <Image
                     src={item.src}
                     alt={item.name}
-                    width="466"
-                    height="366"
+                    width="365"
+                    height="350"
                     objectFit="cover"
                     priority
+                    quality={50}
                   />
                 </div>
                 <span className="card__item">{item.name}</span>

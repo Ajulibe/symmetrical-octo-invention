@@ -30,7 +30,13 @@
       "@framework/*": ["framework/local/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "lint-staged.config.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "lint-staged.config.js",
+    "src/sections/index.txt"
+  ],
   "exclude": ["node_modules"],
   "typeRoots": ["./types", "./node_modules/@types/"] //added for animejs type declaration fix
 }

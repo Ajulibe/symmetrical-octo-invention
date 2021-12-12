@@ -9,19 +9,19 @@ export interface CmpFourProps {
   setShowFooter: (state: boolean) => void;
 }
 
-const BetterClothing = dynamic<Record<string, never>>(
-  () => import("./components").then((mod) => mod.BetterClothing),
-  {
-    ssr: false
-  }
-);
+// const BetterClothing = dynamic<Record<string, never>>(
+//   () => import("./components").then((mod) => mod.BetterClothing),
+//   {
+//     ssr: false
+//   }
+// );
 
-const CompanyCarousel = dynamic<CompanyCarouselProps>(
-  () => import("./components").then((mod) => mod.CompanyCarousel),
-  {
-    ssr: false
-  }
-);
+// const CompanyCarousel = dynamic<CompanyCarouselProps>(
+//   () => import("./components").then((mod) => mod.CompanyCarousel),
+//   {
+//     ssr: false
+//   }
+// );
 
 const Grid = dynamic<GridProps>(() => import("./components").then((mod) => mod.Grid), {
   ssr: false
@@ -47,6 +47,7 @@ export const SectionFour: React.FC<CmpFourProps> = ({ setShowFooter }) => {
               height="2500"
               objectFit="cover"
               priority
+              quality={40}
             />
           </div>
         </div>
@@ -64,11 +65,11 @@ export const SectionFour: React.FC<CmpFourProps> = ({ setShowFooter }) => {
               <div>lives on there</div>
             </div>
           </div>
-          <Grid gridRef={gridRef} />
+          {/* <Grid gridRef={gridRef} /> */}
         </div>
       </div>
-      <BetterClothing />
-      <CompanyCarousel setShowFooter={setShowFooter} />
+      {/* <BetterClothing /> */}
+      {/* <CompanyCarousel setShowFooter={setShowFooter} /> */}
     </Container>
   );
 };

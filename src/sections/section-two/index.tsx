@@ -1,6 +1,5 @@
 import { Container } from "./style";
-import { MdOutlineArrowRightAlt } from "react-icons/md";
-import { BiChevronDown } from "react-icons/bi";
+import { BiChevronDown, MdOutlineArrowRightAlt } from "@src/assets/icon";
 import Link from "next/link";
 import Image from "next/image";
 import { useRef, useEffect } from "react";
@@ -121,6 +120,7 @@ export const SectionTwo = () => {
                 height="900"
                 objectFit="cover"
                 priority
+                quality={45}
               />
             </div>
           </div>

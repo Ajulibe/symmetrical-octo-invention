@@ -45,12 +45,14 @@ export const StyledButton = styled.button<Props>`
 
   &:hover {
     color: #fff;
+    fill: #fff;
 
     &::after {
       width: 100%;
     }
     .icon {
       color: #fff;
+      fill: #fff;
       transform: translateX(10px);
     }
   }

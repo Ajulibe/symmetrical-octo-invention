@@ -19,25 +19,25 @@ const Header = dynamic<Record<string, never>>(
   }
 );
 const SectionOne = dynamic<Record<string, never>>(
-  () => import("@src/sections").then((mod) => mod.SectionOne),
+  () => import("@src/sections/section-one").then((mod) => mod.SectionOne),
   {
     ssr: false
   }
 );
 const SectionTwo = dynamic<Record<string, never>>(
-  () => import("@src/sections").then((mod) => mod.SectionTwo),
+  () => import("@src/sections/section-two").then((mod) => mod.SectionTwo),
   {
     ssr: false
   }
 );
 const SectionThree = dynamic<Record<string, never>>(
-  () => import("@src/sections").then((mod) => mod.SectionThree),
+  () => import("@src/sections/section-three").then((mod) => mod.SectionThree),
   {
     ssr: false
   }
 );
 const SectionFour = dynamic<CmpFourProps>(
-  () => import("@src/sections").then((mod) => mod.SectionFour),
+  () => import("@src/sections/section-four").then((mod) => mod.SectionFour),
   {
     ssr: false
   }

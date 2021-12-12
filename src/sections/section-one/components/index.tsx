@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { Greybackgroud } from "./style";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import { useInView } from "react-intersection-observer";
 
 const TestimonialCarousel = dynamic<Record<string, never>>(
   () => import("./carousel").then((mod) => mod.TestimonialCarousel),
@@ -16,13 +17,13 @@ export const CarouselSection = () => {
   const index = useRef(0);
   const isMounted = useRef<boolean>(false);
 
+  const { ref: ref, inView } = useInView({
+    threshold: 0
+  });
+
   const CarouselContent = [
     {
       image: "/section-one/6.jpg",
-      details: ""
-    },
-    {
-      image: "/section-one/2.jpg",
       details: ""
     },
     {
@@ -47,7 +48,7 @@ export const CarouselSection = () => {
         index.current = index.current + 1;
       }
       setImageIndex(index.current);
-    }, 7000);
+    }, 4000);
     return () => clearInterval(intervalId);
   }, [CarouselContent.length]);
 
@@ -64,7 +65,7 @@ export const CarouselSection = () => {
   const previousImage = imageIndex === 0 ? CarouselContent.length - 1 : imageIndex - 1;
 
   return (
-    <Greybackgroud startAnim={startAnim}>
+    <Greybackgroud ref={ref} inView={inView} startAnim={startAnim}>
       <div className="bg">
         <div className="bg__previous">
           <Image

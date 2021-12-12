@@ -7,6 +7,7 @@ interface Props {
   bgColor?: string;
   loop?: boolean;
   startAnim?: boolean;
+  inView: boolean;
 }
 
 const clipCirclePath = keyframes`
@@ -43,15 +44,15 @@ export const Greybackgroud = styled.main<Props>`
     }
 
     &__next {
-      ${({ startAnim }) =>
-        startAnim &&
+      ${({ inView }) =>
+        inView &&
         css`
           animation: ${clipCirclePath} 0.9s cubic-bezier(0.65, 0, 0.35, 1) 0.2s;
         `};
 
       img {
-        ${({ startAnim }) =>
-          startAnim &&
+        ${({ inView }) =>
+          inView &&
           css`
             animation: ${animationUtils.scale(1.4, 1)} 1.3s cubic-bezier(0, 0.55, 0.45, 1) forwards;
           `};

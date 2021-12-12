@@ -1,6 +1,5 @@
 import { Container } from "./style";
-import { MdOutlineArrowRightAlt } from "react-icons/md";
-import { IoMdCheckmark } from "react-icons/io";
+import { IoMdCheckmark, MdOutlineArrowRightAlt } from "@src/assets/icon";
 import { CarouselSection } from "./components/index";
 import { Button } from "@components/button";
 import { useInView } from "react-intersection-observer";
@@ -36,11 +35,13 @@ export const SectionOne = () => {
               </div>
 
               <div className="tick">
-                <IoMdCheckmark /> &nbsp; Free Delivery
+                <IoMdCheckmark />
+                &nbsp; Free Delivery
               </div>
 
               <div className="tick">
-                <IoMdCheckmark /> &nbsp; Free Return
+                <IoMdCheckmark />
+                &nbsp; Free Return
               </div>
             </div>
           </div>
@@ -53,7 +54,7 @@ export const SectionOne = () => {
           <Button title="Get Started" Icon={<MdOutlineArrowRightAlt className="icon" />} />
         </div>
       </div>
-      <CarouselSection />
+      {/* <CarouselSection /> */}
     </Container>
   );
 };

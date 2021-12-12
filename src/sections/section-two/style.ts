@@ -77,6 +77,7 @@ export const Container = styled.main<Props>`
 
           svg {
             margin-left: 2rem;
+            fill: ${({ theme }) => theme.colors.grey100};
           }
         }
 
