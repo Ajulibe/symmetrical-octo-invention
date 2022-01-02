@@ -95,12 +95,23 @@ const Home: NextPage = () => {
 
   const [showFooter, setShowFooter] = useState(false);
 
+  useEffect(() => {
+    console.log("initial readyState:" + document.readyState);
+
+    document.addEventListener("readystatechange", () =>
+      console.log("readyState:" + document.readyState)
+    );
+    document.addEventListener("DOMContentLoaded", () => console.log("DOMContentLoaded"));
+
+    window.onload = () => console.log("window onload");
+  });
+
   return (
     <div className={styles.container}>
       <Head>
         <title>A Robust Nextjs App Preconfigured for you</title>
         <meta name="description" content="Preconfigured Nextjs Template" />
-        <link rel="icon" href="/favicon.ico" />
+        {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
 
       <div ref={hoverBg} className="mouseBg" style={{ display: showElements }}></div>
