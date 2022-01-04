@@ -4,7 +4,7 @@ orbs:
 jobs: # Define the build and deploy jobs
   build:
     docker: # Use the Docker executor for the build job
-      - image: circleci/node:12.9.1-browsers # Specify the Docker image to use for the build job
+      - image: circleci/node:12.22.0 # Specify the Docker image to use for the build job
 
     working_directory: ~/repo
 
