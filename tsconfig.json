@@ -21,6 +21,7 @@
       "@types/*": ["types/*"],
       "@utils/*": ["utils/*"],
       "@styles/*": ["styles/*"],
+      "@pages/*": ["pages/"],
       "@config/*": ["config/*"],
       "@assets/*": ["assets/*"],
       "@components/*": ["src/components/*"],
@@ -35,7 +36,8 @@
     "**/*.ts",
     "**/*.tsx",
     "lint-staged.config.js",
-    "src/sections/index.txt"
+    "src/sections/index.txt",
+    "test/pages/index.test.tsx"
   ],
   "exclude": ["node_modules"],
   "typeRoots": ["./types", "./node_modules/@types/"] //added for animejs type declaration fix
