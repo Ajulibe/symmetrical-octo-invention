@@ -1,4 +1,4 @@
-import { FONTS } from "@styles/fonts";
+import { FONTS } from "@src/styles/fonts";
 import styled from "styled-components";
 
 interface Props {

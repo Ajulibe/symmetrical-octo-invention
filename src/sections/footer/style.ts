@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/indent */
-import { FONTS } from "@styles/fonts";
+import { FONTS } from "@src/styles/fonts";
 import styled, { css } from "styled-components";
 import { animationUtils } from "@src/animations";
 

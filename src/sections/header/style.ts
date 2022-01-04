@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/indent */
 import styled from "styled-components";
-import { FONTS } from "@styles/fonts";
+import { FONTS } from "@src/styles/fonts";
 import { fadeIn, animationUtils } from "@src/animations";
 
 interface Props {

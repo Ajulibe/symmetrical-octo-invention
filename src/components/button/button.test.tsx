@@ -1,12 +1,12 @@
 import { render, screen } from "@testing-library/react";
-import { Button } from "@components/button/index";
+import { Button } from "./index";
 // import userEvent from "@testing-library/user-event";
 
 // describe("Button", () => {
 it("Button: Testing the button", () => {
-  // const buttonText = "click here";
-  // const { getByText } = render(<Button title={buttonText} />);
-  // expect(getByText(buttonText)).toBeDefined();
+  const buttonText = "click here";
+  const { getByText } = render(<Button title={buttonText} />);
+  expect(getByText(buttonText)).toBeDefined();
 });
 
 //   it("Is onClick called", () => {

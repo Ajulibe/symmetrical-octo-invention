@@ -1,6 +1,6 @@
 /* eslint-disable indent */
 /* eslint-disable @typescript-eslint/indent */
-import { FONTS } from "@styles/fonts";
+import { FONTS } from "@src/styles/fonts";
 import styled, { keyframes, css } from "styled-components";
 import { moveInfadeIn, fadeIn, BgColorfadeIn, growWidth } from "@src/animations";
 

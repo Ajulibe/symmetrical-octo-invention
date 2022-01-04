@@ -36,6 +36,7 @@
     "indent": "off",
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "double"],
-    "semi": ["error", "always"]
+    "semi": ["error", "always"],
+    "import/no-extraneous-dependencies": "off"
   }
 }
