@@ -11,6 +11,7 @@
     "format": "prettier --write .",
     "test-all": "yarn format && yarn check-format && yarn check-lint && yarn check-types && yarn build",
     "prepare": "husky install",
+    "export": "next export",
     "analyze": "cross-env ANALYZE=true next build",
     "deploy": "next build && next export && aws s3 sync out s3://fashion-themed"
   },
