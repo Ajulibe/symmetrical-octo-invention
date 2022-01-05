@@ -17,9 +17,6 @@ jobs: # Define the build and deploy jobs
             # fallback to the line below using the latest cache if no exact match is found
             - v1-dependencies-
       - run:
-          name: Install yarn
-          command: npm install -g yarn
-      - run:
           name: install dependencies
           command: yarn install
       - save_cache:
@@ -48,10 +45,10 @@ jobs: # Define the build and deploy jobs
       - run:
           name: Build Project
           command: | #piping because we are running multiple commands
-            npm install
-            npm run test
-            npm build
-            npm export
+            yarn install
+            yarn run test
+            yarn build
+            yarn export
             echo "Build successful"
       - run:
           name: Deploy to AWS S3
