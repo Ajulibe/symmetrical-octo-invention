@@ -4,20 +4,24 @@ orbs:
 jobs: # Define the build and deploy jobs
   build:
     docker: # Use the Docker executor for the build job
-      - image: circleci/node:12.22.0 # Specify the Docker image to use for the build job
-
+      - image: circleci/node:16.13.1-browsers # Specify the Docker image to use for the build job
     working_directory: ~/repo
-
     steps:
-      - checkout
-
+      - checkout #checks out the current branch to be worked on.
+      - run:
+          name: Show current branch
+          command: echo ${CURRENT_BRANCH}
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
+            # fallback to the line below using the latest cache if no exact match is found
             - v1-dependencies-
-      - run: yarn install
-
+      - run:
+          name: Install yarn
+          command: npm install -g yarn
+      - run:
+          name: install dependencies
+          command: yarn install
       - save_cache:
           paths:
             - node_modules
@@ -25,14 +29,40 @@ jobs: # Define the build and deploy jobs
             - ~/.cache
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: yarn test
+  deploy-to-aws-s3:
+    docker:
+      - image: circleci/node:16.13.1-browsers
+      working_directory: ~/repo 
+      steps:
+      - checkout #checks out the current branch to be worked on.
+      - run:
+          name: Show current branch
+          command: echo ${CURRENT_BRANCH}
+      - run:
+          name: Installing AWS CLI
+          working_directory: /
+          command: |
+            sudo apt-get -y -qq update
+            sudo apt-get install -y awscli
+            sudo apt-get install -y python-pip python-dev build essential
+      - run:
+          name: Build Project
+          command: | #piping because we are running multiple commands  
+            npm install
+            npm run test
+            npm build
+            npm export
+            echo "Build successful"    
+      - run: 
+          name: Deploy to AWS S3
+          command: | #checking what the current branch is for deployment
+            if [ "${CURRENT_BRANCH}" == "main" ]
+            then  
+              aws --region ${AWS_REGION} s3 sync ~/repo/out s3://${AWS_DEV_BUCKET} --delete
+            elif [ "${CURRENT_BRANCH}" == "staging" ]   
+            then
+              aws --region ${AWS_REGION} s3 sync ~/repo/out s3://${AWS_STAGING_BUCKET} --delete
+            else
+              aws --region ${AWS_REGION} s3 sync ~/repo/out s3://${AWS_PRODUCTION_BUCKET} --delete
+            fi  
 
-      - run: yarn deploy
-
-      - aws-s3/sync:
-          from: out
-          to: "s3://fashion-themed"
-          arguments: | # Optional arguments
-            --acl public-read \
-            --cache-control "max-age=86400"
-          overwrite: true # default is false
