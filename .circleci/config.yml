@@ -32,8 +32,8 @@ jobs: # Define the build and deploy jobs
   deploy-to-aws-s3:
     docker:
       - image: circleci/node:16.13.1-browsers
-      working_directory: ~/repo 
-      steps:
+    working_directory: ~/repo
+    steps:
       - checkout #checks out the current branch to be worked on.
       - run:
           name: Show current branch
@@ -47,13 +47,13 @@ jobs: # Define the build and deploy jobs
             sudo apt-get install -y python-pip python-dev build essential
       - run:
           name: Build Project
-          command: | #piping because we are running multiple commands  
+          command: | #piping because we are running multiple commands
             npm install
             npm run test
             npm build
             npm export
-            echo "Build successful"    
-      - run: 
+            echo "Build successful"
+      - run:
           name: Deploy to AWS S3
           command: | #checking what the current branch is for deployment
             if [ "${CURRENT_BRANCH}" == "main" ]
@@ -64,5 +64,4 @@ jobs: # Define the build and deploy jobs
               aws --region ${AWS_REGION} s3 sync ~/repo/out s3://${AWS_STAGING_BUCKET} --delete
             else
               aws --region ${AWS_REGION} s3 sync ~/repo/out s3://${AWS_PRODUCTION_BUCKET} --delete
-            fi  
-
+            fi

@@ -36,6 +36,17 @@ yarn check-types ||
 )
 
 # If everything passes... Now we can commit
+echo '🤔🤔🤔🤔... Well... So far so Good... Lets see your tests.🧪'
+
+
+yarn test ||
+(
+    echo '❌🤡💀🤡❌ Better buy a testube Bob... Because your tests are failing ❌👷🔨❌
+            yarn test failed: View the errors above to see why. 
+    '
+    false;
+)
+
 echo '🤔🤔🤔🤔... Alright... Code looks good to me... Trying to build now. 🤔🤔🤔🤔'
 
 yarn build ||
