@@ -39,7 +39,7 @@ jobs: # Define the build and deploy jobs
           name: Installing AWS CLI
           working_directory: /
           command: |
-            sudo apt-get -y -qq update
+            sudo apt-get -y -qq update 
             sudo apt-get install -y awscli
             sudo apt-get install -y python-pip python-dev build essential
       - run:
@@ -62,3 +62,60 @@ jobs: # Define the build and deploy jobs
             else
               aws --region ${AWS_REGION} s3 sync ~/repo/out s3://${AWS_PRODUCTION_BUCKET} --delete
             fi
+
+  deploy-to-aws-cloudfront:
+    docker:
+      - image: circleci/node:16.13.1-browsers
+    working_directory: ~/repo
+    steps:
+      - checkout #checks out the current branch to be worked on.
+      - run:
+          name: Show current branch
+          command: echo ${CURRENT_BRANCH}
+      - run:
+          name: Installing AWS CLI
+          working_directory: /
+          command: |
+            sudo apt-get -y -qq update 
+            sudo apt-get install -y awscli
+            sudo apt-get install -y python-pip python-dev build essential
+      - run:
+          name: Build Project
+          command: | #piping because we are running multiple commands
+            yarn install
+            yarn run test
+            yarn build
+            yarn export
+            echo "Build successful"
+      - run:
+          name: Deploy to AWS Cloudfront
+          command: | #checking what the current branch is for deployment
+            aws configure set preview.cloudfront true
+            if [ "${CURRENT_BRANCH}" == "main" ]
+            then  
+              aws cloudfront create-invalidation --distribution-id ${DEV_DISTRIBUTION_ID} --paths /\*
+            elif [ "${CURRENT_BRANCH}" == "staging" ]   
+            then
+              aws cloudfront create-invalidation --distribution-id ${STAGING_DISTRIBUTION_ID} --paths /\*
+            else
+              aws cloudfront create-invalidation --distribution-id ${PRODUCTION_DISTRIBUTION_ID} --paths /\*
+            fi
+
+workflows:
+  build_and_deploy: # name of your workflow
+    jobs:
+      - build
+      - deploy-to-aws-s3:
+          requires:
+            - build
+          filters: #specify wich branch that action is to be carried out on
+            branches:
+              only:
+                - main
+      - deploy-to-aws-cloudfront:
+          requires:
+            - deploy-to-aws-s3
+          filters: #specify wich branch that action is to be carried out on
+            branches:
+              only:
+                - main
