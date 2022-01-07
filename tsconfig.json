@@ -36,7 +36,7 @@
     "lint-staged.config.js",
     "src/sections/index.txt",
     "test/pages/index.test.tsx",
-    "trial.js"
+    "trial.tsx"
   ],
   "exclude": ["node_modules"],
   "typeRoots": ["./types", "./node_modules/@types/"] //added for animejs type declaration fix

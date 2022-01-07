@@ -10,7 +10,7 @@ jobs: # Define the build and deploy jobs
       - checkout #checks out the current branch to be worked on.
       - run:
           name: Show current branch
-          command: echo ${CURRENT_BRANCH}
+          command: echo ${CIRCLE_BRANCH}
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
@@ -34,7 +34,7 @@ jobs: # Define the build and deploy jobs
       - checkout #checks out the current branch to be worked on.
       - run:
           name: Show current branch
-          command: echo ${CURRENT_BRANCH}
+          command: echo ${CIRCLE_BRANCH}
       - run:
           name: Installing AWS CLI
           working_directory: /
@@ -53,10 +53,10 @@ jobs: # Define the build and deploy jobs
       - run:
           name: Deploy to AWS S3
           command: | #checking what the current branch is for deployment
-            if [ "${CURRENT_BRANCH}" == "main" ]
+            if [ "${CIRCLE_BRANCH}" == "main" ]
             then  
               aws --region ${AWS_REGION} s3 sync ~/repo/out s3://${AWS_DEV_BUCKET} --delete
-            elif [ "${CURRENT_BRANCH}" == "staging" ]   
+            elif [ "${CIRCLE_BRANCH}" == "staging" ]   
             then
               aws --region ${AWS_REGION} s3 sync ~/repo/out s3://${AWS_STAGING_BUCKET} --delete
             else
@@ -71,14 +71,14 @@ jobs: # Define the build and deploy jobs
       - checkout #checks out the current branch to be worked on.
       - run:
           name: Show current branch
-          command: echo ${CURRENT_BRANCH}
+          command: echo ${CIRCLE_BRANCH}
       - run:
           name: Installing AWS CLI
           working_directory: /
           command: |
             sudo apt-get -y -qq update 
             sudo apt-get install -y awscli
-            sudo apt-get install -y python-pip python-dev build essential
+            sudo apt-get install -y python-pip python-dev build-essential
       - run:
           name: Build Project
           command: | #piping because we are running multiple commands
@@ -91,10 +91,10 @@ jobs: # Define the build and deploy jobs
           name: Deploy to AWS Cloudfront
           command: | #checking what the current branch is for deployment
             aws configure set preview.cloudfront true
-            if [ "${CURRENT_BRANCH}" == "main" ]
+            if [ "${CIRCLE_BRANCH}" == "main" ]
             then  
               aws cloudfront create-invalidation --distribution-id ${DEV_DISTRIBUTION_ID} --paths /\*
-            elif [ "${CURRENT_BRANCH}" == "staging" ]   
+            elif [ "${CIRCLE_BRANCH}" == "staging" ]   
             then
               aws cloudfront create-invalidation --distribution-id ${STAGING_DISTRIBUTION_ID} --paths /\*
             else
