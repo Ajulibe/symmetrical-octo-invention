@@ -14,6 +14,125 @@ export const APP_VERSION = "v1.0.0";
 // these are small excutable actionable steps to do a particular MdFollowTheSignsthese jobs can then be composed into
 // a pipeline which is essentially menat to state the order in which hese jobs run and theri various dependencies
 
+//before executor
+// version: 2.1
+// orbs:
+//   aws-s3: circleci/aws-s3@1.0.11
+// jobs: # Define the build and deploy jobs
+//   build:
+//     docker: # Use the Docker executor for the build job
+//       - image: circleci/node:16.13.1-browsers # Specify the Docker image to use for the build job
+//     working_directory: ~/repo
+//     steps:
+//       - checkout #checks out the current branch to be worked on.
+//       - run:
+//           name: Show current branch
+//           command: echo $CIRCLE_BRANCH
+//       - restore_cache:
+//           keys:
+//             - v1-dependencies-{{ checksum "package.json" }}
+//             # fallback to the line below using the latest cache if no exact match is found
+//             - v1-dependencies-
+//       - run:
+//           name: install dependencies
+//           command: yarn install
+//       - save_cache:
+//           paths:
+//             - node_modules
+//             - ~/.npm
+//             - ~/.cache
+//           key: v1-dependencies-{{ checksum "package.json" }}
+
+//   deploy-to-aws-s3:
+//     docker:
+//       - image: circleci/node:16.13.1-browsers
+//     working_directory: ~/repo
+//     steps:
+//       - checkout #checks out the current branch to be worked on.
+//       - run:
+//           name: Show current branch
+//           command: echo $CIRCLE_BRANCH
+//       - run:
+//           name: Installing AWS CLI
+//           working_directory: /
+//           command: |
+//             sudo apt-get -y -qq update
+//             sudo apt-get install -y awscli
+//             sudo apt-get install -y python-pip python-dev build-essential
+//       - run:
+//           name: Build Project
+//           command: | #piping because we are running multiple commands
+//             yarn install
+//             yarn run test
+//             yarn build
+//             yarn export
+//             echo "Build successful"
+//       - run:
+//           name: Deploy to AWS S3
+//           command: | #checking what the current branch is for deployment
+//             if [ "$CIRCLE_BRANCH" == "main" ]
+//             then
+//               aws --region $AWS_REGION s3 sync ~/repo/out s3://${AWS_DEV_BUCKET} --delete
+//             elif [ "$CIRCLE_BRANCH" == "staging" ]
+//             then
+//               aws --region $AWS_REGION s3 sync ~/repo/out s3://${AWS_STAGING_BUCKET} --delete
+//             else
+//               aws --region $AWS_REGION s3 sync ~/repo/out s3://${AWS_PRODUCTION_BUCKET} --delete
+//             fi
+//   deploy-to-aws-cloudfront:
+//     docker:
+//       - image: circleci/node:16.13.1-browsers
+//     working_directory: ~/repo
+//     steps:
+//       - checkout #checks out the current branch to be worked on.
+//       - run:
+//           name: Show current branch
+//           command: echo $CIRCLE_BRANCH
+//       - run:
+//           name: Installing AWS CLI
+//           working_directory: /
+//           command: |
+//             sudo apt-get -y -qq update
+//             sudo apt-get install -y awscli
+//             sudo apt-get install -y python-pip python-dev build-essential
+//       - run:
+//           name: Build Project
+//           command: | #piping because we are running multiple commands
+//             yarn install
+//             yarn run test
+//             yarn build
+//             yarn export
+//             echo "Build successful"
+//       - run:
+//           name: Deploy to AWS Cloudfront
+//           command: | #checking what the current branch is for deployment
+//             aws configure set preview.cloudfront true
+//             if [ "$CIRCLE_BRANCH" == "main" ]
+//             then
+//               aws cloudfront create-invalidation --distribution-id ${DEV_DISTRIBUTION_ID} --paths /\*
+//             elif [ "$CIRCLE_BRANCH" == "staging" ]
+//             then
+//               aws cloudfront create-invalidation --distribution-id ${STAGING_DISTRIBUTION_ID} --paths /\*
+//             else
+//               aws cloudfront create-invalidation --distribution-id ${PRODUCTION_DISTRIBUTION_ID} --paths /\*
+//             fi
+
+//Refactroring to conform to the DRY principle
+
+//adding and executor and refactoring EXECUTORS
+//Definition of an executor
+//Each separate job defined within your config will run in a unique executor. An executor can be a docker container or a virtual machine
+//running Linux, Windows, or MacOS. Note, macOS is not available on installations of CircleCI server v2.x
+
+//since we have several repeating executors, we will refactor to clean up the code
+// executors:
+//   app-executor:
+//     docker: # Use the Docker executor for the build job
+//       - image: circleci/node:16.13.1-browsers # Specify the Docker image to use for the build job
+//     working_directory: ~/repo
+
+//adding ALIASES
+
 //-------------------------------------------------------------------------------------------------------------
 
 //It is loosely typed and prone to errors. Although the beauty of TypeScript is mostly seen at compile time, but I have found TypeScript Codebases to have less bugs than JavaScript.
