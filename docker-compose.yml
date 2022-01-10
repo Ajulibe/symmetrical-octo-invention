@@ -11,6 +11,8 @@ services:
       - .:/app
     stdin_open: true # docker run -i
     tty: true # docker run -t
+    environment:
+      - REACT_APP_TEMPLATE=$REACT_APP_TEMPLATE
   tests:
     build:
       context: .
