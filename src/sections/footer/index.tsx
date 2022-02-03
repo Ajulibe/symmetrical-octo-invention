@@ -15,7 +15,7 @@ export interface FooterProps {
   showFooter: boolean;
 }
 
-export const Footer: React.FC<FooterProps> = ({ showFooter }) => {
+export const Footer: React.FC<FooterProps> = React.memo(({ showFooter }) => {
   const { ref, inView } = useInView({
     threshold: 0
   });
@@ -66,4 +66,4 @@ export const Footer: React.FC<FooterProps> = ({ showFooter }) => {
       </Main>
     </Container>
   );
-};
+});

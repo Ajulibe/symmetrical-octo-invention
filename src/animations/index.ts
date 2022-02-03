@@ -218,12 +218,25 @@ export const animationUtils = {
 
   scale: (start: number, end: number) => {
     const animation = keyframes`
+      0% {
+        opacity: 0;
+      }
+       40% {
+       opacity: 0;
+       transform: scale(${start});
+      }
+     100% {
+       opacity: 1;
+       transform: scale(${end});
+    }
+  `;
+
+    return animation;
+  },
+  carouselScale: (start: number, end: number) => {
+    const animation = keyframes`
       0%{
         opacity: 0;
-
-      }
-       40%{
-       opacity: 0;
        transform: scale(${start});
       }
      100% {

@@ -37,6 +37,7 @@ export const Container = styled.main<Props>`
       }
 
       .headers:nth-child(1) {
+        will-change: opacity, transform;
         ${({ inView }) =>
           inView &&
           css`
@@ -44,6 +45,7 @@ export const Container = styled.main<Props>`
           `};
       }
       .headers:nth-child(2) {
+        will-change: opacity, transform;
         ${({ inView }) =>
           inView &&
           css`
@@ -51,6 +53,7 @@ export const Container = styled.main<Props>`
           `};
       }
       .headers:nth-child(3) {
+        will-change: opacity, transform;
         ${({ inView }) =>
           inView &&
           css`
@@ -65,6 +68,7 @@ export const Container = styled.main<Props>`
         color: ${({ theme }) => theme.colors.grey100};
         display: flex;
         flex-direction: column;
+        will-change: opacity, transform;
         ${({ inView }) =>
           inView &&
           css`

@@ -9,9 +9,9 @@ import { CmpFourProps } from "@src/sections/section-four";
 import { FooterProps } from "@src/sections/footer";
 
 //Dynamic Imports
-const Pads = dynamic(() => import("@components/pads"), {
-  ssr: false
-});
+// const Pads = dynamic(() => import("@components/pads"), {
+//   ssr: false
+// });
 const Header = dynamic<Record<string, never>>(
   () => import("@src/sections/header").then((mod) => mod.Header),
   {
@@ -95,38 +95,30 @@ const Home: NextPage = () => {
 
   const [showFooter, setShowFooter] = useState(false);
 
-  useEffect(() => {
-    console.log("initial readyState:" + document.readyState);
+  // useEffect(() => {
+  //   console.log("initial readyState:" + document.readyState);
 
-    document.addEventListener("readystatechange", () =>
-      console.log("readyState:" + document.readyState)
-    );
-    document.addEventListener("DOMContentLoaded", () => console.log("DOMContentLoaded"));
+  //   document.addEventListener("readystatechange", () =>
+  //     console.log("readyState:" + document.readyState)
+  //   );
+  //   document.addEventListener("DOMContentLoaded", () => console.log("DOMContentLoaded"));
 
-    window.onload = () => console.log("window onload");
-  });
+  //   window.onload = () => console.log("window onload");
+  // });
 
   return (
     <div className={styles.container}>
       <Head>
         <title>A Robust Nextjs App Preconfigured for you</title>
-        <meta name="description" content="Preconfigured Nextjs Template" />
-        {/* <link rel="icon" href="/favicon.ico" /> */}
+        <meta name="description" content="Fashion Themed" />
       </Head>
 
-      <div ref={hoverBg} className="mouseBg" style={{ display: showElements }}></div>
+      {/* <div ref={hoverBg} className="mouseBg" style={{ display: showElements }}></div> */}
 
-      <div className="greenBg" style={{ display: showElements }}></div>
+      {/* <div className="greenBg" style={{ display: showElements }}></div> */}
 
-      <Pads />
+      {/* <Pads /> */}
 
-      {/* <Apiheader /> */}
-
-      {/* <div className="info">
-        <p className="header"> Income Protection</p>
-        <p className="header__details">you get Paid if you loose your job</p>
-        <button>Get Started</button>
-      </div> */}
       <div className="cursor" ref={cursor}></div>
 
       <Layout>

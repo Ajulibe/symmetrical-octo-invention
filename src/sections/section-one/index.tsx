@@ -1,10 +1,17 @@
+import React from "react";
 import { Container } from "./style";
 import { IoMdCheckmark, MdOutlineArrowRightAlt } from "@src/assets/icon";
-import { CarouselSection } from "./components/index";
+import dynamic from "next/dynamic";
 import { Button } from "@components/button";
 import { useInView } from "react-intersection-observer";
 
-export const SectionOne = () => {
+const CarouselSection = dynamic<Record<string, never>>(
+  () => import("./components/index").then((mod) => mod.CarouselSection),
+  {
+    ssr: false
+  }
+);
+export const SectionOne = React.memo(() => {
   const { ref: ref, inView } = useInView({
     threshold: 0
   });
@@ -54,7 +61,8 @@ export const SectionOne = () => {
           <Button title="Get Started" Icon={<MdOutlineArrowRightAlt className="icon" />} />
         </div>
       </div>
-      {/* <CarouselSection /> */}
+      <CarouselSection />
     </Container>
   );
-};
+});
+SectionOne.displayName = "section__one";

@@ -23,7 +23,7 @@
       "@styles/*": ["src/styles/*"],
       "@pages/*": ["pages/"],
       "@config/*": ["config/*"],
-      "@assets/*": ["assets/*"],
+      "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
       "@commerce": ["framework/commerce"],
       "@framework/*": ["framework/local/*"]

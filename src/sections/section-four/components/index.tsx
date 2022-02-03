@@ -11,7 +11,7 @@ export interface CompanyCarouselProps {
   setShowFooter: (state: boolean) => void;
 }
 
-export const BetterClothing = () => {
+export const BetterClothing = React.memo(() => {
   useEffect(() => {
     if (el.current) {
       const typed = new Typed(el.current, {
@@ -43,15 +43,11 @@ export const BetterClothing = () => {
         </div>
         <Button title="Get Started" Icon={<MdOutlineArrowRightAlt className="icon" />} />
       </div>
-
-      {/* <div className="company__carousel">
-        <Image src="/firstIpsum.svg" height={55} width={55} alt="firstIpsum" />
-      </div> */}
     </Container>
   );
-};
+});
 
-export const CompanyCarousel: React.FC<CompanyCarouselProps> = ({ setShowFooter }) => {
+export const CompanyCarousel: React.FC<CompanyCarouselProps> = React.memo(({ setShowFooter }) => {
   const { ref, inView } = useInView({
     threshold: 0.4
   });
@@ -76,13 +72,13 @@ export const CompanyCarousel: React.FC<CompanyCarouselProps> = ({ setShowFooter 
       </div>
     </ContainerCompanyCarousel>
   );
-};
+});
 
 export interface GridProps {
   gridRef: (node?: Element | null | undefined) => void;
 }
 
-export const Grid: React.FC<GridProps> = ({ gridRef }) => {
+export const Grid: React.FC<GridProps> = React.memo(({ gridRef }) => {
   const products = [
     {
       image: "/softmaterial.svg",
@@ -133,4 +129,4 @@ export const Grid: React.FC<GridProps> = ({ gridRef }) => {
       })}
     </div>
   );
-};
+});

@@ -1,3 +1,4 @@
+import React from "react";
 import { Container } from "./style";
 import { BiChevronDown, MdOutlineArrowRightAlt } from "@src/assets/icon";
 import Link from "next/link";
@@ -7,7 +8,7 @@ import { IMAGES } from "@src/components/data/images";
 import { useInView } from "react-intersection-observer";
 import Typed from "typed.js";
 
-export const SectionTwo = () => {
+export const SectionTwo = React.memo(() => {
   const accordionData = [
     {
       header: "We Believe In Fun",
@@ -119,8 +120,7 @@ export const SectionTwo = () => {
                 width="700"
                 height="900"
                 objectFit="cover"
-                priority
-                quality={45}
+                quality={25}
               />
             </div>
           </div>
@@ -128,4 +128,4 @@ export const SectionTwo = () => {
       </div>
     </Container>
   );
-};
+});

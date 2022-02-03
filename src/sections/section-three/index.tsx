@@ -1,26 +1,11 @@
+import React from "react";
 import { Container } from "./style";
 import { Button } from "@components/button";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
+import { products } from "./data";
 
-export const SectionThree = () => {
-  const products = [
-    {
-      src: "https://res.cloudinary.com/ajulibe/image/upload/v1639225066/fashion-site/alesia-kazantceva-dhD_FiNkuzw-unsplash_d0gswj-compressed_orwcbc.jpg",
-      name: "Flower Tshirt",
-      price: "$40.0"
-    },
-    {
-      src: "https://res.cloudinary.com/ajulibe/image/upload/v1639225066/fashion-site/alesia-kazantceva-dhD_FiNkuzw-unsplash_d0gswj-compressed_orwcbc.jpg",
-      name: "Bodysuit Lace",
-      price: "$40.0"
-    },
-    {
-      src: "https://res.cloudinary.com/ajulibe/image/upload/v1639225066/fashion-site/alesia-kazantceva-dhD_FiNkuzw-unsplash_d0gswj-compressed_orwcbc.jpg",
-      name: "City Baggies",
-      price: "$40.0"
-    }
-  ];
+export const SectionThree = React.memo(() => {
   const { ref: titleRef, inView } = useInView({
     threshold: 0.5
   });
@@ -68,4 +53,4 @@ export const SectionThree = () => {
       </div>
     </Container>
   );
-};
+});

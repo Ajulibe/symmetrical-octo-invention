@@ -45,6 +45,7 @@ export const Container = styled.main<Props>`
 
       div {
         opacity: 0;
+        will-change: opacity, transform;
         ${({ inView }) =>
           inView &&
           css`
@@ -56,6 +57,7 @@ export const Container = styled.main<Props>`
         content: "";
         height: 1px;
         background: ${({ theme }) => theme.colors.white};
+        will-change: opacity, width;
         ${({ inView }) =>
           inView &&
           css`
@@ -71,7 +73,7 @@ export const Container = styled.main<Props>`
       color: ${({ theme }) => theme.colors.white};
       position: relative;
       left: -113px;
-      animation: ${BgColorfadeIn} 1s ease-in 2s forwards;
+      /* animation: ${BgColorfadeIn} 1s ease-in 2s forwards; */
 
       & > div:not(:first-child) {
         font-family: ${FONTS.raleway};
@@ -94,9 +96,9 @@ export const Container = styled.main<Props>`
           justify-content: flex-start;
           align-items: center;
           overflow: hidden;
-
           &:first-child {
             p:first-child {
+              will-change: opacity, transform;
               animation: ${moveInfadeIn} 0.5s cubic-bezier(0.65, 0, 0.35, 1);
             }
           }
@@ -104,6 +106,7 @@ export const Container = styled.main<Props>`
           &:last-child {
             margin-top: 10px;
             p:last-child {
+              will-change: opacity, transform;
               animation: ${moveInfadeIn} 0.9s cubic-bezier(0.65, 0, 0.35, 1);
             }
           }
@@ -121,7 +124,7 @@ export const Container = styled.main<Props>`
         background: linear-gradient(to right, #ff3dae, hsl(204 100% 59%));
         background-clip: text;
         -webkit-text-fill-color: transparent;
-        animation: ${blink} 10s 10s ease-in infinite; //removed due to performance */
+        animation: ${blink} 10s 10s ease-in infinite; //removed to performance */
         //limitations.
         opacity: 0.04;
       }
@@ -135,6 +138,7 @@ export const Container = styled.main<Props>`
         align-items: center;
         margin-right: 19.23px;
         color: ${({ theme }) => theme.colors.white};
+        will-change: opacity, background, background-clip;
         animation: ${fadeIn} 1.4s ease-in;
       }
     }
@@ -146,6 +150,7 @@ export const Container = styled.main<Props>`
       color: ${({ theme }) => theme.colors.white};
       font-family: ${FONTS.raleway};
       padding-top: 20px;
+      will-change: opacity, background, background-clip;
       animation: ${fadeIn} 0.9s ease-in 0.3s forwards;
       opacity: 0;
 

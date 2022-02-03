@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-export const FooterLinks = () => {
+export const FooterLinks = React.memo(() => {
   interface ILinks {
     src: string;
     alt: string;
@@ -35,7 +35,7 @@ export const FooterLinks = () => {
             <div key={item.alt}>
               <Link href="/">
                 <a>
-                  <Image src={item.src} alt={item.alt} width={42} height={42} priority />
+                  <Image src={item.src} alt={item.alt} width={42} height={42} />
                 </a>
               </Link>
             </div>
@@ -47,4 +47,4 @@ export const FooterLinks = () => {
       </div>
     </div>
   );
-};
+});

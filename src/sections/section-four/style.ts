@@ -7,7 +7,6 @@ import { moveInfadeIn, fadeIn, Expand, moveInRightfadeIn } from "@src/animations
 interface Props {
   bgColor?: string;
   inView?: boolean;
-  gridInView?: boolean;
 }
 
 export const Container = styled.div<Props>`
@@ -21,16 +20,16 @@ export const Container = styled.div<Props>`
     position: relative;
     width: 689px;
     height: 851px;
-    background: ${({ theme }) => theme.colors.darkGrey};
+    background: ${({ theme }) => theme.colors.transparent};
     z-index: 3;
     overflow: hidden;
     img {
       opacity: 0;
       z-index: 5 !important;
-      ${({ gridInView }) =>
-        gridInView &&
+      ${({ inView }) =>
+        inView &&
         css`
-          animation: ${moveInRightfadeIn} 0.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+          animation: ${moveInRightfadeIn} 0.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
         `};
     }
 
@@ -60,10 +59,15 @@ export const Container = styled.div<Props>`
     content: "";
     width: 689px;
     height: 851px;
-    background: ${({ theme }) => theme.colors.darkGrey};
+    background: ${({ theme }) => theme.colors.black};
+    border: 1px solid ${({ theme }) => theme.colors.darkGrey};
+    background-image: linear-gradient(to top right, #23d5ab, #ee7752);
+    background-position: top left;
     position: absolute;
     bottom: 0;
     left: -20px;
+    margin: 0 auto;
+    background: ${({ theme }) => theme.colors.transparent};
   }
 
   .section {
@@ -133,8 +137,8 @@ export const Container = styled.div<Props>`
       background-color: transparent;
       transition: all 2s cubic-bezier(0.22, 1, 0.36, 1);
       opacity: 0;
-      ${({ gridInView }) =>
-        gridInView &&
+      ${({ inView }) =>
+        inView &&
         css`
           background-color: ${({ theme }) => theme.colors.black};
           opacity: 1;
@@ -149,8 +153,8 @@ export const Container = styled.div<Props>`
       transition: all 0.3s ease-in;
       filter: blur(40);
       transform-origin: top left;
-      ${({ gridInView }) =>
-        gridInView &&
+      ${({ inView }) =>
+        inView &&
         css`
           animation: ${Expand} 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         `};
@@ -159,8 +163,8 @@ export const Container = styled.div<Props>`
         .anim {
           opacity: 0;
           height: 23px;
-          ${({ gridInView }) =>
-            gridInView &&
+          ${({ inView }) =>
+            inView &&
             css`
               animation: ${moveInfadeIn} 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
             `};
@@ -171,8 +175,8 @@ export const Container = styled.div<Props>`
         overflow: hidden;
         div {
           opacity: 0;
-          ${({ gridInView }) =>
-            gridInView &&
+          ${({ inView }) =>
+            inView &&
             css`
               animation: ${moveInfadeIn} 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
             `};
@@ -253,8 +257,8 @@ export const Container = styled.div<Props>`
         overflow: hidden;
         transition: all 1s ease-in-out;
 
-        ${({ gridInView }) =>
-          gridInView &&
+        ${({ inView }) =>
+          inView &&
           css`
             animation: ${fadeIn} 1s cubic-bezier(0.65, 0, 0.35, 1) forwards 0.4s;
           `};
