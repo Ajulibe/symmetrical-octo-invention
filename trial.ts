@@ -1,5 +1,3 @@
-import { MdFollowTheSigns } from "react-icons/md";
-
 export const APP_VERSION = "v1.0.0";
 // https://www.geeksforgeeks.org/apt-get-command-in-linux-with-examples/ --understand linux commands
 

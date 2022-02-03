@@ -1,6 +1,6 @@
 /* eslint-disable indent */
 /* eslint-disable @typescript-eslint/indent */
-import styled, { keyframes, css } from "styled-components";
+import styled, { css } from "styled-components";
 import { animationUtils, moveInfadeIn } from "@src/animations";
 
 interface Props {
@@ -8,23 +8,6 @@ interface Props {
   loop?: boolean;
   startAnim: boolean;
 }
-
-const clipCirclePath = keyframes`
-0%{
-  clip-path: circle(2% at 85% 32%);
-  opacity: 0
-}
-25% {
-  clip-path: circle(130% at 90% 32%);
-  opacity: 1
-}
-50%{
-  opacity: 1
-}
-100% {
-  opacity: 0
-}
-`;
 
 export const Greybackgroud = styled.main<Props>`
   height: 69.6rem;

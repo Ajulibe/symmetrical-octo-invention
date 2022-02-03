@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 import dynamic from "next/dynamic";
 import { CompanyCarouselProps, GridProps } from "./components";
-import { CarouselContent } from "@src/assets/images";
 
 const BetterClothing = dynamic<Record<string, never>>(
   () => import("./components").then((mod) => mod.BetterClothing),

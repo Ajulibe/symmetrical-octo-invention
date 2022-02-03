@@ -8,10 +8,10 @@ import debounce from "lodash/debounce";
 import { CmpFourProps } from "@src/sections/section-four";
 import { FooterProps } from "@src/sections/footer";
 
-//Dynamic Imports
-// const Pads = dynamic(() => import("@components/pads"), {
-//   ssr: false
-// });
+// Dynamic Imports
+const Pads = dynamic(() => import("@components/pads"), {
+  ssr: false
+});
 const Header = dynamic<Record<string, never>>(
   () => import("@src/sections/header").then((mod) => mod.Header),
   {
@@ -63,7 +63,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     setTimeout(() => {
       setShowElements("block");
-    }, 2700);
+    }, 5000);
   });
 
   const extraCursor = debounce(function () {
@@ -113,11 +113,11 @@ const Home: NextPage = () => {
         <meta name="description" content="Fashion Themed" />
       </Head>
 
-      {/* <div ref={hoverBg} className="mouseBg" style={{ display: showElements }}></div> */}
+      <div ref={hoverBg} className="mouseBg" style={{ display: showElements }}></div>
 
-      {/* <div className="greenBg" style={{ display: showElements }}></div> */}
+      <div className="greenBg" style={{ display: showElements }}></div>
 
-      {/* <Pads /> */}
+      <Pads />
 
       <div className="cursor" ref={cursor}></div>
 
