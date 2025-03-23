@@ -1,0 +1,37 @@
+version: 2.1
+orbs:
+  aws-s3: circleci/aws-s3@1.0.11
+jobs: # Define the build and deploy jobs
+  build:
+    docker: # Use the Docker executor for the build job
+      - image: circleci/node:16.13.1-browsers # Specify the Docker image to use for the build job
+    working_directory: ~/repo
+    steps:
+      - checkout #checks out the current branch to be worked on.
+      - run:
+          name: Show current branch
+          command: echo ${CURRENT_BRANCH}
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to the line below using the latest cache if no exact match is found
+            - v1-dependencies-
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+            - ~/.npm
+            - ~/.cache
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run: yarn test
+
+      - run: yarn deploy
+
+      - aws-s3/sync:
+          from: out
+          to: "s3://fashion-themed"
+          arguments: | # Optional arguments
+            --acl public-read \
+            --cache-control "max-age=86400"
+          overwrite: true # default is false

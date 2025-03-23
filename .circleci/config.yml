@@ -1,0 +1,149 @@
+version: 2.1
+executors:
+  app-executor:
+    docker: # Use the Docker executor for the build job
+      - image: circleci/node:16.13.1-browsers # Specify the Docker image to use for the build job
+    working_directory: ~/repo
+  docker-publisher:
+    environment:
+      IMAGE_NAME: ajulibe/fashion-themed
+    docker:
+      - image: circleci/buildpack-deps:stretch
+
+aliases:
+  - &show-current-branch-name
+    run:
+      name: Show current branch
+      command: echo ${CIRCLE_BRANCH}
+  - &restore-cache
+    restore_cache:
+      keys:
+        - v1-dependencies-{{ checksum "package.json" }}
+        # fallback to the line below using the latest cache if no exact match is found
+        - v1-dependencies-
+  - &install-dependencies
+    run:
+      name: install dependencies
+      command: yarn install
+  - &save-cache
+    save_cache:
+      paths:
+        - node_modules
+      key: v1-dependencies-{{ checksum "package.json" }}
+  - &install-aws-cli
+    run:
+      name: Installing AWS CLI
+      working_directory: /
+      command: |
+        sudo apt-get -y -qq update 
+        sudo apt-get install -y awscli
+        sudo apt-get install -y python-pip python-dev build-essential
+  - &build-project
+    run:
+      name: Build Project
+      command: | #piping because we are running multiple commands
+        yarn install
+        yarn run test
+        yarn build
+        yarn export
+        echo "Build successful"
+
+orbs:
+  aws-s3: circleci/aws-s3@1.0.11
+jobs: # Define the build and deploy jobs
+  build:
+    executor: app-executor
+    steps:
+      - checkout #checks out the current branch to be worked on.
+      - *show-current-branch-name
+      - *restore-cache
+      - *install-dependencies
+      - *save-cache
+
+  publish-to-docker-hub:
+    executor: docker-publisher
+    steps:
+      - checkout
+      - setup_remote_docker
+      - *restore-cache
+      - run: docker login -u "${DOCKER_HUB_USER}" -p "${DOCKER_HUB_PASSWORD}"
+      - run: docker build -t ${IMAGE_NAME}:latest .
+      - run:
+          name: Tag and push to docker hub
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "main" ]
+            then
+              docker tag ${IMAGE_NAME}:latest ${IMAGE_NAME}:dev-${CIRCLE_BUILD_NUM} && docker push ${IMAGE_NAME}:dev-${CIRCLE_BUILD_NUM}
+            elif [ "${CIRCLE_BRANCH}" == "staging" ]
+            then
+              docker tag ${IMAGE_NAME}:latest ${IMAGE_NAME}:staging-${CIRCLE_BUILD_NUM} && docker push ${IMAGE_NAME}:staging-${CIRCLE_BUILD_NUM}
+            else
+              docker tag ${IMAGE_NAME}:latest ${IMAGE_NAME}:prod-${CIRCLE_BUILD_NUM} && docker push ${IMAGE_NAME}:prod-${CIRCLE_BUILD_NUM}
+            fi
+
+  deploy-to-aws-s3:
+    executor: app-executor
+    steps:
+      - checkout #checks out the current branch to be worked on.
+      - *show-current-branch-name
+      - *install-aws-cli
+      - *build-project
+      - run:
+          name: Deploy to AWS S3
+          command: | #checking what the current branch is for deployment
+            if [ "${CIRCLE_BRANCH}" == "main" ]
+            then  
+              aws --region ${AWS_REGION} s3 sync ~/repo/out s3://${AWS_DEV_BUCKET} --delete
+            elif [ "${CIRCLE_BRANCH}" == "staging" ]   
+            then
+              aws --region ${AWS_REGION} s3 sync ~/repo/out s3://${AWS_STAGING_BUCKET} --delete
+            else
+              aws --region ${AWS_REGION} s3 sync ~/repo/out s3://${AWS_PRODUCTION_BUCKET} --delete
+            fi
+
+  deploy-to-aws-cloudfront:
+    executor: app-executor
+    steps:
+      - checkout #checks out the current branch to be worked on.
+      - *show-current-branch-name
+      - *install-aws-cli
+      - *build-project
+      - run:
+          name: Deploy to AWS Cloudfront
+          command: | #checking what the current branch is for deployment
+            aws configure set preview.cloudfront true
+            if [ "${CIRCLE_BRANCH}" == "main" ]
+            then  
+              aws cloudfront create-invalidation --distribution-id ${DEV_DISTRIBUTION_ID} --paths /\*
+            elif [ "${CIRCLE_BRANCH}" == "staging" ]   
+            then
+              aws cloudfront create-invalidation --distribution-id ${STAGING_DISTRIBUTION_ID} --paths /\*
+            else
+              aws cloudfront create-invalidation --distribution-id ${PRODUCTION_DISTRIBUTION_ID} --paths /\*
+            fi
+
+workflows:
+  build_and_deploy: # name of your workflow
+    jobs:
+      - build
+      - publish-to-docker-hub:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - main
+      - deploy-to-aws-s3:
+          requires:
+            - publish-to-docker-hub
+          filters: #specify wich branch that action is to be carried out on
+            branches:
+              only:
+                - main
+      - deploy-to-aws-cloudfront:
+          requires:
+            - deploy-to-aws-s3
+          filters: #specify wich branch that action is to be carried out on
+            branches:
+              only:
+                - main

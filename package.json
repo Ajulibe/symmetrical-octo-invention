@@ -1,0 +1,76 @@
+{
+  "name": "fashion-themed",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port=3002",
+    "build": "next build",
+    "start": "next start",
+    "check-types": "tsc --pretty --noEmit",
+    "check-format": "prettier --check .",
+    "check-lint": "eslint . --ext ts --ext tsx --ext js",
+    "format": "prettier --write .",
+    "test-all": "yarn format && yarn check-format && yarn check-lint && yarn check-types && yarn build",
+    "prepare": "husky install",
+    "export": "next export",
+    "analyze": "cross-env ANALYZE=true next build",
+    "deploy": "next build && next export && aws s3 sync out s3://fashion-themed",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@next/bundle-analyzer": "^12.0.7",
+    "@next/eslint-plugin-next": "^12.0.3",
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@types/animejs": "^3.1.4",
+    "@types/lodash": "^4.14.177",
+    "@types/styled-components": "^5.1.15",
+    "animejs": "^3.2.1",
+    "cross-env": "^7.0.3",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "framer-motion": "^5.3.3",
+    "lottie-react": "^2.1.0",
+    "next": "12.0.3",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-icons": "^4.3.1",
+    "react-intersection-observer": "^8.32.3",
+    "styled-components": "^5.3.3",
+    "typed.js": "^2.0.12"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^8.11.1",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.4.0",
+    "@types/node": "16.11.7",
+    "@types/react": "17.0.34",
+    "@typescript-eslint/eslint-plugin": "^5.3.1",
+    "@typescript-eslint/parser": "^5.3.1",
+    "babel-jest": "^27.4.5",
+    "eslint": "7",
+    "eslint-config-next": "12.0.3",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-react": "^1.1.7",
+    "husky": "^7.0.4",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.4.5",
+    "jest-css-modules": "^2.1.0",
+    "jest-dom": "^4.0.0",
+    "lint-staged": "^12.1.2",
+    "node-mocks-http": "^1.11.0",
+    "prettier": "^2.4.1",
+    "ts-jest": "^27.1.2",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.4.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  }
+}
