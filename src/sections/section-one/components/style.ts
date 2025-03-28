@@ -1,7 +1,7 @@
+import { animationUtils, moveInfadeIn } from "@src/animations";
 /* eslint-disable indent */
 /* eslint-disable @typescript-eslint/indent */
 import styled, { css } from "styled-components";
-import { animationUtils, moveInfadeIn } from "@src/animations";
 
 interface Props {
   bgColor?: string;
