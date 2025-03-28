@@ -240,18 +240,18 @@ export const Container = styled.main<Props>`
     .main {
       padding-top: 12rem;
       padding-bottom: 12rem;
-      
+
       &__heading {
         font-size: 5rem;
         line-height: 6.5rem;
       }
-      
+
       &__description {
         font-size: 1.6rem;
         line-height: 2.6rem;
         max-width: 90%;
       }
-      
+
       &__pic-box {
         width: 90%;
         height: auto;
@@ -259,39 +259,39 @@ export const Container = styled.main<Props>`
       }
     }
   }
-  
+
   @media only screen and (max-width: 768px) {
     .main {
       padding-top: 8rem;
       padding-bottom: 8rem;
-      
+
       &__heading {
         font-size: 4rem;
         line-height: 5.2rem;
       }
-      
+
       &__description {
         font-size: 1.4rem;
         line-height: 2.4rem;
       }
-      
+
       &__pic-box {
         width: 100%;
         margin-top: 4rem;
       }
     }
   }
-  
+
   @media only screen and (max-width: 480px) {
     .main {
       padding-top: 6rem;
       padding-bottom: 6rem;
-      
+
       &__heading {
         font-size: 3.2rem;
         line-height: 4.2rem;
       }
-      
+
       &__description {
         font-size: 1.3rem;
         line-height: 2.2rem;

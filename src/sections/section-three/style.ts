@@ -164,28 +164,28 @@ export const Container = styled.main<Props>`
       padding: 10.1rem 6rem 9.1rem 6rem;
     }
   }
-  
+
   @media only screen and (max-width: 1024px) {
     .main {
       padding: 8rem 4rem;
-      
+
       .section {
         font-size: 1.8rem;
         line-height: 2.4rem;
-        
+
         &__name {
           font-size: 5rem;
           line-height: 6.5rem;
           margin-bottom: 6rem;
         }
-        
+
         &__products {
           flex-direction: column;
           align-items: center;
-          
+
           .card {
             margin-bottom: 4rem;
-            
+
             &:last-child {
               margin-bottom: 0;
             }
@@ -194,21 +194,21 @@ export const Container = styled.main<Props>`
       }
     }
   }
-  
+
   @media only screen and (max-width: 768px) {
     .main {
       padding: 6rem 2.5rem;
-      
+
       .section {
         font-size: 1.6rem;
         line-height: 2.2rem;
-        
+
         &__name {
           font-size: 4rem;
           line-height: 5.2rem;
           margin-bottom: 5rem;
         }
-        
+
         &__products {
           .card {
             width: 100%;
@@ -218,15 +218,15 @@ export const Container = styled.main<Props>`
       }
     }
   }
-  
+
   @media only screen and (max-width: 480px) {
     .main {
       padding: 5rem 2rem;
-      
+
       .section {
         font-size: 1.4rem;
         line-height: 2rem;
-        
+
         &__name {
           font-size: 3.2rem;
           line-height: 4.2rem;

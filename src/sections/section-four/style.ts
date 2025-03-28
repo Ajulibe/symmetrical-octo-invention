@@ -317,41 +317,41 @@ export const Container = styled.div<Props>`
 
   @media only screen and (max-width: 1440px) {
     padding: 12rem 6rem;
-    
+
     .canvas__wrapper {
       width: 50%;
     }
-    
+
     .black__canvas {
       width: 100%;
       height: auto;
     }
-    
+
     .content__wrapper {
       width: 50%;
     }
   }
-  
+
   @media only screen and (max-width: 1024px) {
     padding: 10rem 4rem;
-    
+
     .main {
       flex-direction: column;
     }
-    
+
     .canvas__wrapper {
       width: 100%;
       margin-bottom: 5rem;
     }
-    
+
     .content__wrapper {
       width: 100%;
-      
+
       &__heading {
         font-size: 5rem;
         line-height: 6.5rem;
       }
-      
+
       &__paragraph {
         font-size: 1.6rem;
         line-height: 2.8rem;
@@ -359,32 +359,32 @@ export const Container = styled.div<Props>`
       }
     }
   }
-  
+
   @media only screen and (max-width: 768px) {
     padding: 8rem 2.5rem;
-    
+
     .content__wrapper {
       &__heading {
         font-size: 4rem;
         line-height: 5.2rem;
       }
-      
+
       &__paragraph {
         font-size: 1.4rem;
         line-height: 2.4rem;
       }
     }
   }
-  
+
   @media only screen and (max-width: 480px) {
     padding: 6rem 2rem;
-    
+
     .content__wrapper {
       &__heading {
         font-size: 3.2rem;
         line-height: 4.2rem;
       }
-      
+
       &__paragraph {
         font-size: 1.3rem;
         line-height: 2.2rem;
