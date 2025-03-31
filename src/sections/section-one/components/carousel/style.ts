@@ -55,8 +55,12 @@ export const Wrapper = styled.main<Props>`
     }
 
     @media only screen and (max-width: 480px) {
-      margin-left: 10px;
+      margin-left: 1px;
       width: 50rem;
+    }
+
+    @media only screen and (max-width: 350px) {
+      margin-left: 3px;
     }
 
     &__bg-dark {

@@ -128,7 +128,7 @@ const Home: NextPage = () => {
         <SectionTwo />
         <SectionThree />
         <SectionFour setShowFooter={setShowFooter} />
-        <Footer showFooter={showFooter} />
+        {/* <Footer showFooter={showFooter} /> */}
       </Layout>
     </div>
   );

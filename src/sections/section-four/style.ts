@@ -13,8 +13,30 @@ interface Props {
 export const Container = styled.div<Props>`
   padding: 15rem 12rem 15rem 14rem;
   background: transparent;
+  border: 2px solid green;
+
+  @media only screen and (max-width: 1378px) {
+    padding: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .main {
     display: flex;
+    border: 4px solid blue;
+
+    @media only screen and (max-width: 1378px) {
+      justify-content: center;
+    }
+
+    @media only screen and (max-width: 982px) {
+      flex-direction: column;
+      overflow-x: hidden;
+      width: 100%;
+      padding: 0 5rem 0 5rem;
+      align-items: center;
+    }
   }
 
   .black__canvas {
@@ -46,6 +68,18 @@ export const Container = styled.div<Props>`
       background-position: 50% 50%;
       z-index: 4;
     }
+
+    @media only screen and (max-width: 530px) {
+      height: 600px;
+      img {
+        opacity: 1;
+        ${({ inView }) =>
+          inView &&
+          css`
+            animation: unset;
+          `};
+      }
+    }
   }
 
   .canvas__wrapper {
@@ -54,6 +88,23 @@ export const Container = styled.div<Props>`
     display: flex;
     justify-content: flex-end;
     position: relative;
+
+    @media only screen and (max-width: 1378px) {
+      width: 500px;
+      height: unset;
+    }
+
+    @media only screen and (max-width: 982px) {
+      height: 871px;
+      margin-bottom: 40px;
+    }
+
+    @media only screen and (max-width: 530px) {
+      width: 100%;
+      height: 600px;
+      margin-bottom: 40px;
+      overflow-y: hidden;
+    }
   }
 
   .canvas__wrapper::before {
@@ -69,15 +120,32 @@ export const Container = styled.div<Props>`
     left: -20px;
     margin: 0 auto;
     background: ${({ theme }) => theme.colors.transparent};
+
+    @media only screen and (max-width: 530px) {
+      height: 600px;
+      width: 100%;
+      border: 2px solid blue;
+    }
   }
 
   .section {
     display: flex;
     flex-direction: column;
     padding-left: 5.2rem;
+    border: 2px solid red;
+
+    @media only screen and (max-width: 1378px) {
+      width: 40%;
+    }
+
+    @media only screen and (max-width: 982px) {
+      width: unset;
+      padding-left: unset;
+    }
 
     .wrapper {
       overflow: hidden;
+      border: 20px solid blue;
     }
 
     &__name {
@@ -127,6 +195,7 @@ export const Container = styled.div<Props>`
     }
 
     &__grid {
+      border: 20px solid red;
       display: grid;
       grid-template-columns: 231px 231px;
       grid-column-gap: 5px;
@@ -144,6 +213,16 @@ export const Container = styled.div<Props>`
           background-color: ${({ theme }) => theme.colors.black};
           opacity: 1;
         `};
+
+      @media only screen and (max-width: 982px) {
+        left: unset;
+      }
+
+      @media only screen and (max-width: 530px) {
+        grid-template-columns: 340px;
+        border: 2px solid red;
+        grid-column-gap: unset;
+      }
     }
 
     .grid {
@@ -312,82 +391,9 @@ export const Container = styled.div<Props>`
           color: ${({ theme }) => theme.colors.white};
         }
       }
-    }
-  }
 
-  @media only screen and (max-width: 1440px) {
-    padding: 12rem 6rem;
-
-    .canvas__wrapper {
-      width: 50%;
-    }
-
-    .black__canvas {
-      width: 100%;
-      height: auto;
-    }
-
-    .content__wrapper {
-      width: 50%;
-    }
-  }
-
-  @media only screen and (max-width: 1024px) {
-    padding: 10rem 4rem;
-
-    .main {
-      flex-direction: column;
-    }
-
-    .canvas__wrapper {
-      width: 100%;
-      margin-bottom: 5rem;
-    }
-
-    .content__wrapper {
-      width: 100%;
-
-      &__heading {
-        font-size: 5rem;
-        line-height: 6.5rem;
-      }
-
-      &__paragraph {
-        font-size: 1.6rem;
-        line-height: 2.8rem;
-        max-width: 100%;
-      }
-    }
-  }
-
-  @media only screen and (max-width: 768px) {
-    padding: 8rem 2.5rem;
-
-    .content__wrapper {
-      &__heading {
-        font-size: 4rem;
-        line-height: 5.2rem;
-      }
-
-      &__paragraph {
-        font-size: 1.4rem;
-        line-height: 2.4rem;
-      }
-    }
-  }
-
-  @media only screen and (max-width: 480px) {
-    padding: 6rem 2rem;
-
-    .content__wrapper {
-      &__heading {
-        font-size: 3.2rem;
-        line-height: 4.2rem;
-      }
-
-      &__paragraph {
-        font-size: 1.3rem;
-        line-height: 2.2rem;
+      @media only screen and (max-width: 530px) {
+        /* width: 100%; */
       }
     }
   }

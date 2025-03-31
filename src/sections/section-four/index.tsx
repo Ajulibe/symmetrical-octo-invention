@@ -1,9 +1,11 @@
-import { Container } from "./style";
-import React from "react";
-import Image from "next/image";
-import { useInView } from "react-intersection-observer";
-import dynamic from "next/dynamic";
 import { CompanyCarouselProps, GridProps } from "./components";
+
+import { Container } from "./style";
+import Image from "next/image";
+import React from "react";
+import dynamic from "next/dynamic";
+import { useInView } from "react-intersection-observer";
+import useScreenWidth from "@src/hooks/useScreenWidth";
 
 const BetterClothing = dynamic<Record<string, never>>(
   () => import("./components").then((mod) => mod.BetterClothing),
@@ -28,8 +30,13 @@ export interface CmpFourProps {
 }
 
 export const SectionFour: React.FC<CmpFourProps> = React.memo(({ setShowFooter }) => {
+  const screenWidth = useScreenWidth();
+
+  const dynamicThreshold = screenWidth <= 530 ? 0 : 0;
+  console.log(screenWidth, "screenWidth");
+
   const { ref: titleRef, inView } = useInView({
-    threshold: 0
+    threshold: dynamicThreshold
   });
 
   return (
@@ -48,7 +55,7 @@ export const SectionFour: React.FC<CmpFourProps> = React.memo(({ setShowFooter }
           </div>
         </div>
         <div className="section">
-          <div className="wrapper" ref={titleRef}>
+          <div className="wrapper">
             <div className="section__name">
               <div>FEATURES</div>
             </div>
@@ -64,8 +71,8 @@ export const SectionFour: React.FC<CmpFourProps> = React.memo(({ setShowFooter }
           <Grid gridRef={titleRef} />
         </div>
       </div>
-      <BetterClothing />
-      <CompanyCarousel setShowFooter={setShowFooter} />
+      {/* <BetterClothing /> */}
+      {/* <CompanyCarousel setShowFooter={setShowFooter} /> */}
     </Container>
   );
 });
