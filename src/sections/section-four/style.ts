@@ -13,7 +13,6 @@ interface Props {
 export const Container = styled.div<Props>`
   padding: 15rem 12rem 15rem 14rem;
   background: transparent;
-  border: 2px solid green;
 
   @media only screen and (max-width: 1378px) {
     padding: unset;
@@ -24,7 +23,6 @@ export const Container = styled.div<Props>`
 
   .main {
     display: flex;
-    border: 4px solid blue;
 
     @media only screen and (max-width: 1378px) {
       justify-content: center;
@@ -34,7 +32,7 @@ export const Container = styled.div<Props>`
       flex-direction: column;
       overflow-x: hidden;
       width: 100%;
-      padding: 0 5rem 0 5rem;
+      /* padding: 0 5% 0 5%; */
       align-items: center;
     }
   }
@@ -46,6 +44,7 @@ export const Container = styled.div<Props>`
     background: ${({ theme }) => theme.colors.transparent};
     z-index: 3;
     overflow: hidden;
+
     img {
       opacity: 0;
       z-index: 5 !important;
@@ -70,14 +69,18 @@ export const Container = styled.div<Props>`
     }
 
     @media only screen and (max-width: 530px) {
-      height: 600px;
+      height: 452px;
       img {
         opacity: 1;
-        ${({ inView }) =>
+        /* ${({ inView }) =>
           inView &&
           css`
             animation: unset;
-          `};
+          `}; */
+      }
+
+      &::before {
+        height: 452px;
       }
     }
   }
@@ -101,7 +104,7 @@ export const Container = styled.div<Props>`
 
     @media only screen and (max-width: 530px) {
       width: 100%;
-      height: 600px;
+      height: 452px;
       margin-bottom: 40px;
       overflow-y: hidden;
     }
@@ -122,9 +125,9 @@ export const Container = styled.div<Props>`
     background: ${({ theme }) => theme.colors.transparent};
 
     @media only screen and (max-width: 530px) {
-      height: 600px;
+      height: 452px.8px;
       width: 100%;
-      border: 2px solid blue;
+      left: 0;
     }
   }
 
@@ -132,20 +135,21 @@ export const Container = styled.div<Props>`
     display: flex;
     flex-direction: column;
     padding-left: 5.2rem;
-    border: 2px solid red;
 
     @media only screen and (max-width: 1378px) {
       width: 40%;
     }
 
     @media only screen and (max-width: 982px) {
-      width: unset;
+      width: 100%;
       padding-left: unset;
     }
 
     .wrapper {
       overflow: hidden;
-      border: 20px solid blue;
+      @media only screen and (max-width: 982px) {
+        /* padding: 0 10px; */
+      }
     }
 
     &__name {
@@ -160,6 +164,11 @@ export const Container = styled.div<Props>`
           css`
             animation: ${moveInfadeIn} 0.4s cubic-bezier(0.65, 0, 0.35, 1);
           `};
+      }
+
+      @media only screen and (max-width: 982px) {
+        font-size: 14px;
+        line-height: 20px;
       }
     }
 
@@ -181,6 +190,12 @@ export const Container = styled.div<Props>`
       & + div {
         margin-bottom: 50px;
       }
+
+      @media only screen and (max-width: 982px) {
+        font-size: 35px;
+        line-height: 35px;
+        width: 100%;
+      }
     }
 
     &__heading.first {
@@ -195,7 +210,6 @@ export const Container = styled.div<Props>`
     }
 
     &__grid {
-      border: 20px solid red;
       display: grid;
       grid-template-columns: 231px 231px;
       grid-column-gap: 5px;
@@ -219,8 +233,7 @@ export const Container = styled.div<Props>`
       }
 
       @media only screen and (max-width: 530px) {
-        grid-template-columns: 340px;
-        border: 2px solid red;
+        grid-template-columns: 100%;
         grid-column-gap: unset;
       }
     }
@@ -393,7 +406,7 @@ export const Container = styled.div<Props>`
       }
 
       @media only screen and (max-width: 530px) {
-        /* width: 100%; */
+        width: 100%;
       }
     }
   }
