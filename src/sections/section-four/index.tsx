@@ -30,17 +30,12 @@ export interface CmpFourProps {
 }
 
 export const SectionFour: React.FC<CmpFourProps> = React.memo(({ setShowFooter }) => {
-  const screenWidth = useScreenWidth();
-
-  const dynamicThreshold = screenWidth <= 530 ? 0 : 0;
-  console.log(screenWidth, "screenWidth");
-
-  const { ref: titleRef, inView } = useInView({
-    threshold: dynamicThreshold
+  const { ref, inView } = useInView({
+    threshold: 0
   });
 
   return (
-    <Container inView={inView}>
+    <Container inView={inView} ref={ref}>
       <div className="main">
         <div className="canvas__wrapper">
           <div className="black__canvas">
@@ -60,19 +55,15 @@ export const SectionFour: React.FC<CmpFourProps> = React.memo(({ setShowFooter }
               <div>FEATURES</div>
             </div>
 
-            <div className="section__heading first">
-              <div>Our vision </div>
-            </div>
-
             <div className="section__heading">
-              <div>lives on there</div>
+              <div>Our vision lives on there</div>
             </div>
           </div>
-          <Grid gridRef={titleRef} />
+          <Grid />
         </div>
       </div>
-      {/* <BetterClothing /> */}
-      {/* <CompanyCarousel setShowFooter={setShowFooter} /> */}
+      <BetterClothing />
+      <CompanyCarousel setShowFooter={setShowFooter} />
     </Container>
   );
 });

@@ -1,6 +1,7 @@
-import { FONTS } from "@src/styles/fonts";
+import { animationUtils, borderAnim } from "@src/animations";
 import styled, { css } from "styled-components";
-import { borderAnim, animationUtils } from "@src/animations";
+
+import { FONTS } from "@src/styles/fonts";
 
 interface Props {
   bgColor?: string;
@@ -27,9 +28,24 @@ export const Container = styled.div<Props>`
     background-color: transparent;
     background: ${({ theme }) => theme.colors.black};
 
+    @media only screen and (max-width: 701px) {
+      font-size: 4rem;
+      padding: 20px;
+    }
+
+    @media only screen and (max-width: 400px) {
+      font-size: 3rem;
+      padding: 10px;
+    }
+
     button {
       width: 224px;
       height: 68px;
+
+      @media only screen and (max-width: 701px) {
+        width: 200px;
+        height: 50px;
+      }
     }
   }
 
@@ -50,6 +66,8 @@ export const ContainerCompanyCarousel = styled.div<Props>`
   margin-top: 40px;
   overflow: hidden;
   opacity: 0;
+  width: 100%;
+
   &::before,
   &::after {
     content: "";
@@ -67,11 +85,19 @@ export const ContainerCompanyCarousel = styled.div<Props>`
     `};
 
   .carousel {
-    margin-top: 4.9rem;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 70%;
     display: flex;
+    margin-bottom: 100px;
+
+    svg {
+      color: white;
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
   }
 `;
