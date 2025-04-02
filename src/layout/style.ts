@@ -27,17 +27,17 @@ export const Container = styled.main<Props>`
   &::-webkit-scrollbar {
     display: none;
   }
-  
+
   @media only screen and (max-width: 1440px) {
     width: 100%;
     max-width: 100%;
     padding: 0 4rem;
   }
-  
+
   @media only screen and (max-width: 768px) {
     padding: 0 2.5rem;
   }
-  
+
   @media only screen and (max-width: 480px) {
     padding: 0 2rem;
   }

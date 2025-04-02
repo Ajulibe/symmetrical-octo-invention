@@ -1,9 +1,11 @@
-import { Container } from "./style";
-import React from "react";
-import Image from "next/image";
-import { useInView } from "react-intersection-observer";
-import dynamic from "next/dynamic";
 import { CompanyCarouselProps, GridProps } from "./components";
+
+import { Container } from "./style";
+import Image from "next/image";
+import React from "react";
+import dynamic from "next/dynamic";
+import { useInView } from "react-intersection-observer";
+import useScreenWidth from "@src/hooks/useScreenWidth";
 
 const BetterClothing = dynamic<Record<string, never>>(
   () => import("./components").then((mod) => mod.BetterClothing),
@@ -28,12 +30,12 @@ export interface CmpFourProps {
 }
 
 export const SectionFour: React.FC<CmpFourProps> = React.memo(({ setShowFooter }) => {
-  const { ref: titleRef, inView } = useInView({
+  const { ref, inView } = useInView({
     threshold: 0
   });
 
   return (
-    <Container inView={inView}>
+    <Container inView={inView} ref={ref}>
       <div className="main">
         <div className="canvas__wrapper">
           <div className="black__canvas">
@@ -48,20 +50,16 @@ export const SectionFour: React.FC<CmpFourProps> = React.memo(({ setShowFooter }
           </div>
         </div>
         <div className="section">
-          <div className="wrapper" ref={titleRef}>
+          <div className="wrapper">
             <div className="section__name">
               <div>FEATURES</div>
             </div>
 
-            <div className="section__heading first">
-              <div>Our vision </div>
-            </div>
-
             <div className="section__heading">
-              <div>lives on there</div>
+              <div>Our vision lives on there</div>
             </div>
           </div>
-          <Grid gridRef={titleRef} />
+          <Grid />
         </div>
       </div>
       <BetterClothing />

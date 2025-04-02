@@ -88,7 +88,7 @@ export const Container = styled.nav<Props>`
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      
+
       a {
         font-size: 2.4rem;
         line-height: 3.2rem;
@@ -101,38 +101,38 @@ export const Container = styled.nav<Props>`
 
   @media only screen and (max-width: 1440px) {
     padding: 0 6rem;
-    
+
     .header {
       &__name {
         margin-right: 6rem;
       }
-      
+
       &__links {
         & > :not(:last-child) {
           margin-right: 4rem;
         }
-        
+
         & > :last-child {
           margin-right: 6rem;
         }
       }
     }
   }
-  
+
   @media only screen and (max-width: 1024px) {
     padding: 0 4rem;
-    
+
     .header {
       &__links {
         & > :not(:last-child) {
           margin-right: 3rem;
         }
-        
+
         & > :last-child {
           margin-right: 4rem;
         }
       }
-      
+
       &__social-icons {
         & > div:not(:last-child) {
           margin-right: 1.5rem;
@@ -140,25 +140,25 @@ export const Container = styled.nav<Props>`
       }
     }
   }
-  
+
   @media only screen and (max-width: 768px) {
     padding: 0 2.5rem;
-    
+
     .header {
       &__links {
         display: none;
       }
-      
+
       &__social-icons {
         & > div:not(:last-child):not(:last-child) {
           display: none;
         }
       }
-      
+
       &__mobile-menu-btn {
         display: flex;
       }
-      
+
       &__mobile-menu.active {
         display: flex;
       }
@@ -207,21 +207,21 @@ export const Switch = styled.div<ThemeProps>`
       border: 1px solid red;
     }
   }
-  
+
   @media only screen and (max-width: 768px) {
     width: 5.5rem;
     height: 3.2rem;
-    
+
     .switch__wrapper {
       width: 3rem;
       height: 3rem;
     }
   }
-  
+
   @media only screen and (max-width: 480px) {
     width: 4.5rem;
     height: 2.8rem;
-    
+
     .switch__wrapper {
       width: 2.5rem;
       height: 2.5rem;

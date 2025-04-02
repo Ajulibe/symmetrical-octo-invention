@@ -175,11 +175,11 @@ export const Main = styled.div<Props>`
       padding: 10.1rem 6rem 12.5rem 6rem;
     }
   }
-  
+
   @media only screen and (max-width: 1024px) {
     .main {
       padding: 8rem 4rem 10rem 4rem;
-      
+
       .section__two {
         &-links {
           margin-right: 4rem;
@@ -187,39 +187,39 @@ export const Main = styled.div<Props>`
       }
     }
   }
-  
+
   @media only screen and (max-width: 768px) {
     .main {
       padding: 6rem 2.5rem 8rem 2.5rem;
       flex-direction: column;
-      
+
       &__content {
         margin-bottom: 5rem;
       }
-      
+
       .section__one {
         margin-bottom: 4rem;
       }
-      
+
       .section__two {
         display: flex;
         justify-content: space-between;
         width: 100%;
-        
+
         &-links {
           margin-right: 0;
         }
       }
     }
   }
-  
+
   @media only screen and (max-width: 480px) {
     .main {
       padding: 5rem 2rem 6rem 2rem;
-      
+
       .section__two {
         flex-direction: column;
-        
+
         &-links:not(:last-child) {
           margin-bottom: 3rem;
         }

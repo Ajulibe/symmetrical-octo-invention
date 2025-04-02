@@ -1,12 +1,13 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import styles from "@styles/Home.module.css";
-import Layout from "@src/layout";
 import { useEffect, useRef, useState } from "react";
-import dynamic from "next/dynamic";
-import debounce from "lodash/debounce";
+
 import { CmpFourProps } from "@src/sections/section-four";
 import { FooterProps } from "@src/sections/footer";
+import Head from "next/head";
+import Layout from "@src/layout";
+import type { NextPage } from "next";
+import debounce from "lodash/debounce";
+import dynamic from "next/dynamic";
+import styles from "@styles/Home.module.css";
 
 // Dynamic Imports
 const Pads = dynamic(() => import("@components/pads"), {
@@ -127,7 +128,7 @@ const Home: NextPage = () => {
         <SectionTwo />
         <SectionThree />
         <SectionFour setShowFooter={setShowFooter} />
-        <Footer showFooter={showFooter} />
+        {/* <Footer showFooter={showFooter} /> */}
       </Layout>
     </div>
   );

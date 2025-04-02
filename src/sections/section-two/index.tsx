@@ -1,12 +1,13 @@
-import React from "react";
-import { Container } from "./style";
 import { BiChevronDown, MdOutlineArrowRightAlt } from "@src/assets/icon";
-import Link from "next/link";
-import Image from "next/image";
-import { useRef, useEffect } from "react";
+import { useEffect, useRef } from "react";
+
+import { Container } from "./style";
 import { IMAGES } from "@src/components/data/images";
-import { useInView } from "react-intersection-observer";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 import Typed from "typed.js";
+import { useInView } from "react-intersection-observer";
 
 export const SectionTwo = React.memo(() => {
   const accordionData = [

@@ -19,6 +19,8 @@ export const Container = styled.main<Props>`
     flex-direction: column;
     padding: 10.1rem 14rem 9.1rem 14rem;
     text-align: center;
+    align-items: center;
+
     .section {
       font-family: ${FONTS.didactic};
       font-size: 20px;
@@ -55,6 +57,8 @@ export const Container = styled.main<Props>`
 
     .cards__wrapper {
       display: flex;
+      justify-content: space-between;
+      max-width: 1160px;
 
       & > :not(:last-child) {
         margin-right: 16px;
@@ -157,6 +161,51 @@ export const Container = styled.main<Props>`
         }
       }
     }
+
+    @media only screen and (max-width: 897px) {
+      .cards__wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .card {
+          flex: 1 1 calc(33.333% - 16px);
+          max-width: 276.594px;
+          min-width: 250px;
+          box-sizing: border-box;
+          margin-bottom: 50px;
+
+          &:nth-child(1) {
+            transform: unset;
+            ${({ cardView }) =>
+              cardView &&
+              css`
+                animation: unset;
+              `};
+          }
+
+          &:nth-child(3) {
+            transform: unset!;
+            transform: translateX(0);
+            ${({ cardView }) =>
+              cardView &&
+              css`
+                animation: unset;
+              `};
+          }
+        }
+
+        & > :not(:last-child) {
+          margin-right: unset;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .card {
+          flex: 1 1 100%;
+        }
+      }
+    }
   }
 
   @media only screen and (max-width: 1440px) {
@@ -164,28 +213,34 @@ export const Container = styled.main<Props>`
       padding: 10.1rem 6rem 9.1rem 6rem;
     }
   }
-  
+
+  @media only screen and (max-width: 1240px) {
+    .main {
+      align-items: unset;
+    }
+  }
+
   @media only screen and (max-width: 1024px) {
     .main {
       padding: 8rem 4rem;
-      
+
       .section {
         font-size: 1.8rem;
         line-height: 2.4rem;
-        
+
         &__name {
           font-size: 5rem;
           line-height: 6.5rem;
           margin-bottom: 6rem;
         }
-        
+
         &__products {
           flex-direction: column;
           align-items: center;
-          
+
           .card {
             margin-bottom: 4rem;
-            
+
             &:last-child {
               margin-bottom: 0;
             }
@@ -194,21 +249,25 @@ export const Container = styled.main<Props>`
       }
     }
   }
-  
+
+  @media only screen and (max-width: 897px) {
+    .main {
+      padding: 0rem 2.5rem;
+    }
+  }
+
   @media only screen and (max-width: 768px) {
     .main {
-      padding: 6rem 2.5rem;
-      
       .section {
         font-size: 1.6rem;
         line-height: 2.2rem;
-        
+
         &__name {
           font-size: 4rem;
           line-height: 5.2rem;
           margin-bottom: 5rem;
         }
-        
+
         &__products {
           .card {
             width: 100%;
@@ -218,15 +277,15 @@ export const Container = styled.main<Props>`
       }
     }
   }
-  
+
   @media only screen and (max-width: 480px) {
     .main {
       padding: 5rem 2rem;
-      
+
       .section {
         font-size: 1.4rem;
         line-height: 2rem;
-        
+
         &__name {
           font-size: 3.2rem;
           line-height: 4.2rem;

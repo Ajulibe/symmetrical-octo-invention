@@ -1,7 +1,8 @@
+import styled, { keyframes } from "styled-components";
+
 /* eslint-disable indent */
 /* eslint-disable @typescript-eslint/indent */
 import { FONTS } from "@src/styles/fonts";
-import styled, { keyframes } from "styled-components";
 import { fadeIn } from "@src/animations";
 
 interface Props {
@@ -47,8 +48,20 @@ export const Wrapper = styled.main<Props>`
     top: -9.8rem;
     opacity: 0;
     height: 29.8rem;
-    overflow: hidden;
     animation: ${fadeIn} 1s cubic-bezier(0, 0.55, 0.45, 1) forwards;
+
+    @media only screen and (max-width: 1024px) {
+      margin-left: 20px;
+    }
+
+    @media only screen and (max-width: 480px) {
+      margin-left: 1px;
+      width: 50rem;
+    }
+
+    @media only screen and (max-width: 350px) {
+      margin-left: 3px;
+    }
 
     &__bg-dark {
       background: ${({ theme }) => theme.colors.darkGrey};
@@ -58,6 +71,10 @@ export const Wrapper = styled.main<Props>`
       background-repeat: no-repeat;
       padding: 3.8rem 8.4rem 2.7rem 5.8rem;
       overflow: hidden;
+
+      @media only screen and (max-width: 480px) {
+        width: 50rem;
+      }
     }
 
     &__bg-circle {
@@ -75,6 +92,11 @@ export const Wrapper = styled.main<Props>`
       transition: all 0.8s ease-in;
       opacity: 1;
       z-index: 2;
+
+      @media only screen and (max-width: 480px) {
+        width: 60px;
+        height: 60px;
+      }
     }
 
     &__bg-second {
@@ -98,6 +120,10 @@ export const Wrapper = styled.main<Props>`
       border-radius: 0;
       top: 0;
       left: 0;
+
+      @media only screen and (max-width: 480px) {
+        width: 50rem;
+      }
     }
 
     &__bg-dark::before,
@@ -114,6 +140,9 @@ export const Wrapper = styled.main<Props>`
       left: 0;
       background: linear-gradient(${({ theme }) => theme.colors.darkGrey}, transparent);
       z-index: 1;
+      @media only screen and (max-width: 480px) {
+        width: 100%;
+      }
     }
 
     &__bg-dark::after {
@@ -122,6 +151,9 @@ export const Wrapper = styled.main<Props>`
       bottom: 45px;
       background: linear-gradient(to top, ${({ theme }) => theme.colors.darkGrey}, transparent);
       z-index: 1;
+      @media only screen and (max-width: 480px) {
+        width: 100%;
+      }
     }
 
     &__bg-message {
@@ -134,6 +166,11 @@ export const Wrapper = styled.main<Props>`
       &-info {
         margin-bottom: 40px;
       }
+
+      @media only screen and (max-width: 480px) {
+        font-size: 16px;
+        line-height: 24px;
+      }
     }
 
     &__bg-padding {
@@ -141,6 +178,10 @@ export const Wrapper = styled.main<Props>`
       height: 18.8rem;
       margin: 0 auto;
       animation: ${fadeIn} 0.4s ease-in;
+
+      @media only screen and (max-width: 480px) {
+        width: 32.8rem;
+      }
     }
 
     &__bg-name {
@@ -181,6 +222,11 @@ export const Wrapper = styled.main<Props>`
         z-index: 20;
         opacity: 0;
       }
+
+      @media only screen and (max-width: 480px) {
+        width: 60px;
+        height: 60px;
+      }
     }
 
     .wrapper {
@@ -205,6 +251,11 @@ export const Wrapper = styled.main<Props>`
           opacity: 1;
         }
       }
+
+      @media only screen and (max-width: 480px) {
+        right: -50px;
+        bottom: -20px;
+      }
     }
 
     .loader {
@@ -226,6 +277,10 @@ export const Wrapper = styled.main<Props>`
       border-radius: 50%;
       transform: scale(1);
       z-index: -1;
+      @media only screen and (max-width: 480px) {
+        width: 60px;
+        height: 60px;
+      }
     }
 
     &__btn::before {

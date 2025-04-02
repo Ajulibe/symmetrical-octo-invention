@@ -352,7 +352,10 @@ export const Container = styled.main<Props>`
     margin-top: 5rem;
 
     .main {
+      justify-content: flex-start;
       &__right-section-bold {
+        width: 100%;
+
         .header {
           &-in {
             height: 6rem;
@@ -365,17 +368,16 @@ export const Container = styled.main<Props>`
       }
 
       &__right-section-light {
-        flex-direction: column;
-        align-items: flex-start;
-
-        & > div {
-          margin-bottom: 1.5rem;
+        svg {
+          width: 10px;
+          height: 10px;
         }
       }
 
       &__left-section {
         font-size: 1.3rem;
         line-height: 2.2rem;
+        padding-top: unset;
 
         button {
           width: 180px;

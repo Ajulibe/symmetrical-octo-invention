@@ -108,6 +108,16 @@ export const Container = styled.main<Props>`
       display: flex;
       margin-top: 150px;
       justify-content: space-between;
+
+      @media only screen and (max-width: 720px) {
+        flex-direction: column-reverse;
+        align-items: center;
+        margin-top: 70px;
+      }
+
+      @media only screen and (max-width: 480px) {
+        margin-top: 20px;
+      }
     }
 
     &__accordion {
@@ -121,11 +131,25 @@ export const Container = styled.main<Props>`
       z-index: 5;
       left: 10px;
 
+      @media only screen and (max-width: 720px) {
+        flex-direction: column-reverse;
+        align-items: center;
+        margin-top: -100px;
+      }
+
+      @media only screen and (max-width: 480px) {
+        left: auto;
+      }
+
       span {
         font-family: ${FONTS.raleway};
         font-size: 20px;
         line-height: 26px;
         color: ${({ theme }) => theme.colors.darkGrey};
+
+        @media only screen and (max-width: 1200px) {
+          font-size: 14px;
+        }
       }
 
       &-heading {
@@ -135,6 +159,15 @@ export const Container = styled.main<Props>`
           font-size: 60px;
           line-height: 78px;
           color: ${({ theme }) => theme.colors.darkGrey};
+        }
+
+        @media only screen and (max-width: 1200px) {
+          margin-bottom: 12px;
+          height: 80px;
+          span {
+            font-size: 30px;
+            line-height: 38px;
+          }
         }
       }
 
@@ -162,6 +195,12 @@ export const Container = styled.main<Props>`
             margin-left: auto;
             font-size: 20px;
             transition: all 0.2s ease-in;
+          }
+        }
+
+        @media only screen and (max-width: 1200px) {
+          span {
+            padding: 13.5px 13.34px;
           }
         }
       }
@@ -236,22 +275,61 @@ export const Container = styled.main<Props>`
     z-index: -1;
   }
 
+  @media only screen and (max-width: 1200px) {
+    .image__wrapper {
+      width: 402px;
+      height: 550px;
+
+      & > div {
+        width: 395px;
+        height: 494px;
+        content: cover;
+
+        img {
+          height: 100%;
+        }
+      }
+    }
+
+    .image__wrapper::after {
+      width: 395px;
+      height: 480px;
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    .image__wrapper {
+      max-width: 90vw;
+      height: 380px;
+
+      & > div {
+        max-width: 90vw;
+      }
+    }
+
+    .image__wrapper::after {
+      top: 10px;
+      width: 395px;
+      height: 580px;
+    }
+  }
+
   @media only screen and (max-width: 1024px) {
     .main {
       padding-top: 12rem;
       padding-bottom: 12rem;
-      
+
       &__heading {
         font-size: 5rem;
         line-height: 6.5rem;
       }
-      
+
       &__description {
         font-size: 1.6rem;
         line-height: 2.6rem;
         max-width: 90%;
       }
-      
+
       &__pic-box {
         width: 90%;
         height: auto;
@@ -259,39 +337,39 @@ export const Container = styled.main<Props>`
       }
     }
   }
-  
+
   @media only screen and (max-width: 768px) {
     .main {
       padding-top: 8rem;
       padding-bottom: 8rem;
-      
+
       &__heading {
         font-size: 4rem;
         line-height: 5.2rem;
       }
-      
+
       &__description {
         font-size: 1.4rem;
         line-height: 2.4rem;
       }
-      
+
       &__pic-box {
         width: 100%;
         margin-top: 4rem;
       }
     }
   }
-  
+
   @media only screen and (max-width: 480px) {
     .main {
       padding-top: 6rem;
       padding-bottom: 6rem;
-      
+
       &__heading {
         font-size: 3.2rem;
         line-height: 4.2rem;
       }
-      
+
       &__description {
         font-size: 1.3rem;
         line-height: 2.2rem;
