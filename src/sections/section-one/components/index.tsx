@@ -1,8 +1,9 @@
-import { useRef, useState, useEffect, memo } from "react";
+import { memo, useEffect, useRef, useState } from "react";
+
+import { CarouselContent } from "@src/assets/images";
 import { Greybackgroud } from "./style";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import { CarouselContent } from "@src/assets/images";
 
 const TestimonialCarousel = dynamic<Record<string, never>>(
   () => import("./carousel").then((mod) => mod.TestimonialCarousel),
