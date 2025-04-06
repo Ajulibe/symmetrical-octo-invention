@@ -139,6 +139,7 @@ export const Container = styled.main<Props>`
 
       @media only screen and (max-width: 480px) {
         left: auto;
+        width: 40rem;
       }
 
       span {

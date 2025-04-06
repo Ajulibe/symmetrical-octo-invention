@@ -56,7 +56,7 @@ export const Wrapper = styled.main<Props>`
 
     @media only screen and (max-width: 480px) {
       margin-left: 1px;
-      width: 50rem;
+      width: 40rem;
     }
 
     @media only screen and (max-width: 350px) {
@@ -73,7 +73,7 @@ export const Wrapper = styled.main<Props>`
       overflow: hidden;
 
       @media only screen and (max-width: 480px) {
-        width: 50rem;
+        width: 40rem;
       }
     }
 
@@ -122,7 +122,7 @@ export const Wrapper = styled.main<Props>`
       left: 0;
 
       @media only screen and (max-width: 480px) {
-        width: 50rem;
+        width: 40rem;
       }
     }
 
